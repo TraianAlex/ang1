@@ -188,6 +188,18 @@
 <div class="content" role="main">
   <app-rooms></app-rooms>
 
+  <div [ngSwitch]="role">
+    <div *ngSwitchCase="'user'">
+      Welcome User
+    </div>
+    <div *ngSwitchCase="'admin'">
+      <app-rooms></app-rooms>
+    </div>
+    <div *ngSwitchDefault>
+      You are not authorized to view this page
+    </div>
+  </div>
+
   <!-- Highlight Card -->
   <div class="card highlight-card card-small">
     <span>{{ title }} app is running!</span>
