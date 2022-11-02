@@ -78,7 +78,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
   ngAfterViewInit(): void {
     //console.log(this.headerComponent);
     this.headerComponent.title = 'Rooms view';
-    console.log(this.headerChildrenComponent);
+    //console.log(this.headerChildrenComponent);
     this.headerChildrenComponent.last.title = 'Last Title';
   }
 
@@ -93,7 +93,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
 
   selectRoom(room: RoomList) {
     this.selectedRoom = room;
-    console.log(room);
+    //console.log(room);
   }
 
   addRoom() {

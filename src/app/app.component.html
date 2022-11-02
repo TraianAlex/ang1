@@ -186,11 +186,17 @@
 </div>
 
 <div class="content" role="main">
-  <app-rooms></app-rooms>
+  <!-- <app-rooms></app-rooms> -->
   <!-- <div>
     <ng-template #user></ng-template>
   </div> -->
   <div #name></div>
+
+  <app-container>
+    <app-rooms></app-rooms>
+    <app-employee></app-employee>
+    <h4>This is from ng-container</h4>
+  </app-container>
 
   <div [ngSwitch]="role">
     <div *ngSwitchCase="'user'">
