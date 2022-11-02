@@ -1,4 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  DoCheck,
+  OnInit,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
+import { HeaderComponent } from '../header/header.component';
 import { Room, RoomList } from './rooms';
 
 @Component({
@@ -6,7 +16,7 @@ import { Room, RoomList } from './rooms';
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.scss'],
 })
-export class RoomsComponent implements OnInit {
+export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterViewChecked {
   hotelName = 'Hilton';
   numberOfRooms = 10;
   hideRooms = true;
@@ -18,6 +28,9 @@ export class RoomsComponent implements OnInit {
   roomList: RoomList[] = [];
   selectedRoom!: RoomList;
   title = 'Room list';
+
+  @ViewChild(HeaderComponent) headerComponent!: HeaderComponent; // , {static: true}
+  @ViewChildren(HeaderComponent) headerChildrenComponent!: QueryList<HeaderComponent>;
 
   constructor() {}
 
@@ -55,6 +68,22 @@ export class RoomsComponent implements OnInit {
         rating: 4.7,
       },
     ];
+    //console.log(this.headerComponent);
+  }
+
+  ngDoCheck(): void {
+    console.log('on changes is called. called at any render. to avoid. not together with ngOnChanges');
+  }
+
+  ngAfterViewInit(): void {
+    //console.log(this.headerComponent);
+    this.headerComponent.title = 'Rooms view';
+    console.log(this.headerChildrenComponent);
+    this.headerChildrenComponent.last.title = 'Last Title';
+  }
+
+  ngAfterViewChecked(): void {
+    // can load dinamic view like <ng-template #user></ng-template> from app.component.html
   }
 
   toggle() {
