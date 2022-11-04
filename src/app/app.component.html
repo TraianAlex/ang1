@@ -1,6 +1,7 @@
 <style>
   :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: 14px;
     color: #333;
     box-sizing: border-box;
@@ -143,7 +144,7 @@
   }
 
   .terminal::before {
-    content: "\2022 \2022 \2022";
+    content: '\2022 \2022 \2022';
     position: absolute;
     top: 0;
     left: 0;
@@ -158,7 +159,7 @@
   }
 
   .terminal pre {
-    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
     color: white;
     padding: 0 1rem 1rem;
     margin: 0;
@@ -182,7 +183,6 @@
   <div class="spacer"></div>
   <span>Welcome</span>
   <div class="spacer"></div>
-    
 </div>
 
 <div class="content" role="main">
@@ -199,35 +199,40 @@
   </app-container>
 
   <div [ngSwitch]="role">
-    <div *ngSwitchCase="'user'">
-      Welcome User
-    </div>
+    <div *ngSwitchCase="'user'">Welcome User</div>
     <div *ngSwitchCase="'admin'">
       <app-rooms></app-rooms>
     </div>
-    <div *ngSwitchDefault>
-      You are not authorized to view this page
-    </div>
+    <div *ngSwitchDefault>You are not authorized to view this page</div>
   </div>
 
   <label>Server Name</label>
   <!-- <input type="text" class="form-control" placeholder="Server Name" (input)="onUpdateServerName($event)"> -->
-  <input type="text" class="form-control" placeholder="Server Name" [(ngModel)]="serverName">
+  <input type="text" class="form-control" placeholder="Server Name" [(ngModel)]="serverName" />
   <!-- <p>{{serverName}}</p> -->
   <button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
   <!-- <p [innerText]="allowNewServer"></p> -->
-  <p>{{serverCreationStatus}}</p>
+  <!-- <p>{{serverCreationStatus}}</p> -->
+  <p *ngIf="serverCreated; else noServer">Server was created, server name is {{ serverName }}</p>
+  <ng-template #noServer>
+    <p>No server was created!</p>
+  </ng-template>
+
   <label>Username</label>
-  <input type="text" class="form-control" [(ngModel)]="username">
-  <p>{{username}}</p>
+  <input type="text" class="form-control" [(ngModel)]="username" />
+  <p>{{ username }}</p>
   <button class="btn btn-primary" [disabled]="username === ''" (click)="username = ''">Reset User</button>
+
+  <div [ngStyle]="{ backgroundColor: getColor() }" [ngClass]="{ online: serverStatus === 'online' }">
+    Server with ID {{ serverId }} is {{ serverStatus }}
+  </div>
 
   <!-- Highlight Card -->
   <div class="card highlight-card card-small">
     <span>{{ title }} app is running!</span>
   </div>
 
-  <input type="hidden" #selection>
+  <input type="hidden" #selection />
 
   <div class="card-container">
     <button class="card card-small" (click)="selection.value = 'component'" tabindex="0">
@@ -251,38 +256,46 @@
     </button>
 
     <button class="card card-small" (click)="selection.value = 'build'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+      </svg>
       <span>Build for Production</span>
     </button>
   </div>
 
   <!-- Terminal -->
   <div class="terminal" [ngSwitch]="selection.value">
-      <pre *ngSwitchDefault>ng generate component xyz</pre>
-      <pre *ngSwitchCase="'material'">ng add @angular/material</pre>
-      <pre *ngSwitchCase="'pwa'">ng add @angular/pwa</pre>
-      <pre *ngSwitchCase="'dependency'">ng add _____</pre>
-      <pre *ngSwitchCase="'test'">ng test</pre>
-      <pre *ngSwitchCase="'build'">ng build</pre>
+    <pre *ngSwitchDefault>ng generate component xyz</pre>
+    <pre *ngSwitchCase="'material'">ng add @angular/material</pre>
+    <pre *ngSwitchCase="'pwa'">ng add @angular/pwa</pre>
+    <pre *ngSwitchCase="'dependency'">ng add _____</pre>
+    <pre *ngSwitchCase="'test'">ng test</pre>
+    <pre *ngSwitchCase="'build'">ng build</pre>
   </div>
 
   <!-- Links -->
   <div class="card-container">
-    <a class="circle-link" title="Join the Conversation on Discord" href="https://discord.gg/angular" target="_blank" rel="noopener">
+    <a
+      class="circle-link"
+      title="Join the Conversation on Discord"
+      href="https://discord.gg/angular"
+      target="_blank"
+      rel="noopener"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 245 240">
         <title>Discord Logo</title>
-        <path d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zM140.9 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1z"/>
-        <path d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2 21.5 19V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/>
+        <path
+          d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zM140.9 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1z"
+        />
+        <path
+          d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2 21.5 19V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"
+        />
       </svg>
     </a>
   </div>
 
   <!-- Footer -->
-  <footer>
-      Love Angular?&nbsp;
-      
-  </footer>
-
+  <footer>Love Angular?&nbsp;</footer>
 </div>
 
 <router-outlet></router-outlet>

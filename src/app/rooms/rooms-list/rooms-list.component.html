@@ -1,34 +1,32 @@
 <p>rooms-list works!</p>
 <h4>{{ title }}</h4>
-  <!-- {{ roomList }} -->
-  <table class="table">
-    <tr>
-      <th>Index</th>
-      <th>Even/Odd</th>
-      <th>Number</th>
-      <th>Type</th>
-      <th>Price</th>
-      <th>Amenities</th>
-      <th>Photo</th> 
-      <th>Check In</th>
-      <th>Check Out</th>
-      <th>Rating</th>
-      <th>Select room</th>
-    </tr>
-    <tr 
-      [ngClass]="e ? 'even' : 'odd'"
-      *ngFor="let room of rooms | slice: 0:9; let e=even; let o=odd; let i=index"
-      >
-      <td>{{i+1 | percent}}</td>
-      <td>{{e ? "Even" : "Odd"}}</td>
-      <td>{{room.roomNumber}}</td>
-      <td>{{room.roomType | titlecase}}</td>
-      <td>{{room.price | currency : 'GBP'}}</td>
-      <td>{{room.amenities | lowercase}}</td> <!-- uppercase -->
-      <td><img [src]="room.photos" alt="test" /></td>
-      <td>{{room.checkinTime | date : 'shortDate'}}</td>
-      <td>{{room.checkoutTime | date}}</td>
-      <td>{{room.rating | number : '1.1-3' : 'en-us'}}</td>
-      <td><button type="button" class="btn btn-primary" (click)="selectRoom(room)">Select</button></td>
-    </tr>
-  </table>
+<!-- {{ roomList }} -->
+<table class="table">
+  <tr>
+    <th>Index</th>
+    <th>Even/Odd</th>
+    <th>Number</th>
+    <th>Type</th>
+    <th>Price</th>
+    <th>Amenities</th>
+    <th>Photo</th>
+    <th>Check In</th>
+    <th>Check Out</th>
+    <th>Rating</th>
+    <th>Select room</th>
+  </tr>
+  <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let room of rooms | slice: 0:9; let e = even; let o = odd; let i = index">
+    <td>{{ i + 1 | percent }}</td>
+    <td>{{ e ? 'Even' : 'Odd' }}</td>
+    <td>{{ room.roomNumber }}</td>
+    <td>{{ room.roomType | titlecase }}</td>
+    <td>{{ room.price | currency: 'GBP' }}</td>
+    <td>{{ room.amenities | lowercase }}</td>
+    <!-- uppercase -->
+    <td><img [src]="room.photos" alt="test" /></td>
+    <td>{{ room.checkinTime | date: 'shortDate' }}</td>
+    <td>{{ room.checkoutTime | date }}</td>
+    <td>{{ room.rating | number: '1.1-3':'en-us' }}</td>
+    <td><button type="button" class="btn btn-primary" (click)="selectRoom(room)">Select</button></td>
+  </tr>
+</table>
