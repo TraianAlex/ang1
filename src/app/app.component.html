@@ -218,13 +218,25 @@
     <p>No server was created!</p>
   </ng-template>
 
+  <div *ngFor="let server of servers">
+    <div [ngStyle]="{ backgroundColor: getColor() }" [ngClass]="{ online: serverStatus === 'online' }">
+      {{ server }} with ID {{ serverId }} is {{ serverStatus }}
+    </div>
+  </div>
+
   <label>Username</label>
   <input type="text" class="form-control" [(ngModel)]="username" />
   <p>{{ username }}</p>
   <button class="btn btn-primary" [disabled]="username === ''" (click)="username = ''">Reset User</button>
-
-  <div [ngStyle]="{ backgroundColor: getColor() }" [ngClass]="{ online: serverStatus === 'online' }">
-    Server with ID {{ serverId }} is {{ serverStatus }}
+  <hr />
+  <button class="btn btn-primary" (click)="onToggleDetails()">Display details</button>
+  <p *ngIf="showSecret">Secret password = Tuna</p>
+  <div
+    *ngFor="let logItem of log; let i = index"
+    [ngStyle]="{ backgroundColor: i >= 4 ? 'blue' : 'transparent' }"
+    [ngClass]="{ 'white-text': i >= 4 }"
+  >
+    {{ logItem }}
   </div>
 
   <!-- Highlight Card -->

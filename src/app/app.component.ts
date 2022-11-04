@@ -16,6 +16,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   serverCreated = false;
   serverId = 123;
   serverStatus = 'offline';
+  servers = ['Testserver', 'Testserver 2'];
+  showSecret = false;
+  log: Array<number | Date> = [];
 
   @ViewChild('user', { read: ViewContainerRef }) vcr!: ViewContainerRef;
   @ViewChild('name', { static: true }) name!: ElementRef;
@@ -38,6 +41,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   onCreateServer() {
     this.serverCreated = true;
+    this.servers.push(this.serverName);
     this.serverCreationStatus = `Server was created! Name is ${this.serverName}`;
   }
 
@@ -47,5 +51,11 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   getColor() {
     return this.serverStatus === 'online' ? 'green' : 'red';
+  }
+
+  onToggleDetails() {
+    this.showSecret = !this.showSecret;
+    //this.log.push(this.log.length + 1);
+    this.log.push(new Date());
   }
 }
