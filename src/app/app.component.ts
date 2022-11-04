@@ -7,7 +7,6 @@ import { RoomsComponent } from './rooms/rooms.component';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  title = 'ang1';
   role = 'user';
   allowNewServer = false;
   serverCreationStatus = 'No server was created!';
