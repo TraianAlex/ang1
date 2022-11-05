@@ -6,10 +6,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderAppComponent } from './header-app/header-app.component';
 import { ContainerComponent } from './container/container.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { RecipesComponent } from './recipes/recipes.component';
+import { HeaderComponent } from './recipes/header/header.component';
 import { FoodRecipesComponent } from './recipes/food-recipes/food-recipes.component';
 import { RecipeListComponent } from './recipes/food-recipes/recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './recipes/food-recipes/recipe-detail/recipe-detail.component';
@@ -22,10 +23,11 @@ import { ShoppingEditComponent } from './recipes/shopping-list/shopping-edit/sho
     AppComponent,
     RoomsComponent,
     RoomsListComponent,
-    HeaderComponent,
+    HeaderAppComponent,
     ContainerComponent,
     EmployeeComponent,
     RecipesComponent,
+    HeaderComponent,
     FoodRecipesComponent,
     RecipeListComponent,
     RecipeDetailComponent,

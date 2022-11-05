@@ -8,7 +8,7 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
+import { HeaderAppComponent } from '../header-app/header-app.component';
 import { Room, RoomList } from './rooms';
 
 @Component({
@@ -29,8 +29,8 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
   selectedRoom!: RoomList;
   title = 'Room list';
 
-  @ViewChild(HeaderComponent) headerComponent!: HeaderComponent; // , {static: true}
-  @ViewChildren(HeaderComponent) headerChildrenComponent!: QueryList<HeaderComponent>;
+  @ViewChild(HeaderAppComponent) headerComponent!: HeaderAppComponent; // , {static: true}
+  @ViewChildren(HeaderAppComponent) headerChildrenComponent!: QueryList<HeaderAppComponent>;
 
   constructor() {}
 
