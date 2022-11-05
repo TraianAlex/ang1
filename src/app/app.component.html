@@ -33,11 +33,17 @@
     <p>No server was created!</p>
   </ng-template>
 
-  <div *ngFor="let server of servers">
-    <div [ngStyle]="{ backgroundColor: getColor() }" [ngClass]="{ online: serverStatus === 'online' }">
-      {{ server }} with ID {{ serverId }} is {{ serverStatus }}
-    </div>
-  </div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let server of servers; let i = index">
+      <div
+        [ngStyle]="{ backgroundColor: getColor() }"
+        [ngClass]="{ online: serverStatus === 'online' }"
+        (click)="onRemoveServer(i)"
+      >
+        {{ server }} with ID {{ serverId }} is {{ serverStatus }}
+      </div>
+    </li>
+  </ul>
 
   <label>Username</label>
   <input type="text" class="form-control" [(ngModel)]="username" />

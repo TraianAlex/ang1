@@ -44,6 +44,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.serverCreationStatus = `Server was created! Name is ${this.serverName}`;
   }
 
+  onRemoveServer(index: number) {
+    this.servers.splice(index, 1);
+  }
+
   onUpdateServerName(event: Event) {
     this.serverName = (<HTMLInputElement>event.target).value;
   }
