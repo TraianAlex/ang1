@@ -20,6 +20,10 @@ import { ShoppingEditComponent } from './recipes/shopping-list/shopping-edit/sho
 import { ServersComponent } from './servers/servers.component';
 import { CockpitComponent } from './servers/cockpit/cockpit.component';
 import { ServerElementComponent } from './servers/server-element/server-element.component';
+import { DataBindingComponent } from './data-binding/data-binding.component';
+import { GameControlComponent } from './data-binding/game-control/game-control.component';
+import { EvenComponent } from './data-binding/even/even.component';
+import { OddComponent } from './data-binding/odd/odd.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,10 @@ import { ServerElementComponent } from './servers/server-element/server-element.
     ServersComponent,
     CockpitComponent,
     ServerElementComponent,
+    DataBindingComponent,
+    GameControlComponent,
+    EvenComponent,
+    OddComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
