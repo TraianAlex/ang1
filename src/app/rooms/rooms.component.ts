@@ -42,7 +42,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
         amenities: 'Free Wi-Fi, Tv, Bathroom',
         price: 100,
         photos:
-          'http://images.unsplash.com/photo-1518791841217-8f16f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiojEyMDd9&auto=format&fit=crop&w=800&q=60', //'http://images.unsplash.com/photo-1518791841217-8f16f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiojEyMDd9&auto=format&fit=crop&w=800&q=60',
+          'https://www.1hotels.com/sites/default/files/styles/cards_2_constrained/public/2021-04/1_Hotel_Guestrooms07V2.jpg?h=dd930c52&itok=pzuQlbm2',
         checkinTime: new Date('11-Nov-2021'),
         checkoutTime: new Date('12-Nov-2021'),
         rating: 3.5,
@@ -52,7 +52,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
         roomType: 'Deluxe Room',
         amenities: 'Air COnditioner, Free Wi-Fi, Tv, Bathroom',
         price: 200,
-        photos: 'https://unsplash.com/photos/oxeCZrodz78', //'http://images.unsplash.com/photo-1518791841217-8f16f1e1131?ixl',
+        photos: 'https://www.1hotels.com/sites/default/files/styles/cards_2_constrained/public/2021-04/1_Hotel_Guestrooms07V2.jpg?h=dd930c52&itok=pzuQlbm2',
         checkinTime: new Date('11-Nov-2021'),
         checkoutTime: new Date('12-Nov-2021'),
         rating: 4.5654,
@@ -62,7 +62,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
         roomType: 'Pivate Suite',
         amenities: 'Air COnditioner, Free Wi-Fi, Tv, Bathroom, Kitchen',
         price: 300,
-        photos: 'https://unsplash.com/photos/oxeCZrodz78', //'http://images.unsplash.com/photo-1518791841217-8f16f1e1131?ixl',
+        photos: 'https://www.1hotels.com/sites/default/files/styles/cards_2_constrained/public/2021-04/1_Hotel_Guestrooms07V2.jpg?h=dd930c52&itok=pzuQlbm2',
         checkinTime: new Date('11-Nov-2021'),
         checkoutTime: new Date('12-Nov-2021'),
         rating: 4.7,
@@ -72,14 +72,14 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
   }
 
   ngDoCheck(): void {
-    console.log('on changes is called. called at any render. to avoid. not together with ngOnChanges');
+    //console.log('on changes is called. called at any render. to avoid. not together with ngOnChanges');
   }
 
   ngAfterViewInit(): void {
     //console.log(this.headerComponent);
-    this.headerComponent.title = 'Rooms view';
+    //this.headerComponent.title = 'Rooms view';
     //console.log(this.headerChildrenComponent);
-    this.headerChildrenComponent.last.title = 'Last Title';
+    //this.headerChildrenComponent.last.title = 'Last Title';
   }
 
   ngAfterViewChecked(): void {
@@ -103,7 +103,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
       amenities: 'Free Wi-Fi, Tv, Bathroom',
       price: 150,
       photos:
-        'http://images.unsplash.com/photo-1518791841217-8f16f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiojEyMDd9&auto=format&fit=crop&w=800&q=60',
+        'https://www.1hotels.com/sites/default/files/styles/cards_2_constrained/public/2021-04/1_Hotel_Guestrooms07V2.jpg?h=dd930c52&itok=pzuQlbm2',
       checkinTime: new Date('14-Nov-2021'),
       checkoutTime: new Date('15-Nov-2021'),
       rating: 4.2,
