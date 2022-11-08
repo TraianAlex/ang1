@@ -36,6 +36,14 @@ export class ServersComponent implements OnInit {
     });
   }
 
+  onChangeFirst() {
+    this.serverElements[0].name = 'Changes';
+  }
+
+  onDestroyFirst() {
+    this.serverElements.splice(0, 1);
+  }
+
   // onAddServer() {
   //   this.serverElements.push({
   //     type: 'server',
