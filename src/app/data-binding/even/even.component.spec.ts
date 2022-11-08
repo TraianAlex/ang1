@@ -8,9 +8,8 @@ describe('EvenComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EvenComponent ]
-    })
-    .compileComponents();
+      declarations: [EvenComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(EvenComponent);
     component = fixture.componentInstance;

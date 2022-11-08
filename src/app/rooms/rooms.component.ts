@@ -52,7 +52,8 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
         roomType: 'Deluxe Room',
         amenities: 'Air COnditioner, Free Wi-Fi, Tv, Bathroom',
         price: 200,
-        photos: 'https://www.1hotels.com/sites/default/files/styles/cards_2_constrained/public/2021-04/1_Hotel_Guestrooms07V2.jpg?h=dd930c52&itok=pzuQlbm2',
+        photos:
+          'https://www.1hotels.com/sites/default/files/styles/cards_2_constrained/public/2021-04/1_Hotel_Guestrooms07V2.jpg?h=dd930c52&itok=pzuQlbm2',
         checkinTime: new Date('11-Nov-2021'),
         checkoutTime: new Date('12-Nov-2021'),
         rating: 4.5654,
@@ -62,7 +63,8 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
         roomType: 'Pivate Suite',
         amenities: 'Air COnditioner, Free Wi-Fi, Tv, Bathroom, Kitchen',
         price: 300,
-        photos: 'https://www.1hotels.com/sites/default/files/styles/cards_2_constrained/public/2021-04/1_Hotel_Guestrooms07V2.jpg?h=dd930c52&itok=pzuQlbm2',
+        photos:
+          'https://www.1hotels.com/sites/default/files/styles/cards_2_constrained/public/2021-04/1_Hotel_Guestrooms07V2.jpg?h=dd930c52&itok=pzuQlbm2',
         checkinTime: new Date('11-Nov-2021'),
         checkoutTime: new Date('12-Nov-2021'),
         rating: 4.7,

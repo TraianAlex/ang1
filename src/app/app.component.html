@@ -27,7 +27,9 @@
   <!-- <input type="text" class="form-control" placeholder="Server Name" (input)="onUpdateServerName($event)"> -->
   <input type="text" class="form-control" placeholder="Server Name" [(ngModel)]="serverName" />
   <!-- <p>{{serverName}}</p> -->
-  <button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
+  <button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">
+    Add Server
+  </button>
   <!-- <p [innerText]="allowNewServer"></p> -->
   <!-- <p>{{serverCreationStatus}}</p> -->
   <p *ngIf="serverCreated; else noServer">Server was created, server name is {{ serverName }}</p>
@@ -50,7 +52,9 @@
   <label>Username</label>
   <input type="text" class="form-control" [(ngModel)]="username" />
   <p>{{ username }}</p>
-  <button class="btn btn-primary" [disabled]="username === ''" (click)="username = ''">Reset User</button>
+  <button class="btn btn-primary" [disabled]="username === ''" (click)="username = ''">
+    Reset User
+  </button>
   <hr />
   <button class="btn btn-primary" (click)="onToggleDetails()">Display details</button>
   <p *ngIf="showSecret">Secret password = Tuna</p>
@@ -90,7 +94,13 @@
     </button>
 
     <button class="card card-small" (click)="selection.value = 'build'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <svg
+        class="material-icons"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+      >
         <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
       </svg>
       <span>Build for Production</span>
