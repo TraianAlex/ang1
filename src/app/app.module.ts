@@ -24,6 +24,9 @@ import { DataBindingComponent } from './data-binding/data-binding.component';
 import { GameControlComponent } from './data-binding/game-control/game-control.component';
 import { EvenComponent } from './data-binding/even/even.component';
 import { OddComponent } from './data-binding/odd/odd.component';
+import { BasicHighlightDirective } from './app-directives/basic-highlights/basic-hightlight.directive';
+import { BetterHighlightDirective } from './app-directives/better-highlights/better-hightlight.directive';
+import { UnlessDirective } from './app-directives/unless/unless.directive';
 
 @NgModule({
   declarations: [
@@ -48,6 +51,9 @@ import { OddComponent } from './data-binding/odd/odd.component';
     GameControlComponent,
     EvenComponent,
     OddComponent,
+    BasicHighlightDirective,
+    BetterHighlightDirective,
+    UnlessDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

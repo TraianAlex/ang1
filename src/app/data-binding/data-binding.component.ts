@@ -9,6 +9,9 @@ export class DataBindingComponent implements OnInit {
   oddNumbers: number[] = [];
   evenNumbers: number[] = [];
 
+  onlyOdd = false;
+  value = 5;
+
   constructor() {}
 
   ngOnInit(): void {}
