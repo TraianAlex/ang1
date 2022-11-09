@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header-app.component.scss'],
 })
 export class HeaderAppComponent implements OnInit {
+  collapsed = true;
   title: string = '';
 
   constructor() {}

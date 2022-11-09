@@ -1,2 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button
+        class="navbar-toggler"
+        type="button"
+        aria-controls="navbarSupportedContent"
+        (click)="collapsed = !collapsed"
+      >
+        <span class="navbar-toggler-icon" *ngFor="let iconBar of [1]"></span>
+      </button>
+      <a routerLink="/" class="navbar-brand">Angular</a>
+    </div>
+    <div
+      class="collapse navbar-collapse"
+      id="navbarSupportedContent"
+      [class.collapse]="collapsed"
+      (window:resize)="collapsed = true"
+    >
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Page1</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">Page1</a>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#">Page1</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Page1</a></li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Manage
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Save Data</a></li>
+            <li><a class="dropdown-item" href="#">Fetch Data</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <p>header works!</p>
 <h3>{{ title }}</h3>
