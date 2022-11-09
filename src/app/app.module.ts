@@ -27,6 +27,7 @@ import { OddComponent } from './data-binding/odd/odd.component';
 import { BasicHighlightDirective } from './app-directives/basic-highlights/basic-hightlight.directive';
 import { BetterHighlightDirective } from './app-directives/better-highlights/better-hightlight.directive';
 import { UnlessDirective } from './app-directives/unless/unless.directive';
+import { DropdownDirective } from './recipes/shared/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { UnlessDirective } from './app-directives/unless/unless.directive';
     BasicHighlightDirective,
     BetterHighlightDirective,
     UnlessDirective,
+    DropdownDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
