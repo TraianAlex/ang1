@@ -28,6 +28,7 @@ import { BasicHighlightDirective } from './app-directives/basic-highlights/basic
 import { BetterHighlightDirective } from './app-directives/better-highlights/better-hightlight.directive';
 import { UnlessDirective } from './app-directives/unless/unless.directive';
 import { DropdownDirective } from './recipes/shared/dropdown.directive';
+import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,12 @@ import { DropdownDirective } from './recipes/shared/dropdown.directive';
     DropdownDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [],
+  providers: [
+    {
+      provide: APP_SERVICE_CONFIG,
+      useValue: APP_CONFIG,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
