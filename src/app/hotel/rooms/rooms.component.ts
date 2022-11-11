@@ -9,7 +9,7 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import { HeaderAppComponent } from '../header-app/header-app.component';
+import { HeaderAppComponent } from '../../header-app/header-app.component';
 import { Room, RoomList } from './rooms';
 import { RoomsService } from './services/rooms.service';
 

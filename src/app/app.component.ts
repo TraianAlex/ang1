@@ -8,7 +8,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { RoomsComponent } from './rooms/rooms.component';
+import { RoomsComponent } from './hotel/rooms/rooms.component';
 import { localStorageToken } from './services/localstorage.token';
 import { LoggerService } from './services/logger.service';
 
@@ -18,8 +18,6 @@ import { LoggerService } from './services/logger.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  title = 'ang1';
-  role = 'user';
   allowNewServer = false;
   serverCreationStatus = 'No server was created!';
   serverName = 'Test server name';

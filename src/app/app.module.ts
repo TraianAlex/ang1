@@ -4,11 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RoomsComponent } from './rooms/rooms.component';
-import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
+import { RoomsComponent } from './hotel/rooms/rooms.component';
+import { RoomsListComponent } from './hotel/rooms/rooms-list/rooms-list.component';
 import { HeaderAppComponent } from './header-app/header-app.component';
-import { ContainerComponent } from './container/container.component';
-import { EmployeeComponent } from './employee/employee.component';
+import { ContainerComponent } from './hotel/container/container.component';
+import { EmployeeComponent } from './hotel/employee/employee.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { HeaderComponent } from './recipes/header/header.component';
 import { FoodRecipesComponent } from './recipes/food-recipes/food-recipes.component';
@@ -29,6 +29,7 @@ import { BetterHighlightDirective } from './app-directives/better-highlights/bet
 import { UnlessDirective } from './app-directives/unless/unless.directive';
 import { DropdownDirective } from './recipes/shared/dropdown.directive';
 import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service';
+import { HotelComponent } from './hotel/hotel.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service'
     BetterHighlightDirective,
     UnlessDirective,
     DropdownDirective,
+    HotelComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [
