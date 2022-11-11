@@ -30,6 +30,9 @@ import { UnlessDirective } from './app-directives/unless/unless.directive';
 import { DropdownDirective } from './recipes/shared/dropdown.directive';
 import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service';
 import { HotelComponent } from './hotel/hotel.component';
+import { AccountsComponent } from './accounts/accounts.component';
+import { AccountComponent } from './accounts/account/account.component';
+import { NewAccountComponent } from './accounts/new-account/new-account.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +62,9 @@ import { HotelComponent } from './hotel/hotel.component';
     UnlessDirective,
     DropdownDirective,
     HotelComponent,
+    AccountsComponent,
+    AccountComponent,
+    NewAccountComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [
