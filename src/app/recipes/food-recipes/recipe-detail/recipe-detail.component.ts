@@ -16,5 +16,7 @@ export class RecipeDetailComponent implements OnInit {
 
   onAddToShoppingList() {
     this.recipesService.addIngredientsToShoppingList(this.recipe.ingredients);
+    // or inject , private slService: ShoppingListService and use addIngredients method and not use recipes service
+    //this.slService.addIngredients(this.recipe.ingredients);
   }
 }
