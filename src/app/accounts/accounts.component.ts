@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountsService } from './services/accounts.service';
 
 @Component({
   selector: 'app-accounts',
@@ -6,30 +7,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./accounts.component.scss'],
 })
 export class AccountsComponent implements OnInit {
-  accounts = [
-    {
-      name: 'Master Account',
-      status: 'active',
-    },
-    {
-      name: 'Testaccount',
-      status: 'inactive',
-    },
-    {
-      name: 'Hidden Account',
-      status: 'unknown',
-    },
-  ];
+  accounts: { name: string; status: string }[] = [];
+  // accounts = [
+  //   {
+  //     name: 'Master Account',
+  //     status: 'active',
+  //   },
+  //   {
+  //     name: 'Testaccount',
+  //     status: 'inactive',
+  //   },
+  //   {
+  //     name: 'Hidden Account',
+  //     status: 'unknown',
+  //   },
+  // ];
 
-  constructor() {}
+  constructor(private accountsService: AccountsService) {}
 
-  ngOnInit(): void {}
-
-  onAccountAdded(newAccount: { name: string; status: string }) {
-    this.accounts.push(newAccount);
+  ngOnInit(): void {
+    this.accounts = this.accountsService.accounts;
   }
 
-  onStatusChanged(updateInfo: { id: number; newStatus: string }) {
-    this.accounts[updateInfo.id].status = updateInfo.newStatus;
-  }
+  // onAccountAdded(newAccount: { name: string; status: string }) {
+  //   this.accounts.push(newAccount);
+  // }
+
+  // onStatusChanged(updateInfo: { id: number; newStatus: string }) {
+  //   this.accounts[updateInfo.id].status = updateInfo.newStatus;
+  // }
 }

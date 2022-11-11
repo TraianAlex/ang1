@@ -1,7 +1,6 @@
 import {
   AfterViewInit,
   Component,
-  ElementRef,
   Inject,
   OnInit,
   Optional,
@@ -30,7 +29,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   log: Array<number | Date> = [];
 
   @ViewChild('user', { read: ViewContainerRef }) vcr!: ViewContainerRef;
-  @ViewChild('name', { static: true }) name!: ElementRef;
 
   constructor(
     @Optional() private loggerService: LoggerService,
@@ -44,7 +42,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.loggerService?.log('AppComponent.ngOnInit');
-    this.name.nativeElement.innerText = 'Hilton hotel';
     this.localStorage.setItem('name', 'Hilton Hotel');
   }
 
