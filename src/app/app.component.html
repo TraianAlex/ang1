@@ -6,6 +6,8 @@
 
 <app-accounts></app-accounts>
 
+<app-users></app-users>
+
 <div class="content" role="main">
   <app-hotel></app-hotel>
 
@@ -13,7 +15,7 @@
   <!-- <input type="text" class="form-control" placeholder="Server Name" (input)="onUpdateServerName($event)"> -->
   <input type="text" class="form-control" placeholder="Server Name" [(ngModel)]="serverName" />
   <!-- <p>{{serverName}}</p> -->
-  <button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">
+  <button class="btn btn-primary mt-2" [disabled]="!allowNewServer" (click)="onCreateServer()">
     Add Server
   </button>
   <!-- <p [innerText]="allowNewServer"></p> -->
@@ -38,7 +40,7 @@
   <label>Username</label>
   <input type="text" class="form-control" [(ngModel)]="username" />
   <p>{{ username }}</p>
-  <button class="btn btn-primary" [disabled]="username === ''" (click)="username = ''">
+  <button class="btn btn-primary mt-2" [disabled]="username === ''" (click)="username = ''">
     Reset User
   </button>
   <hr />

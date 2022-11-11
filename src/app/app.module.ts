@@ -33,6 +33,9 @@ import { HotelComponent } from './hotel/hotel.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AccountComponent } from './accounts/account/account.component';
 import { NewAccountComponent } from './accounts/new-account/new-account.component';
+import { UsersComponent } from './users/users.component';
+import { ActiveUsersComponent } from './users/active-users/active-users.component';
+import { InactiveUsersComponent } from './users/inactive-users/inactive-users.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +68,9 @@ import { NewAccountComponent } from './accounts/new-account/new-account.componen
     AccountsComponent,
     AccountComponent,
     NewAccountComponent,
+    UsersComponent,
+    ActiveUsersComponent,
+    InactiveUsersComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [
