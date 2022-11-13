@@ -36,6 +36,15 @@ import { NewAccountComponent } from './accounts/new-account/new-account.componen
 import { UsersComponent } from './users/users.component';
 import { ActiveUsersComponent } from './users/active-users/active-users.component';
 import { InactiveUsersComponent } from './users/inactive-users/inactive-users.component';
+import { UsersServersComponent } from './users-servers/users-servers.component';
+import { UsersComponent2 } from './users-servers/users/users2.component';
+import { UserComponent } from './users-servers/users/user/user.component';
+import { ServersComponent2 } from './users-servers/servers/servers2.component';
+import { ServerComponent } from './users-servers/servers/server/server.component';
+import { EditServerComponent } from './users-servers/servers/edit-server/edit-server.component';
+import { PageNotFoundComponent } from './users-servers/page-not-found/page-not-found.component';
+import { HomeComponent } from './users-servers/home/home.component';
+import { ErrorPageComponent } from './users-servers/error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +80,15 @@ import { InactiveUsersComponent } from './users/inactive-users/inactive-users.co
     UsersComponent,
     ActiveUsersComponent,
     InactiveUsersComponent,
+    UsersServersComponent,
+    UsersComponent2,
+    UserComponent,
+    ServersComponent2,
+    ServerComponent,
+    EditServerComponent,
+    PageNotFoundComponent,
+    HomeComponent,
+    ErrorPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [

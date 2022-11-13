@@ -1,4 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Inject,
+  OnInit,
+  Optional,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
+import { localStorageToken } from '../services/localstorage.token';
+import { LoggerService } from '../services/logger.service';
 
 type Servers = {
   type: string;
@@ -11,14 +21,42 @@ type Servers = {
   templateUrl: './servers.component.html',
   styleUrls: ['./servers.component.scss'],
 })
-export class ServersComponent implements OnInit {
+export class ServersComponent implements OnInit, AfterViewInit {
   serverElements: Servers[] = [{ type: 'server', name: 'Testserver', content: 'Just a test' }];
   // newServerName = '';
   // newServerContent = '';
 
-  constructor() {}
+  @ViewChild('user', { read: ViewContainerRef }) vcr!: ViewContainerRef;
+  serverCreationStatus = 'No server was created!';
+  allowNewServer = false;
+  serverName = 'Test server name';
+  serverCreated = false;
+  servers = ['Testserver', 'Testserver 2'];
+  serverStatus = 'offline';
+  serverId = 123;
+  username = '';
+  showSecret = false;
+  log: Array<number | Date> = [];
 
-  ngOnInit(): void {}
+  constructor(
+    @Optional() private loggerService: LoggerService,
+    @Inject(localStorageToken) private localStorage: Storage
+  ) {
+    this.serverStatus = Math.random() > 0.5 ? 'online' : 'offline';
+    setTimeout(() => {
+      this.allowNewServer = true;
+    }, 2000);
+  }
+
+  ngOnInit(): void {
+    this.loggerService?.log('ServerComponent.ngOnInit');
+    this.localStorage.setItem('name', 'Hilton Hotel');
+  }
+
+  ngAfterViewInit(): void {
+    // const componentRef = this.vcr.createComponent(RoomsComponent);
+    // componentRef.instance.numberOfRooms = 11;
+  }
 
   onServerAdded(serverData: { serverName: string; serverContent: string }) {
     this.serverElements.push({
@@ -59,4 +97,28 @@ export class ServersComponent implements OnInit {
   //     content: this.newServerContent,
   //   });
   // }
+
+  onCreateServer() {
+    this.serverCreated = true;
+    this.servers.push(this.serverName);
+    this.serverCreationStatus = `Server was created! Name is ${this.serverName}`;
+  }
+
+  onUpdateServerName(event: Event) {
+    this.serverName = (<HTMLInputElement>event.target).value;
+  }
+
+  getColor() {
+    return this.serverStatus === 'online' ? 'green' : 'red';
+  }
+
+  onRemoveServer(index: number) {
+    this.servers.splice(index, 1);
+  }
+
+  onToggleDetails() {
+    this.showSecret = !this.showSecret;
+    //this.log.push(this.log.length + 1);
+    this.log.push(new Date());
+  }
 }

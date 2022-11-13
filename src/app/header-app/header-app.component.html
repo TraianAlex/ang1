@@ -19,13 +19,15 @@
     >
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Page1</a>
+          <a class="nav-link" aria-current="page" routerLink="/recipes">Recipe</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Page1</a>
+          <a class="nav-link" aria-current="page" routerLink="/biding">Data Binding</a>
         </li>
-        <li class="nav-item"><a class="nav-link" href="#">Page1</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Page1</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/accounts">Accounts</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/hotel">Hotel</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/servers">Servers</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/users">Users</a></li>
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -35,11 +37,31 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Manage
+            Users Servers
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Save Data</a></li>
-            <li><a class="dropdown-item" href="#">Fetch Data</a></li>
+            <li role="presentation">
+              <a
+                class="dropdown-item"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                routerLink="/users-servers"
+                >Home</a
+              >
+            </li>
+            <li role="presentation">
+              <a class="dropdown-item" routerLinkActive="active" routerLink="/users-servers/servers"
+                >Servers</a
+              >
+            </li>
+            <li role="presentation">
+              <a
+                class="dropdown-item"
+                routerLinkActive="active"
+                [routerLink]="['/users-servers/users']"
+                >Users</a
+              >
+            </li>
           </ul>
         </li>
       </ul>
