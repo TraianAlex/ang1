@@ -1,0 +1,92 @@
+<div class="container">
+  <h4>Servers Component</h4>
+  <app-cockpit
+    (serverCreated)="onServerAdded($event)"
+    (bpCreated)="onBlueprintAdded($event)"
+  ></app-cockpit>
+  <!-- <div class="row">
+    <div class="col-xs-12">
+      <p>Add new Servers or blueprints!</p>
+      <label>Server Name</label>
+      <input type="text" class="form-control" [(ngModel)]="newServerName" />
+      <label>Server Content</label>
+      <input type="text" class="form-control" [(ngModel)]="newServerContent" />
+      <br />
+      <div class="d-grid gap-1 d-md-flex">
+        <button class="btn btn-primary" (click)="onAddServer()">Add Server</button>
+        <button class="btn btn-primary" (click)="onAddBlueprint()">Add Server Blueprint</button>
+      </div>
+    </div>
+  </div> -->
+  <hr />
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary me-1" (click)="onChangeFirst()">Change first Element</button>
+      <button class="btn btn-danger" (click)="onDestroyFirst()">Destroy first Component</button>
+      <app-server-element
+        *ngFor="let serverElement of serverElements"
+        [srvElement]="serverElement"
+        [name]="serverElement.name"
+      >
+        <p #contentParagraph>
+          <strong *ngIf="serverElement.type === 'server'" style="color: red">{{
+            serverElement.content
+          }}</strong>
+          <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+        </p>
+      </app-server-element>
+      <!-- <div class="panel panel-default" *ngFor="let element of serverElements">
+        <div class="panel-heading">{{ element.name }}</div>
+        <div class="panel-body">
+          <p>
+            <strong *ngIf="element.type === 'server'" style="color: red">{{ element.content }}</strong>
+            <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
+          </p>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+  <label>Server Name</label>
+  <!-- <input type="text" class="form-control" placeholder="Server Name" (input)="onUpdateServerName($event)"> -->
+  <input type="text" class="form-control" placeholder="Server Name" [(ngModel)]="serverName" />
+  <!-- <p>{{serverName}}</p> -->
+  <button class="btn btn-primary mt-2" [disabled]="!allowNewServer" (click)="onCreateServer()">
+    Add Server
+  </button>
+  <!-- <p [innerText]="allowNewServer"></p> -->
+  <!-- <p>{{serverCreationStatus}}</p> -->
+  <p *ngIf="serverCreated; else noServer">Server was created, server name is {{ serverName }}</p>
+  <ng-template #noServer>
+    <p>No server was created!</p>
+  </ng-template>
+
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let server of servers; let i = index">
+      <div
+        [ngStyle]="{ backgroundColor: getColor() }"
+        [ngClass]="{ online: serverStatus === 'online' }"
+        (click)="onRemoveServer(i)"
+      >
+        {{ server }} with ID {{ serverId }} is {{ serverStatus }}
+      </div>
+    </li>
+  </ul>
+
+  <label>Username</label>
+  <input type="text" class="form-control" [(ngModel)]="username" />
+  <p>{{ username }}</p>
+  <button class="btn btn-primary mt-2" [disabled]="username === ''" (click)="username = ''">
+    Reset User
+  </button>
+  <hr />
+  <button class="btn btn-primary" (click)="onToggleDetails()">Display details</button>
+  <p *ngIf="showSecret">Secret password = Tuna</p>
+  <div
+    *ngFor="let logItem of log; let i = index"
+    [ngStyle]="{ backgroundColor: i >= 4 ? 'blue' : 'transparent' }"
+    [ngClass]="{ 'white-text': i >= 4 }"
+  >
+    {{ logItem }}
+  </div>
+</div>
