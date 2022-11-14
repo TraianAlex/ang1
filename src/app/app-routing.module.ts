@@ -20,6 +20,9 @@ import { RecipeDetailComponent } from './recipes/food-recipes/recipe-detail/reci
 import { RecipeEditComponent } from './recipes/food-recipes/recipe-edit/recipe-edit.component';
 import { RecipeStartComponent } from './recipes/food-recipes/recipe-start/recipe-start.component';
 import { FoodRecipesComponent } from './recipes/food-recipes/food-recipes.component';
+import { ObservableComponent } from './observable/observable.component';
+import { ObsHomeComponent } from './observable/obs-home/obs-home.component';
+import { ObsUserComponent } from './observable/obs-user/obs-user.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'recipes', pathMatch: 'full' },
@@ -40,6 +43,14 @@ const appRoutes: Routes = [
   { path: 'servers', component: ServersComponent },
   { path: 'hotel', component: HotelComponent },
   { path: 'users-servers', component: HomeComponent },
+  {
+    path: 'observable',
+    component: ObservableComponent,
+    children: [
+      { path: '', component: ObsHomeComponent },
+      { path: 'user/:id', component: ObsUserComponent },
+    ],
+  },
   {
     path: 'users-servers/users',
     component: UsersComponent2,

@@ -46,6 +46,9 @@ import { HomeComponent } from './users-servers/home/home.component';
 import { ErrorPageComponent } from './users-servers/error-page/error-page.component';
 import { RecipeEditComponent } from './recipes/food-recipes/recipe-edit/recipe-edit.component';
 import { RecipeStartComponent } from './recipes/food-recipes/recipe-start/recipe-start.component';
+import { ObservableComponent } from './observable/observable.component';
+import { ObsHomeComponent } from './observable/obs-home/obs-home.component';
+import { ObsUserComponent } from './observable/obs-user/obs-user.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +94,9 @@ import { RecipeStartComponent } from './recipes/food-recipes/recipe-start/recipe
     ErrorPageComponent,
     RecipeEditComponent,
     RecipeStartComponent,
+    ObservableComponent,
+    ObsHomeComponent,
+    ObsUserComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [
