@@ -23,6 +23,7 @@ import { FoodRecipesComponent } from './recipes/food-recipes/food-recipes.compon
 import { ObservableComponent } from './observable/observable.component';
 import { ObsHomeComponent } from './observable/obs-home/obs-home.component';
 import { ObsUserComponent } from './observable/obs-user/obs-user.component';
+import { FormsComponent } from './forms/forms.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'recipes', pathMatch: 'full' },
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
       { path: 'user/:id', component: ObsUserComponent },
     ],
   },
+  { path: 'forms', component: FormsComponent },
   {
     path: 'users-servers/users',
     component: UsersComponent2,

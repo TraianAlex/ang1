@@ -49,6 +49,7 @@ import { RecipeStartComponent } from './recipes/food-recipes/recipe-start/recipe
 import { ObservableComponent } from './observable/observable.component';
 import { ObsHomeComponent } from './observable/obs-home/obs-home.component';
 import { ObsUserComponent } from './observable/obs-user/obs-user.component';
+import { FormsComponent } from './forms/forms.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { ObsUserComponent } from './observable/obs-user/obs-user.component';
     ObservableComponent,
     ObsHomeComponent,
     ObsUserComponent,
+    FormsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [
