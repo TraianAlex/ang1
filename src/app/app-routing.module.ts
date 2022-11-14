@@ -9,25 +9,36 @@ import { ErrorPageComponent } from './users-servers/error-page/error-page.compon
 import { AuthGuardService } from './users-servers/services/auth-guard.service';
 import { ServerResolverService } from './users-servers/services/server-resolver.service';
 import { CanDeactivateGuardService } from './users-servers/services/can-deactivate-guard.service';
-import { AppComponent } from './app.component';
-import { RecipesComponent } from './recipes/recipes.component';
 import { DataBindingComponent } from './data-binding/data-binding.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { UsersComponent } from './users/users.component';
-import { UsersServersComponent } from './users-servers/users-servers.component';
 import { ServersComponent } from './servers/servers.component';
 import { HotelComponent } from './hotel/hotel.component';
 import { HomeComponent } from './users-servers/home/home.component';
+import { ShoppingListComponent } from './recipes/shopping-list/shopping-list.component';
+import { RecipeDetailComponent } from './recipes/food-recipes/recipe-detail/recipe-detail.component';
+import { RecipeEditComponent } from './recipes/food-recipes/recipe-edit/recipe-edit.component';
+import { RecipeStartComponent } from './recipes/food-recipes/recipe-start/recipe-start.component';
+import { FoodRecipesComponent } from './recipes/food-recipes/food-recipes.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'recipes', pathMatch: 'full' },
-  { path: 'recipes', component: RecipesComponent },
+  {
+    path: 'recipes',
+    component: FoodRecipesComponent,
+    children: [
+      { path: '', component: RecipeStartComponent },
+      { path: 'new', component: RecipeEditComponent },
+      { path: ':id', component: RecipeDetailComponent },
+      { path: ':id/edit', component: RecipeEditComponent },
+    ],
+  },
+  { path: 'shopping-list', component: ShoppingListComponent },
   { path: 'biding', component: DataBindingComponent },
   { path: 'accounts', component: AccountsComponent },
   { path: 'users', component: UsersComponent },
   { path: 'servers', component: ServersComponent },
   { path: 'hotel', component: HotelComponent },
-  // { path: 'users-servers', component: UsersServersComponent },
   { path: 'users-servers', component: HomeComponent },
   {
     path: 'users-servers/users',
