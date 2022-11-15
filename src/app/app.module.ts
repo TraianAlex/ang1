@@ -50,6 +50,7 @@ import { ObservableComponent } from './observable/observable.component';
 import { ObsHomeComponent } from './observable/obs-home/obs-home.component';
 import { ObsUserComponent } from './observable/obs-user/obs-user.component';
 import { FormsComponent } from './forms/forms.component';
+import { FormsReactiveComponent } from './forms-reactive/forms-reactive.component';
 
 @NgModule({
   declarations: [
@@ -99,6 +100,7 @@ import { FormsComponent } from './forms/forms.component';
     ObsHomeComponent,
     ObsUserComponent,
     FormsComponent,
+    FormsReactiveComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [
