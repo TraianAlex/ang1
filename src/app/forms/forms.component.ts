@@ -42,7 +42,7 @@ export class FormsComponent implements OnInit {
     });
   }
 
-  // onSubmit(form: NgForm) {
+  // onSubmit(form: NgForm) { // HTLMFormElement
   //   console.log(form);
   // }
 
