@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -102,7 +102,7 @@ import { FormsReactiveComponent } from './forms-reactive/forms-reactive.componen
     FormsComponent,
     FormsReactiveComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [
     {
       provide: APP_SERVICE_CONFIG,
