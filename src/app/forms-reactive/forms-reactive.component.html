@@ -41,7 +41,9 @@
         </div>
         <div formArrayName="hobbies">
           <h4 class="mt-3">Your Hobbies</h4>
-          <button class="btn btn-info mt-1 mb-2" type="button" (click)="onAddHobby()">Add Hobby</button>
+          <button class="btn btn-info mt-1 mb-2" type="button" (click)="onAddHobby()">
+            Add Hobby
+          </button>
           <div class="form-group mt-1" *ngFor="let hobbyControl of hobbyControls; let i = index">
             <input type="text" class="form-control" [formControlName]="i" />
           </div>
