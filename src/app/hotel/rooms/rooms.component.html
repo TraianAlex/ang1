@@ -1,7 +1,7 @@
 <p>rooms works!</p>
-<h3>Welcome to {{hotelName}} <span class="text-muted">from room component</span></h3>
+<h3>Welcome to {{ hotelName }} <span class="text-muted">from room component</span></h3>
 <app-header-app></app-header-app>
-<app-header-app></app-header-app>
+<!-- <app-header-app></app-header-app> -->
 
 <div [hidden]="hideRooms">
   Number of rooms:
@@ -14,7 +14,7 @@
 
 {{ !rooms.availableRooms && 'No rooms' }}
 
-<button type="button" (click)="addRoom()">Add room</button>
+<button class="btn btn-primary me-1" type="button" (click)="addRoom()">Add room</button>
 
 <div *ngIf="selectedRoom">
   {{ selectedRoom | json }}
@@ -28,6 +28,10 @@
   ></app-rooms-list>
 </div>
 
-<button (click)="toggle()">Toggle</button>
+<button class="btn btn-primary me-1" (click)="toggle()">Toggle</button>
+<button class="btn btn-primary me-1" (click)="editRoom()">Edit Room 3</button>
+<button class="btn btn-primary me-1" (click)="deleteRoom('3')">Delete Room 3</button>
+
+<h4>Total bytes loaded {{ totalBytes }}</h4>
 
 <pre [hidden]="hideRooms">{{ roomList | json }}</pre>
