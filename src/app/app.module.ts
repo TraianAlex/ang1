@@ -52,6 +52,11 @@ import { ObsUserComponent } from './observable/obs-user/obs-user.component';
 import { FormsComponent } from './forms/forms.component';
 import { FormsReactiveComponent } from './forms-reactive/forms-reactive.component';
 import { FormsReactive2Component } from './forms-reactive2/forms-reactive2.component';
+import { PipesComponent } from './pipes/pipes.component';
+import { ShortenPipe } from './pipes/shorten.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
+import { ReversePipe } from './pipes/reverse.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -103,6 +108,11 @@ import { FormsReactive2Component } from './forms-reactive2/forms-reactive2.compo
     FormsComponent,
     FormsReactiveComponent,
     FormsReactive2Component,
+    PipesComponent,
+    ShortenPipe,
+    FilterPipe,
+    ReversePipe,
+    SortPipe
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [
