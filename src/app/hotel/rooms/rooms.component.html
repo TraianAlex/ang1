@@ -20,7 +20,10 @@
   {{ selectedRoom | json }}
 </div>
 
+<h5>Error(api): {{ getError$ | async }}</h5>
+<!-- <h5>Number of rooms(api): {{ roomsCount$ | async }}</h5> -->
 <div *ngIf="rooms.availableRooms > 0 && hideRooms">
+  <!-- <div *ngIf="rooms$ | async as rooms">  [rooms]="rooms" -->
   <app-rooms-list
     [rooms]="roomList"
     [title]="title"
@@ -33,5 +36,7 @@
 <button class="btn btn-primary me-1" (click)="deleteRoom('3')">Delete Room 3</button>
 
 <h4>Total bytes loaded {{ totalBytes }}</h4>
+
+<!-- <h5>{{ rooms$ | async | json }}</h5> -->
 
 <pre [hidden]="hideRooms">{{ roomList | json }}</pre>

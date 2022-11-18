@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { AppConfig } from 'src/app/app-config/app-config.interface';
 import { APP_SERVICE_CONFIG } from 'src/app/app-config/app-config.service';
 import { RoomList } from '../rooms';
@@ -46,7 +46,10 @@ export class RoomsService {
     },
   ];
 
-  getRooms$ = this.http.get<RoomList[]>('/api/rooms').pipe(shareReplay(1));
+  headers = new HttpHeaders({ token: '123456' });
+  getRooms$ = this.http
+    .get<RoomList[]>('/api/rooms', { headers: this.headers })
+    .pipe(shareReplay(1));
 
   constructor(@Inject(APP_SERVICE_CONFIG) private config: AppConfig, private http: HttpClient) {
     //console.log(environment.apiEndpoint)
@@ -55,11 +58,11 @@ export class RoomsService {
 
   getRooms() {
     return this.roomList;
-    // return this.http.get<RoomList[]>('/api/rooms');
+    // return this.http.get<RoomList[]>('/api/rooms', { headers: this.headers });
   }
 
   addRoom(room: RoomList) {
-    return this.http.post<RoomList[]>('/api/rooms', room);
+    return this.http.post<RoomList[]>('/api/rooms', room, { headers: this.headers });
   }
 
   editRoom(room: RoomList) {
