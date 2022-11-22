@@ -9,26 +9,56 @@ import { ErrorPageComponent } from './users-servers/error-page/error-page.compon
 import { AuthGuardService } from './users-servers/services/auth-guard.service';
 import { ServerResolverService } from './users-servers/services/server-resolver.service';
 import { CanDeactivateGuardService } from './users-servers/services/can-deactivate-guard.service';
-import { AppComponent } from './app.component';
-import { RecipesComponent } from './recipes/recipes.component';
 import { DataBindingComponent } from './data-binding/data-binding.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { UsersComponent } from './users/users.component';
-import { UsersServersComponent } from './users-servers/users-servers.component';
 import { ServersComponent } from './servers/servers.component';
 import { HotelComponent } from './hotel/hotel.component';
 import { HomeComponent } from './users-servers/home/home.component';
+import { ShoppingListComponent } from './recipes/shopping-list/shopping-list.component';
+import { RecipeDetailComponent } from './recipes/food-recipes/recipe-detail/recipe-detail.component';
+import { RecipeEditComponent } from './recipes/food-recipes/recipe-edit/recipe-edit.component';
+import { RecipeStartComponent } from './recipes/food-recipes/recipe-start/recipe-start.component';
+import { FoodRecipesComponent } from './recipes/food-recipes/food-recipes.component';
+import { ObservableComponent } from './observable/observable.component';
+import { ObsHomeComponent } from './observable/obs-home/obs-home.component';
+import { ObsUserComponent } from './observable/obs-user/obs-user.component';
+import { FormsComponent } from './forms/forms.component';
+import { FormsReactiveComponent } from './forms-reactive/forms-reactive.component';
+import { FormsReactive2Component } from './forms-reactive2/forms-reactive2.component';
+import { PipesComponent } from './pipes/pipes.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'recipes', pathMatch: 'full' },
-  { path: 'recipes', component: RecipesComponent },
+  {
+    path: 'recipes',
+    component: FoodRecipesComponent,
+    children: [
+      { path: '', component: RecipeStartComponent },
+      { path: 'new', component: RecipeEditComponent },
+      { path: ':id', component: RecipeDetailComponent },
+      { path: ':id/edit', component: RecipeEditComponent },
+    ],
+  },
+  { path: 'shopping-list', component: ShoppingListComponent },
   { path: 'biding', component: DataBindingComponent },
   { path: 'accounts', component: AccountsComponent },
   { path: 'users', component: UsersComponent },
   { path: 'servers', component: ServersComponent },
   { path: 'hotel', component: HotelComponent },
-  // { path: 'users-servers', component: UsersServersComponent },
   { path: 'users-servers', component: HomeComponent },
+  {
+    path: 'observable',
+    component: ObservableComponent,
+    children: [
+      { path: '', component: ObsHomeComponent },
+      { path: 'user/:id', component: ObsUserComponent },
+    ],
+  },
+  { path: 'forms', component: FormsComponent },
+  { path: 'reactive', component: FormsReactiveComponent },
+  { path: 'reactive2', component: FormsReactive2Component },
+  { path: 'pipes', component: PipesComponent },
   {
     path: 'users-servers/users',
     component: UsersComponent2,

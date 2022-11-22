@@ -15,10 +15,8 @@ interface Server {
 export class ServerResolverService implements Resolve<Server> {
   constructor(private serversService: ServersService) {}
 
-  resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): any {
+  // Observable<Server> | Promise<Server> | Server
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
     return this.serversService.getServer(+route.params['id']);
   }
 }

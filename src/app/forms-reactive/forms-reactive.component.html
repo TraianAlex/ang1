@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div formGroupName="userData">
+          <div class="form-group mb-2">
+            <label for="username">Username</label>
+            <input type="text" id="username" class="form-control" formControlName="username" />
+            <span
+              *ngIf="
+                !signupForm.get('userData.username')?.valid &&
+                signupForm.get('userData.username')?.touched
+              "
+              class="help-block text-danger"
+            >
+              <span *ngIf="signupForm.get('userData.username')?.hasError('nameIsForbidden')"
+                >This name is invalid!</span
+              >
+              <span *ngIf="signupForm.get('userData.username')?.hasError('required')"
+                >This field is required!</span
+              >
+            </span>
+          </div>
+          <div class="form-group mb-2">
+            <label for="email">email</label>
+            <input type="text" id="email" class="form-control" formControlName="email" />
+            <span
+              *ngIf="
+                !signupForm.get('userData.email')?.valid &&
+                signupForm.get('userData.email')?.touched
+              "
+              class="help-block text-danger"
+              >Please enter a valid email!</span
+            >
+          </div>
+        </div>
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input type="radio" formControlName="gender" [value]="gender" /> {{ gender }}</label
+          >
+        </div>
+        <div formArrayName="hobbies">
+          <h4 class="mt-3">Your Hobbies</h4>
+          <button class="btn btn-info mt-1 mb-2" type="button" (click)="onAddHobby()">
+            Add Hobby
+          </button>
+          <div class="form-group mt-1" *ngFor="let hobbyControl of hobbyControls; let i = index">
+            <input type="text" class="form-control" [formControlName]="i" />
+          </div>
+        </div>
+        <p *ngIf="!signupForm.valid && signupForm.touched" class="help-block text-danger">
+          Please enter valid data!
+        </p>
+        <button class="btn btn-primary mt-2" type="submit" [disabled]="!signupForm.valid">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+  <hr />
+  <p>Form Value: {{ signupForm.value | json }}</p>
+  <p>Form Status: {{ signupForm.status }}</p>
+</div>

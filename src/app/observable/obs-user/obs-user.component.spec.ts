@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UsersServersComponent } from './users-servers.component';
+import { ObsUserComponent } from './obs-user.component';
 
-describe('UsersServersComponent', () => {
-  let component: UsersServersComponent;
-  let fixture: ComponentFixture<UsersServersComponent>;
+describe('ObsUserComponent', () => {
+  let component: ObsUserComponent;
+  let fixture: ComponentFixture<ObsUserComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UsersServersComponent ]
+      declarations: [ ObsUserComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UsersServersComponent);
+    fixture = TestBed.createComponent(ObsUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

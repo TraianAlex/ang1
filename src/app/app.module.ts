@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,7 +10,6 @@ import { RoomsListComponent } from './hotel/rooms/rooms-list/rooms-list.componen
 import { HeaderAppComponent } from './header-app/header-app.component';
 import { ContainerComponent } from './hotel/container/container.component';
 import { EmployeeComponent } from './hotel/employee/employee.component';
-import { RecipesComponent } from './recipes/recipes.component';
 import { HeaderComponent } from './recipes/header/header.component';
 import { FoodRecipesComponent } from './recipes/food-recipes/food-recipes.component';
 import { RecipeListComponent } from './recipes/food-recipes/recipe-list/recipe-list.component';
@@ -36,7 +36,7 @@ import { NewAccountComponent } from './accounts/new-account/new-account.componen
 import { UsersComponent } from './users/users.component';
 import { ActiveUsersComponent } from './users/active-users/active-users.component';
 import { InactiveUsersComponent } from './users/inactive-users/inactive-users.component';
-import { UsersServersComponent } from './users-servers/users-servers.component';
+import { UsersServersHeaderComponent } from './users-servers/header/users-servers-header.component';
 import { UsersComponent2 } from './users-servers/users/users2.component';
 import { UserComponent } from './users-servers/users/user/user.component';
 import { ServersComponent2 } from './users-servers/servers/servers2.component';
@@ -45,6 +45,25 @@ import { EditServerComponent } from './users-servers/servers/edit-server/edit-se
 import { PageNotFoundComponent } from './users-servers/page-not-found/page-not-found.component';
 import { HomeComponent } from './users-servers/home/home.component';
 import { ErrorPageComponent } from './users-servers/error-page/error-page.component';
+import { RecipeEditComponent } from './recipes/food-recipes/recipe-edit/recipe-edit.component';
+import { RecipeStartComponent } from './recipes/food-recipes/recipe-start/recipe-start.component';
+import { ObservableComponent } from './observable/observable.component';
+import { ObsHomeComponent } from './observable/obs-home/obs-home.component';
+import { ObsUserComponent } from './observable/obs-user/obs-user.component';
+import { FormsComponent } from './forms/forms.component';
+import { FormsReactiveComponent } from './forms-reactive/forms-reactive.component';
+import { FormsReactive2Component } from './forms-reactive2/forms-reactive2.component';
+import { PipesComponent } from './pipes/pipes.component';
+import { ShortenPipe } from './pipes/shorten.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
+import { ReversePipe } from './pipes/reverse.pipe';
+import { SortPipe } from './pipes/sort.pipe';
+import { RequestInterceptor } from './hotel/rooms/request.interceptor';
+import { InitService } from './hotel/rooms/init.service';
+
+function initFactory(initService: InitService) {
+  return () => initService.init();
+}
 
 @NgModule({
   declarations: [
@@ -54,7 +73,6 @@ import { ErrorPageComponent } from './users-servers/error-page/error-page.compon
     HeaderAppComponent,
     ContainerComponent,
     EmployeeComponent,
-    RecipesComponent,
     HeaderComponent,
     FoodRecipesComponent,
     RecipeListComponent,
@@ -80,7 +98,7 @@ import { ErrorPageComponent } from './users-servers/error-page/error-page.compon
     UsersComponent,
     ActiveUsersComponent,
     InactiveUsersComponent,
-    UsersServersComponent,
+    UsersServersHeaderComponent,
     UsersComponent2,
     UserComponent,
     ServersComponent2,
@@ -89,12 +107,36 @@ import { ErrorPageComponent } from './users-servers/error-page/error-page.compon
     PageNotFoundComponent,
     HomeComponent,
     ErrorPageComponent,
+    RecipeEditComponent,
+    RecipeStartComponent,
+    ObservableComponent,
+    ObsHomeComponent,
+    ObsUserComponent,
+    FormsComponent,
+    FormsReactiveComponent,
+    FormsReactive2Component,
+    PipesComponent,
+    ShortenPipe,
+    FilterPipe,
+    ReversePipe,
+    SortPipe,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [
     {
       provide: APP_SERVICE_CONFIG,
       useValue: APP_CONFIG,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptor,
+      multi: true,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initFactory,
+      deps: [InitService],
+      multi: true,
     },
   ],
   bootstrap: [AppComponent],
