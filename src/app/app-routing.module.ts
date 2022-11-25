@@ -27,6 +27,7 @@ import { FormsComponent } from './forms/forms.component';
 import { FormsReactiveComponent } from './forms-reactive/forms-reactive.component';
 import { FormsReactive2Component } from './forms-reactive2/forms-reactive2.component';
 import { PipesComponent } from './pipes/pipes.component';
+import { RoomComponent } from './hotel/rooms/room/room.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'recipes', pathMatch: 'full' },
@@ -46,6 +47,7 @@ const appRoutes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'servers', component: ServersComponent },
   { path: 'hotel', component: HotelComponent },
+  { path: 'rooms/:id', component: RoomComponent },
   { path: 'users-servers', component: HomeComponent },
   {
     path: 'observable',

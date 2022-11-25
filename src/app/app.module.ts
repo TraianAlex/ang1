@@ -60,6 +60,7 @@ import { ReversePipe } from './pipes/reverse.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { RequestInterceptor } from './hotel/rooms/request.interceptor';
 import { InitService } from './hotel/rooms/init.service';
+import { RoomComponent } from './hotel/rooms/room/room.component';
 
 function initFactory(initService: InitService) {
   return () => initService.init();
@@ -120,6 +121,7 @@ function initFactory(initService: InitService) {
     FilterPipe,
     ReversePipe,
     SortPipe,
+    RoomComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [
