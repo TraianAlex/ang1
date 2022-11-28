@@ -7,9 +7,7 @@ import { InitService } from './hotel/rooms/init.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private initService: InitService) {
-    console.log('initService', initService.config);
-  }
+  constructor() {}
 
   ngOnInit(): void {}
 }
