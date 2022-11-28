@@ -82,6 +82,7 @@ const appRoutes: Routes = [
   },
   // { path: 'not-found', component: PageNotFoundComponent },
   { path: 'not-found', component: ErrorPageComponent, data: { message: 'Page not found!' } },
+  { path: 'booking', loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule) },
   { path: '**', redirectTo: '/not-found' },
 ];
 
