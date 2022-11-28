@@ -28,6 +28,8 @@ import { FormsReactiveComponent } from './forms-reactive/forms-reactive.componen
 import { FormsReactive2Component } from './forms-reactive2/forms-reactive2.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { RoomComponent } from './hotel/rooms/room/room.component';
+import { RoomsAddComponent } from './hotel/rooms/rooms-add/rooms-add.component';
+import { LoginComponent } from './hotel/login/login.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'recipes', pathMatch: 'full' },
@@ -47,6 +49,8 @@ const appRoutes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'servers', component: ServersComponent },
   { path: 'hotel', component: HotelComponent },
+  { path: 'hotel/login', component: LoginComponent },
+  { path: 'rooms/add', component: RoomsAddComponent },
   { path: 'rooms/:id', component: RoomComponent },
   { path: 'users-servers', component: HomeComponent },
   {

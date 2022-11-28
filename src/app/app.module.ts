@@ -61,6 +61,10 @@ import { SortPipe } from './pipes/sort.pipe';
 import { RequestInterceptor } from './hotel/rooms/request.interceptor';
 import { InitService } from './hotel/rooms/init.service';
 import { RoomComponent } from './hotel/rooms/room/room.component';
+import { RoomsAddComponent } from './hotel/rooms/rooms-add/rooms-add.component';
+import { LoginComponent } from './hotel/login/login.component';
+import { HoverDirective } from './app-directives/hover/hover.directive';
+import { EmailvalidatorDirective } from './app-directives/email-validator/emailvalidator.directive';
 
 function initFactory(initService: InitService) {
   return () => initService.init();
@@ -122,6 +126,10 @@ function initFactory(initService: InitService) {
     ReversePipe,
     SortPipe,
     RoomComponent,
+    RoomsAddComponent,
+    LoginComponent,
+    HoverDirective,
+    EmailvalidatorDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [
