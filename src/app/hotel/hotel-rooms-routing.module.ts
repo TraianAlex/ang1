@@ -6,10 +6,15 @@ import { RoomComponent } from './rooms/room/room.component';
 import { RoomsAddComponent } from './rooms/rooms-add/rooms-add.component';
 
 const routes: Routes = [
-  { path: 'hotel', component: HotelComponent },
+  {
+    path: 'hotel',
+    component: HotelComponent,
+    children: [
+      { path: 'rooms/add', component: RoomsAddComponent },
+      { path: 'rooms/:id', component: RoomComponent },
+    ],
+  },
   { path: 'hotel/login', component: LoginComponent },
-  { path: 'rooms/add', component: RoomsAddComponent },
-  { path: 'rooms/:id', component: RoomComponent },
 ];
 
 @NgModule({
