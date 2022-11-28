@@ -13,7 +13,6 @@ import { DataBindingComponent } from './data-binding/data-binding.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { UsersComponent } from './users/users.component';
 import { ServersComponent } from './servers/servers.component';
-import { HotelComponent } from './hotel/hotel.component';
 import { HomeComponent } from './users-servers/home/home.component';
 import { ShoppingListComponent } from './recipes/shopping-list/shopping-list.component';
 import { RecipeDetailComponent } from './recipes/food-recipes/recipe-detail/recipe-detail.component';
@@ -27,9 +26,6 @@ import { FormsComponent } from './forms/forms.component';
 import { FormsReactiveComponent } from './forms-reactive/forms-reactive.component';
 import { FormsReactive2Component } from './forms-reactive2/forms-reactive2.component';
 import { PipesComponent } from './pipes/pipes.component';
-import { RoomComponent } from './hotel/rooms/room/room.component';
-import { RoomsAddComponent } from './hotel/rooms/rooms-add/rooms-add.component';
-import { LoginComponent } from './hotel/login/login.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'recipes', pathMatch: 'full' },
@@ -48,10 +44,6 @@ const appRoutes: Routes = [
   { path: 'accounts', component: AccountsComponent },
   { path: 'users', component: UsersComponent },
   { path: 'servers', component: ServersComponent },
-  { path: 'hotel', component: HotelComponent },
-  { path: 'hotel/login', component: LoginComponent },
-  { path: 'rooms/add', component: RoomsAddComponent },
-  { path: 'rooms/:id', component: RoomComponent },
   { path: 'users-servers', component: HomeComponent },
   {
     path: 'observable',
