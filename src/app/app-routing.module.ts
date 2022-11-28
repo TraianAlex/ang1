@@ -46,6 +46,10 @@ const appRoutes: Routes = [
   { path: 'servers', component: ServersComponent },
   { path: 'users-servers', component: HomeComponent },
   {
+    path: 'hotel',
+    loadChildren: () => import('./hotel/hotel-rooms.module').then((m) => m.HotelRoomsModule),
+  },
+  {
     path: 'observable',
     component: ObservableComponent,
     children: [

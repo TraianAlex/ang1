@@ -55,7 +55,6 @@ import { RequestInterceptor } from './hotel/rooms/request.interceptor';
 import { InitService } from './hotel/rooms/init.service';
 import { HoverDirective } from './app-directives/hover/hover.directive';
 import { EmailvalidatorDirective } from './app-directives/email-validator/emailvalidator.directive';
-import { HotelRoomsModule } from './hotel/hotel-rooms.module';
 import { HeaderAppModule } from './header-app/header-app.module';
 
 function initFactory(initService: InitService) {
@@ -116,7 +115,6 @@ function initFactory(initService: InitService) {
   ],
   imports: [
     BrowserModule,
-    HotelRoomsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

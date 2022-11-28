@@ -7,14 +7,14 @@ import { RoomsAddComponent } from './rooms/rooms-add/rooms-add.component';
 
 const routes: Routes = [
   {
-    path: 'hotel',
+    path: '', // hotel removed for lazy loading
     component: HotelComponent,
     children: [
       { path: 'rooms/add', component: RoomsAddComponent },
       { path: 'rooms/:id', component: RoomComponent },
     ],
   },
-  { path: 'hotel/login', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({

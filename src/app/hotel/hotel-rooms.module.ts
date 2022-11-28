@@ -11,7 +11,6 @@ import { RoomComponent } from './rooms/room/room.component';
 import { RoomsAddComponent } from './rooms/rooms-add/rooms-add.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-import { HeaderAppModule } from '../header-app/header-app.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +23,6 @@ import { HeaderAppModule } from '../header-app/header-app.module';
     RoomsAddComponent,
     LoginComponent,
   ],
-  imports: [CommonModule, HotelRoomsRoutingModule, FormsModule, HeaderAppModule],
+  imports: [CommonModule, HotelRoomsRoutingModule, FormsModule],
 })
 export class HotelRoomsModule {}
