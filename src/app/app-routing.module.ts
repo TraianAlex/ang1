@@ -13,7 +13,6 @@ import { DataBindingComponent } from './data-binding/data-binding.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { UsersComponent } from './users/users.component';
 import { ServersComponent } from './servers/servers.component';
-import { HotelComponent } from './hotel/hotel.component';
 import { HomeComponent } from './users-servers/home/home.component';
 import { ShoppingListComponent } from './recipes/shopping-list/shopping-list.component';
 import { RecipeDetailComponent } from './recipes/food-recipes/recipe-detail/recipe-detail.component';
@@ -45,8 +44,11 @@ const appRoutes: Routes = [
   { path: 'accounts', component: AccountsComponent },
   { path: 'users', component: UsersComponent },
   { path: 'servers', component: ServersComponent },
-  { path: 'hotel', component: HotelComponent },
   { path: 'users-servers', component: HomeComponent },
+  {
+    path: 'hotel',
+    loadChildren: () => import('./hotel/hotel-rooms.module').then((m) => m.HotelRoomsModule),
+  },
   {
     path: 'observable',
     component: ObservableComponent,

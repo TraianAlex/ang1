@@ -1,7 +1,5 @@
 <p>rooms works!</p>
 <h3>Welcome to {{ hotelName }} <span class="text-muted">from room component</span></h3>
-<app-header-app></app-header-app>
-<!-- <app-header-app></app-header-app> -->
 
 <div [hidden]="hideRooms">
   Number of rooms:
@@ -15,6 +13,9 @@
 {{ !rooms.availableRooms && 'No rooms' }}
 
 <button class="btn btn-primary me-1" type="button" (click)="addRoom()">Add room</button>
+<button class="btn btn-primary me-1" type="button" routerLink="/hotel/rooms/add">Add room form</button>
+<button class="btn btn-primary me-1" type="button" routerLink="/hotel/login">Login</button>
+<button class="btn btn-primary me-1" type="button" routerLink="/hotel/booking">Booking</button>
 
 <div *ngIf="selectedRoom">
   {{ selectedRoom | json }}

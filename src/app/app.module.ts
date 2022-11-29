@@ -2,14 +2,8 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RoomsComponent } from './hotel/rooms/rooms.component';
-import { RoomsListComponent } from './hotel/rooms/rooms-list/rooms-list.component';
-import { HeaderAppComponent } from './header-app/header-app.component';
-import { ContainerComponent } from './hotel/container/container.component';
-import { EmployeeComponent } from './hotel/employee/employee.component';
 import { HeaderComponent } from './recipes/header/header.component';
 import { FoodRecipesComponent } from './recipes/food-recipes/food-recipes.component';
 import { RecipeListComponent } from './recipes/food-recipes/recipe-list/recipe-list.component';
@@ -29,7 +23,6 @@ import { BetterHighlightDirective } from './app-directives/better-highlights/bet
 import { UnlessDirective } from './app-directives/unless/unless.directive';
 import { DropdownDirective } from './recipes/shared/dropdown.directive';
 import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service';
-import { HotelComponent } from './hotel/hotel.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AccountComponent } from './accounts/account/account.component';
 import { NewAccountComponent } from './accounts/new-account/new-account.component';
@@ -60,6 +53,9 @@ import { ReversePipe } from './pipes/reverse.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { RequestInterceptor } from './hotel/rooms/request.interceptor';
 import { InitService } from './hotel/rooms/init.service';
+import { HoverDirective } from './app-directives/hover/hover.directive';
+import { EmailvalidatorDirective } from './app-directives/email-validator/emailvalidator.directive';
+import { HeaderAppModule } from './header-app/header-app.module';
 
 function initFactory(initService: InitService) {
   return () => initService.init();
@@ -68,11 +64,6 @@ function initFactory(initService: InitService) {
 @NgModule({
   declarations: [
     AppComponent,
-    RoomsComponent,
-    RoomsListComponent,
-    HeaderAppComponent,
-    ContainerComponent,
-    EmployeeComponent,
     HeaderComponent,
     FoodRecipesComponent,
     RecipeListComponent,
@@ -91,7 +82,6 @@ function initFactory(initService: InitService) {
     BetterHighlightDirective,
     UnlessDirective,
     DropdownDirective,
-    HotelComponent,
     AccountsComponent,
     AccountComponent,
     NewAccountComponent,
@@ -120,8 +110,17 @@ function initFactory(initService: InitService) {
     FilterPipe,
     ReversePipe,
     SortPipe,
+    HoverDirective,
+    EmailvalidatorDirective,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    HeaderAppModule,
+  ],
   providers: [
     {
       provide: APP_SERVICE_CONFIG,

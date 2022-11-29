@@ -145,7 +145,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
     };
     // this.roomList.splice(room.roomNumber - 1, 1);
     // this.roomList = [...this.roomList, room];
-    this.roomList.splice(room.roomNumber - 1, 1, room);
+    this.roomList.splice(+room.roomNumber - 1, 1, room);
     this.roomsChanged.next(this.roomList.slice());
     // this.roomsService.editRoom(room).subscribe(data => {
     //   this.roomList = data;
