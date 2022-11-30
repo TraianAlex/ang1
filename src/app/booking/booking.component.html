@@ -1,1 +1,382 @@
 <p>booking works!</p>
+{{ bookingForm.value | json }}
+{{ bookingForm.pristine | json }}
+{{ bookingForm.dirty | json }}
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <button class="btn btn-primary mt-2 me-1" type="button" (click)="addPassport()">
+        Add Passport
+      </button>
+      <button class="btn btn-primary mt-2" type="button" (click)="deletePassport()">
+        Delete Passport
+      </button>
+      <form [formGroup]="bookingForm" (ngSubmit)="addBooking()">
+        <div class="form-group mb-2" *ngIf="bookingForm.get('passport')">
+          <label for="passport">Passport</label>
+          <input type="text" id="passport" class="form-control" formControlName="passport" />
+          <span
+            *ngIf="
+              !bookingForm.get('userData.passport')?.valid &&
+              bookingForm.get('userData.passport')?.touched
+            "
+            class="help-block text-danger"
+          >
+            <span *ngIf="bookingForm.get('userData.passport')?.hasError('required')"
+              >This field is required!</span
+            >
+          </span>
+        </div>
+        <div formGroupName="userData">
+          <div class="form-group mb-2">
+            <label for="roomId">Room ID</label>
+            <input type="text" id="roomId" class="form-control" formControlName="roomId" />
+            <span
+              *ngIf="
+                !bookingForm.get('userData.roomId')?.valid &&
+                bookingForm.get('userData.roomId')?.touched
+              "
+              class="help-block text-danger"
+            >
+              <span *ngIf="bookingForm.get('userData.roomId')?.hasError('required')"
+                >This field is required!</span
+              >
+            </span>
+          </div>
+          <div class="form-group mb-2">
+            <label for="email">Email</label>
+            <input type="email" id="guestEmail" class="form-control" formControlName="guestEmail" />
+            <span
+              *ngIf="
+                !bookingForm.get('userData.guestEmail')?.valid &&
+                bookingForm.get('userData.guestEmail')?.touched
+              "
+              class="help-block text-danger"
+              >Please enter a valid email!</span
+            >
+          </div>
+          <div class="form-group mb-2">
+            <label for="checkinDate">Check in Date</label>
+            <input
+              type="text"
+              id="checkinDate"
+              class="form-control"
+              formControlName="checkinDate"
+            />
+            <span
+              *ngIf="
+                !bookingForm.get('userData.checkinDate')?.valid &&
+                bookingForm.get('userData.checkinDate')?.touched
+              "
+              class="help-block text-danger"
+            >
+              <span *ngIf="bookingForm.get('userData.checkinDate')?.hasError('required')"
+                >This field is required!</span
+              >
+            </span>
+          </div>
+          <div class="form-group mb-2">
+            <label for="checkoutDate">Check out Date</label>
+            <input
+              type="text"
+              id="checkoutDate"
+              class="form-control"
+              formControlName="checkoutDate"
+            />
+            <span
+              *ngIf="
+                !bookingForm.get('userData.checkoutDate')?.valid &&
+                bookingForm.get('userData.checkoutDate')?.touched
+              "
+              class="help-block text-danger"
+            >
+              <span *ngIf="bookingForm.get('userData.checkoutDate')?.hasError('required')"
+                >This field is required!</span
+              >
+            </span>
+          </div>
+          <div class="form-group mb-2">
+            <label for="bookingStatus">Status</label>
+            <input
+              type="text"
+              id="bookingStatus"
+              class="form-control"
+              formControlName="bookingStatus"
+            />
+            <span
+              *ngIf="
+                !bookingForm.get('userData.bookingStatus')?.valid &&
+                bookingForm.get('userData.bookingStatus')?.touched
+              "
+              class="help-block text-danger"
+            >
+              <span *ngIf="bookingForm.get('userData.bookingStatus')?.hasError('required')"
+                >This field is required!</span
+              >
+            </span>
+          </div>
+          <div class="form-group mb-2">
+            <label for="bookingAmount">Amount</label>
+            <input
+              type="number"
+              id="bookingAmount"
+              class="form-control"
+              formControlName="bookingAmount"
+            />
+            <span
+              *ngIf="
+                !bookingForm.get('userData.bookingAmount')?.valid &&
+                bookingForm.get('userData.bookingAmount')?.touched
+              "
+              class="help-block text-danger"
+            >
+              <span *ngIf="bookingForm.get('userData.bookingAmount')?.hasError('required')"
+                >This field is required!</span
+              >
+            </span>
+          </div>
+          <div class="form-group mb-2">
+            <label for="bookingDate">Date</label>
+            <input
+              type="text"
+              id="bookingDate"
+              class="form-control"
+              formControlName="bookingDate"
+            />
+            <span
+              *ngIf="
+                !bookingForm.get('userData.bookingDate')?.valid &&
+                bookingForm.get('userData.bookingDate')?.touched
+              "
+              class="help-block text-danger"
+            >
+              <span *ngIf="bookingForm.get('userData.bookingDate')?.hasError('required')"
+                >This field is required!</span
+              >
+            </span>
+          </div>
+          <div class="form-group mb-2">
+            <label for="mobileNumber">Mobile Number</label>
+            <input
+              type="text"
+              id="mobileNumber"
+              class="form-control"
+              formControlName="mobileNumber"
+            />
+            <span
+              *ngIf="
+                !bookingForm.get('userData.mobileNumber')?.valid &&
+                bookingForm.get('userData.mobileNumber')?.touched
+              "
+              class="help-block text-danger"
+            >
+              <span *ngIf="bookingForm.get('userData.mobileNumber')?.hasError('required')"
+                >This field is required!</span
+              >
+            </span>
+          </div>
+          <div class="form-group mb-2">
+            <label for="guestName">Name</label>
+            <input type="text" id="guestName" class="form-control" formControlName="guestName" />
+            <span
+              *ngIf="
+                !bookingForm.get('userData.guestName')?.valid &&
+                bookingForm.get('userData.guestName')?.touched
+              "
+              class="help-block text-danger"
+            >
+              <span *ngIf="bookingForm.get('userData.guestName')?.hasError('required')"
+                >This field is required!</span
+              >
+              <span *ngIf="bookingForm.get('userData.guestName')?.hasError('minlength')"
+                >Guest name should be minimum 5 characters!</span
+              >
+            </span>
+          </div>
+          <div class="form-group mb-2">
+            <label for="guestCount">Count</label>
+            <input
+              type="number"
+              id="guestCount"
+              class="form-control"
+              formControlName="guestCount"
+            />
+            <span
+              *ngIf="
+                !bookingForm.get('userData.guestCount')?.valid &&
+                bookingForm.get('userData.guestCount')?.touched
+              "
+              class="help-block text-danger"
+            >
+              <span *ngIf="bookingForm.get('userData.guestCount')?.hasError('required')"
+                >This field is required!</span
+              >
+            </span>
+          </div>
+        </div>
+        <div formGroupName="address">
+          <div class="form-group mb-2">
+            <label for="addressLine1">Address line 1</label>
+            <input
+              type="text"
+              id="addressLine1"
+              class="form-control"
+              formControlName="addressLine1"
+            />
+            <span
+              *ngIf="
+                !bookingForm.get('address.addressLine1')?.valid &&
+                bookingForm.get('address.addressLine1')?.touched
+              "
+              class="help-block text-danger"
+            >
+              <span *ngIf="bookingForm.get('address.addressLine1')?.hasError('required')"
+                >This field is required!</span
+              >
+            </span>
+          </div>
+          <div class="form-group mb-2">
+            <label for="addressLine2">Address line 2</label>
+            <input
+              type="text"
+              id="addressLine2"
+              class="form-control"
+              formControlName="addressLine2"
+            />
+            <span
+              *ngIf="
+                !bookingForm.get('address.addressLine2')?.valid &&
+                bookingForm.get('address.addressLine2')?.touched
+              "
+              class="help-block text-danger"
+            >
+              <span *ngIf="bookingForm.get('address.addressLine2')?.hasError('required')"
+                >This field is required!</span
+              >
+            </span>
+          </div>
+          <div class="form-group mb-2">
+            <label for="guestCity">City</label>
+            <input type="text" id="guestCity" class="form-control" formControlName="guestCity" />
+            <span
+              *ngIf="
+                !bookingForm.get('address.guestCity')?.valid &&
+                bookingForm.get('address.guestCity')?.touched
+              "
+              class="help-block text-danger"
+            >
+              <span *ngIf="bookingForm.get('address.guestCity')?.hasError('required')"
+                >This field is required!</span
+              >
+            </span>
+          </div>
+          <div class="form-group mb-2">
+            <label for="guestState">State</label>
+            <input type="text" id="guestState" class="form-control" formControlName="guestState" />
+            <span
+              *ngIf="
+                !bookingForm.get('address.guestState')?.valid &&
+                bookingForm.get('address.guestState')?.touched
+              "
+              class="help-block text-danger"
+            >
+              <span *ngIf="bookingForm.get('address.guestState')?.hasError('required')"
+                >This field is required!</span
+              >
+            </span>
+          </div>
+          <div class="form-group mb-2">
+            <label for="guestCountry">Country</label>
+            <input
+              type="text"
+              id="guestCountry"
+              class="form-control"
+              formControlName="guestCountry"
+            />
+            <span
+              *ngIf="
+                !bookingForm.get('address.guestCountry')?.valid &&
+                bookingForm.get('address.guestCountry')?.touched
+              "
+              class="help-block text-danger"
+            >
+              <span *ngIf="bookingForm.get('address.guestCountry')?.hasError('required')"
+                >This field is required!</span
+              >
+            </span>
+          </div>
+          <div class="form-group mb-2">
+            <label for="guestZipCode">ZipCode</label>
+            <input
+              type="text"
+              id="guestZipCode"
+              class="form-control"
+              formControlName="guestZipCode"
+            />
+            <span
+              *ngIf="
+                !bookingForm.get('address.guestZipCode')?.valid &&
+                bookingForm.get('address.guestZipCode')?.touched
+              "
+              class="help-block text-danger"
+            >
+              <span *ngIf="bookingForm.get('address.guestZipCode')?.hasError('required')"
+                >This field is required!</span
+              >
+            </span>
+          </div>
+        </div>
+        <button class="btn btn-primary mt-2" type="button" (click)="addGuest()">Add Guest</button>
+        <div formArrayName="guests">
+          <div *ngFor="let guest of guests.controls; let i = index">
+            <div [formGroupName]="i">
+              <div class="form-group mb-2">
+                <label for="name">Name</label>
+                <input type="text" id="name" class="form-control" formControlName="name" />
+                <span
+                  *ngIf="
+                    !bookingForm.get(['guests', i, 'name'])?.valid &&
+                    bookingForm.get(['guests', i, 'name'])?.touched
+                  "
+                  class="help-block text-danger"
+                >
+                  <span *ngIf="bookingForm.get(['guests', i, 'name'])?.hasError('required')"
+                    >This field is required!</span
+                  >
+                </span>
+              </div>
+              <div class="form-group mb-2">
+                <label for="age">Age</label>
+                <input type="number" id="age" class="form-control" formControlName="age" />
+                <span
+                  *ngIf="
+                    !bookingForm.get(['guests', i, 'age'])?.valid &&
+                    bookingForm.get(['guests', i, 'age'])?.touched
+                  "
+                  class="help-block text-danger"
+                >
+                  <span *ngIf="bookingForm.get(['guests', i, 'age'])?.hasError('required')"
+                    >This field is required!</span
+                  >
+                </span>
+              </div>
+            </div>
+            <button class="btn btn-primary mt-2" type="button" (click)="removeGuest(i)">
+              Remove Guest
+            </button>
+          </div>
+        </div>
+        <div class="mt-3 mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="tnc" formControlName="tnc" />
+          <label class="form-check-label" for="tnc">Terms and conditions</label>
+        </div>
+        <p *ngIf="!bookingForm.valid && bookingForm.touched" class="help-block text-danger">
+          Please enter valid data!
+        </p>
+        <button class="btn btn-primary mt-2" type="submit" [disabled]="bookingForm.invalid">
+          Book room
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
