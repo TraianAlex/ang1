@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { exhaustMap, mergeMap, switchMap } from 'rxjs/operators';
+import { BookingService } from './booking.service';
 
 @Component({
   selector: 'app-booking',
@@ -12,7 +14,7 @@ export class BookingComponent implements OnInit {
     return this.bookingForm.get('guests') as FormArray;
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private bookingService: BookingService) {}
 
   ngOnInit(): void {
     this.bookingForm = this.fb.group(
@@ -45,13 +47,23 @@ export class BookingComponent implements OnInit {
         }),
         guests: this.fb.array([this.guestControls()]),
         tnc: new FormControl(false, { validators: [Validators.required, Validators.requiredTrue] }),
-      },
-      { updateOn: 'blur' } // change is default, submit is only check at submit
+      }
+      // { updateOn: 'blur' } // change is default, submit is only check at submit, bluer after each control
     );
     this.getBookingData();
-    this.bookingForm.valueChanges.subscribe((data) => {
-      console.log(data);
-    });
+    // this.bookingForm.valueChanges.subscribe((data) => {
+    //   console.log(data);
+    //   this.bookingService.bookRoom(data).subscribe(data => {});
+    // });
+    // this.bookingForm.valueChanges // create requests in parallel
+    //   .pipe(mergeMap((data) => this.bookingService.bookRoom(data)))
+    //   .subscribe((data) => console.log(data));
+    // this.bookingForm.valueChanges // cancel the previous request if new requst is made
+    //   .pipe(switchMap((data) => this.bookingService.bookRoom(data)))
+    //   .subscribe((data) => console.log(data));
+    this.bookingForm.valueChanges // until the previous request is not complete bot going to call the api
+      .pipe(exhaustMap((data) => this.bookingService.bookRoom(data)))
+      .subscribe((data) => console.log(data));
   }
 
   getBookingData() {
@@ -84,10 +96,13 @@ export class BookingComponent implements OnInit {
 
   addBooking() {
     console.log(this.bookingForm.value, this.bookingForm.getRawValue());
-    this.bookingForm.reset({
-      userData: { roomId: '14', guestEmail: '', guestName: '' },
-      address: { addressLine1: '' },
-    });
+    // this.bookingService.bookRoom(this.bookingForm.getRawValue()).subscribe((data) => {
+    //   console.log(data);
+    // });
+    // this.bookingForm.reset({
+    //   userData: { roomId: '14', guestEmail: '', guestName: '' },
+    //   address: { addressLine1: '' },
+    // });
   }
 
   addGuest() {
