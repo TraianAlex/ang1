@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   {
-    path: 'booking',
+    path: 'booking/:id', // booking
     loadChildren: () => import('../booking/booking.module').then((m) => m.BookingModule),
     // canActivate: [LoginGuard],
     // canLoad: [LoginGuard],

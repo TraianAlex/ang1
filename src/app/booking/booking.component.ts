@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { exhaustMap, mergeMap, switchMap } from 'rxjs/operators';
 import { BookingService } from './booking.service';
 import { CustomValidator } from './validators/custom-validator';
@@ -15,14 +16,19 @@ export class BookingComponent implements OnInit {
     return this.bookingForm.get('guests') as FormArray;
   }
 
-  constructor(private fb: FormBuilder, private bookingService: BookingService) {}
+  constructor(
+    private fb: FormBuilder,
+    private bookingService: BookingService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    const roomId = this.route.snapshot.paramMap.get('id');
     this.bookingForm = this.fb.group(
       {
         userData: this.fb.group({
           roomId: new FormControl(
-            { value: '11', disabled: true },
+            { value: roomId || '11', disabled: true },
             { validators: [Validators.required] }
           ),
           guestEmail: ['', [Validators.required, Validators.email]],
@@ -59,7 +65,7 @@ export class BookingComponent implements OnInit {
       },
       { updateOn: 'blur', validators: [CustomValidator.validateDate] } // change is default, submit is only check at submit, bluer after each control
     );
-    this.getBookingData();
+    // this.getBookingData();
     // this.bookingForm.valueChanges.subscribe((data) => {
     //   console.log(data);
     //   this.bookingService.bookRoom(data).subscribe(data => {});
