@@ -15,6 +15,7 @@ import { catchError, map, of, Subject, Subscription } from 'rxjs';
 import { HeaderAppComponent } from '../../header-app/header-app.component';
 import { Room, RoomList } from './rooms';
 import { RoomsService } from './services/rooms.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-rooms',
@@ -35,6 +36,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
   // roomsCount$ = this.roomsService.getRooms$.pipe(
   //   map(rooms => rooms.length)
   // );
+  priceFilter = new FormControl(0);
 
   roomsChanged = new Subject<RoomList[]>();
   hotelName = 'Hilton';

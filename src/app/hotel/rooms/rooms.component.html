@@ -1,7 +1,6 @@
-<p>rooms works!</p>
 <h3>Welcome to {{ hotelName }} <span class="text-muted">from room component</span></h3>
 
-<div [hidden]="hideRooms">
+<div [hidden]="!hideRooms">
   Number of rooms:
   <span
     [ngStyle]="{ color: rooms.availableRooms ? 'steelblue' : 'red' }"
@@ -13,7 +12,9 @@
 {{ !rooms.availableRooms && 'No rooms' }}
 
 <button class="btn btn-primary me-1" type="button" (click)="addRoom()">Add room</button>
-<button class="btn btn-primary me-1" type="button" routerLink="/hotel/rooms/add">Add room form</button>
+<button class="btn btn-primary me-1" type="button" routerLink="/hotel/rooms/add">
+  Add room form
+</button>
 <button class="btn btn-primary me-1" type="button" routerLink="/hotel/login">Login</button>
 <button class="btn btn-primary me-1" type="button" routerLink="/hotel/booking">Booking</button>
 
@@ -23,11 +24,16 @@
 
 <h5>Error(api): {{ getError$ | async }}</h5>
 <!-- <h5>Number of rooms(api): {{ roomsCount$ | async }}</h5> -->
+<!-- {{ priceFilter | json }} -->
+<div>
+  <input type="number" class="form-control" placeholder="Price" [formControl]="priceFilter" />
+</div>
 <div *ngIf="rooms.availableRooms > 0 && hideRooms">
   <!-- <div *ngIf="rooms$ | async as rooms">  [rooms]="rooms" -->
   <app-rooms-list
     [rooms]="roomList"
     [title]="title"
+    [price]="priceFilter.value || 0"
     (selectedRoom)="selectRoom($event)"
   ></app-rooms-list>
 </div>
