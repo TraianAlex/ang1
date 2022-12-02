@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { exhaustMap, mergeMap, switchMap } from 'rxjs/operators';
 import { BookingService } from './booking.service';
+import { CustomValidator } from './validators/custom-validator';
 
 @Component({
   selector: 'app-booking',
@@ -34,7 +35,15 @@ export class BookingComponent implements OnInit {
           ],
           bookingDate: [''],
           mobileNumber: ['', { updateOn: 'blur' }],
-          guestName: ['', [Validators.required, Validators.minLength(5)]],
+          guestName: [
+            '',
+            [
+              Validators.required,
+              Validators.minLength(5),
+              CustomValidator.validateName,
+              CustomValidator.validateSpecialChar('*'),
+            ],
+          ],
           guestCount: [''],
         }),
         address: this.fb.group({
@@ -47,8 +56,8 @@ export class BookingComponent implements OnInit {
         }),
         guests: this.fb.array([this.guestControls()]),
         tnc: new FormControl(false, { validators: [Validators.required, Validators.requiredTrue] }),
-      }
-      // { updateOn: 'blur' } // change is default, submit is only check at submit, bluer after each control
+      },
+      { updateOn: 'blur', validators: [CustomValidator.validateDate] } // change is default, submit is only check at submit, bluer after each control
     );
     this.getBookingData();
     // this.bookingForm.valueChanges.subscribe((data) => {

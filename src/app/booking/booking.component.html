@@ -1,10 +1,11 @@
-<p>booking works!</p>
 {{ bookingForm.value | json }}
 {{ bookingForm.pristine | json }}
 {{ bookingForm.dirty | json }}
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      {{ bookingForm.invalid | json }}
+      {{ bookingForm.valid | json }}
       <button class="btn btn-primary mt-2 me-1" type="button" (click)="addPassport()">
         Add Passport
       </button>
@@ -83,6 +84,7 @@
               class="form-control"
               formControlName="checkoutDate"
             />
+            {{ bookingForm.get('userData.checkoutDate')?.errors | json }}
             <span
               *ngIf="
                 !bookingForm.get('userData.checkoutDate')?.valid &&
@@ -176,8 +178,9 @@
             </span>
           </div>
           <div class="form-group mb-2">
-            <label for="guestName">Name</label>
+            <label for="guestName">Guest Name</label>
             <input type="text" id="guestName" class="form-control" formControlName="guestName" />
+            {{ bookingForm.get('userData.guestName')?.errors | json }}
             <span
               *ngIf="
                 !bookingForm.get('userData.guestName')?.valid &&
@@ -190,6 +193,9 @@
               >
               <span *ngIf="bookingForm.get('userData.guestName')?.hasError('minlength')"
                 >Guest name should be minimum 5 characters!</span
+              >
+              <span *ngIf="bookingForm.get('userData.guestName')?.hasError('invalidName')"
+                >This name is invalid!</span
               >
             </span>
           </div>
