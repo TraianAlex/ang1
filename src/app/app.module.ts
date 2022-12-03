@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -56,6 +56,7 @@ import { InitService } from './hotel/rooms/init.service';
 import { HoverDirective } from './app-directives/hover/hover.directive';
 import { EmailvalidatorDirective } from './app-directives/email-validator/emailvalidator.directive';
 import { HeaderAppModule } from './header-app/header-app.module';
+import { ErrorHandlerService } from './services/error-handler.service';
 
 function initFactory(initService: InitService) {
   return () => initService.init();
@@ -137,6 +138,7 @@ function initFactory(initService: InitService) {
       deps: [InitService],
       multi: true,
     },
+    { provide: ErrorHandler, useClass: ErrorHandlerService },
   ],
   bootstrap: [AppComponent],
 })
