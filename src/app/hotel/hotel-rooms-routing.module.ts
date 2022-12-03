@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CommentGuard } from '../comment/guard/comment.guard';
 import { LoginGuard } from './guards/login.guard';
 import { RoomGuard } from './guards/room.guard';
 import { HotelComponent } from './hotel.component';
@@ -19,10 +20,15 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   {
-    path: 'booking',
+    path: 'booking/:id', // booking
     loadChildren: () => import('../booking/booking.module').then((m) => m.BookingModule),
-    canActivate: [LoginGuard],
-    canLoad: [LoginGuard],
+    // canActivate: [LoginGuard],
+    // canLoad: [LoginGuard],
+  },
+  {
+    path: 'comment',
+    loadChildren: () => import('../comment/comment.module').then((m) => m.CommentModule),
+    resolve: { comments: CommentGuard },
   },
 ];
 

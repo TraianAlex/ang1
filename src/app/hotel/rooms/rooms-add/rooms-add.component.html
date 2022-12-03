@@ -18,6 +18,7 @@
           placeholder="Enter room type"
           [(ngModel)]="room.roomType"
           required
+          [ngModelOptions]="{ updateOn: 'blur' }"
         />
       </div>
       <div class="mb-3">
@@ -96,7 +97,9 @@
           max="5"
         />
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="roomsForm.invalid">Submit</button>
+      <button type="submit" class="btn btn-primary mb-2" [disabled]="roomsForm.invalid">
+        Submit
+      </button>
     </form>
   </div>
 </div>

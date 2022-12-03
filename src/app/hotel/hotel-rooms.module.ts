@@ -10,7 +10,8 @@ import { HotelComponent } from './hotel.component';
 import { RoomComponent } from './rooms/room/room.component';
 import { RoomsAddComponent } from './rooms/rooms-add/rooms-add.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     RoomComponent,
     RoomsAddComponent,
     LoginComponent,
+    FilterPipe,
   ],
-  imports: [CommonModule, HotelRoomsRoutingModule, FormsModule],
+  imports: [CommonModule, HotelRoomsRoutingModule, FormsModule, ReactiveFormsModule],
 })
 export class HotelRoomsModule {}

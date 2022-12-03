@@ -1,4 +1,3 @@
-<p>rooms-list works!</p>
 <h4>{{ title }}</h4>
 <!-- {{ roomList }} -->
 <table class="table">
@@ -17,7 +16,12 @@
   </tr>
   <tr
     [ngClass]="e ? 'even' : 'odd'"
-    *ngFor="let room of rooms | slice: 0:9; let e = even; let o = odd; let i = index"
+    *ngFor="
+      let room of rooms | filter: price | slice: 0:9;
+      let e = even;
+      let o = odd;
+      let i = index
+    "
   >
     <td>{{ i + 1 | percent }}</td>
     <td>{{ e ? 'Even' : 'Odd' }}</td>
@@ -32,7 +36,12 @@
     <td>{{ room.rating | number: '1.1-3':'en-us' }}</td>
     <td>
       <button type="button" class="btn btn-primary" (click)="selectRoom(room)">Select</button>
-      <button type="button" class="btn btn-primary" [routerLink]="['/hotel/rooms', room.roomNumber]">
+      <button
+        type="button"
+        class="btn btn-primary"
+        [routerLink]="['/hotel/booking', room.roomNumber]"
+      >
+        <!--/hotel/rooms-->
         Book room
       </button>
     </td>
