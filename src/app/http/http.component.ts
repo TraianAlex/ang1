@@ -37,7 +37,7 @@ export class HttpComponent implements OnInit, OnDestroy {
 
   onCreatePost(postData: Post) {
     // this.http
-    //   .post<{ name: string }>('https://ang1-5cb59-default-rtdb.firebaseio.com/posts.json', postData)
+    //   .post<{ name: string }>(environment.firebaseEndPoint, postData)
     //   .subscribe((responseData) => {
     //     console.log(responseData);
     //   });
@@ -76,7 +76,7 @@ export class HttpComponent implements OnInit, OnDestroy {
   // private fetchPosts() {
   //   this.isFetching = true;
   //   this.http
-  //     .get<{ [key: string]: Post }>('https://ang1-5cb59-default-rtdb.firebaseio.com/posts.json')
+  //     .get<{ [key: string]: Post }>(environment.firebaseEndPoint)
   //     .pipe(
   //       map((responseData) => {
   //         const postsArray: Post[] = [];
