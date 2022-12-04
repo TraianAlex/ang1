@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEventType, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, map, Subject, tap, throwError } from 'rxjs';
-import { Post } from './post.model';
 import { environment } from 'src/environments/environment';
+import { Post } from './post.model';
 
 @Injectable({
   providedIn: 'root',
