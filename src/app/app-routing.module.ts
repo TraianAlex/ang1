@@ -26,6 +26,7 @@ import { FormsComponent } from './forms/forms.component';
 import { FormsReactiveComponent } from './forms-reactive/forms-reactive.component';
 import { FormsReactive2Component } from './forms-reactive2/forms-reactive2.component';
 import { PipesComponent } from './pipes/pipes.component';
+import { HttpComponent } from './http/http.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'recipes', pathMatch: 'full' },
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
       { path: ':id/edit', component: RecipeEditComponent },
     ],
   },
+  { path: 'post', component: HttpComponent },
   { path: 'shopping-list', component: ShoppingListComponent },
   { path: 'biding', component: DataBindingComponent },
   { path: 'accounts', component: AccountsComponent },

@@ -57,6 +57,9 @@ import { HoverDirective } from './app-directives/hover/hover.directive';
 import { EmailvalidatorDirective } from './app-directives/email-validator/emailvalidator.directive';
 import { HeaderAppModule } from './header-app/header-app.module';
 import { ErrorHandlerService } from './services/error-handler.service';
+import { HttpComponent } from './http/http.component';
+import { LoggingInterceptorService } from './http/logging-interceptor.service';
+import { AuthInterceptorService } from './http/auth-interceptor.service';
 
 function initFactory(initService: InitService) {
   return () => initService.init();
@@ -113,6 +116,7 @@ function initFactory(initService: InitService) {
     SortPipe,
     HoverDirective,
     EmailvalidatorDirective,
+    HttpComponent,
   ],
   imports: [
     BrowserModule,
@@ -130,6 +134,16 @@ function initFactory(initService: InitService) {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoggingInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
       multi: true,
     },
     {
