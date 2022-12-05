@@ -28,6 +28,7 @@ import { FormsReactive2Component } from './forms-reactive2/forms-reactive2.compo
 import { PipesComponent } from './pipes/pipes.component';
 import { HttpComponent } from './http/http.component';
 import { RecipesResolverService } from './recipes/services/recipes-resolver.service';
+import { AuthComponent } from './recipes/auth/auth.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'recipes', pathMatch: 'full' },
@@ -41,13 +42,14 @@ const appRoutes: Routes = [
       { path: ':id/edit', component: RecipeEditComponent, resolve: [RecipesResolverService] },
     ],
   },
-  { path: 'post', component: HttpComponent },
   { path: 'shopping-list', component: ShoppingListComponent },
+  { path: 'auth', component: AuthComponent },
   { path: 'biding', component: DataBindingComponent },
   { path: 'accounts', component: AccountsComponent },
   { path: 'users', component: UsersComponent },
   { path: 'servers', component: ServersComponent },
   { path: 'users-servers', component: HomeComponent },
+  { path: 'post', component: HttpComponent },
   {
     path: 'hotel',
     loadChildren: () => import('./hotel/hotel-rooms.module').then((m) => m.HotelRoomsModule),

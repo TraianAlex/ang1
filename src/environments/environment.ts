@@ -8,6 +8,7 @@ export const environment = {
   apiEndpoint: 'http://localhost:8080/api/v1/',
   firebaseEndPoint: mySecrets.firebaseEndPoint,
   recipesEndPoint: mySecrets.recipesEndPoint,
+  authSignUpRecipes: mySecrets.authSignUpRecipes,
 };
 
 /*
