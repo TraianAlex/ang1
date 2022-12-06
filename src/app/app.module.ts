@@ -63,6 +63,8 @@ import { AuthInterceptorService } from './http/auth-interceptor.service';
 import { AuthComponent } from './recipes/auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthRecipesInterceptorService } from './recipes/auth/auth-recipes-interceptor.service';
+import { AlertComponent } from './shared/alert/alert.component';
+import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 
 function initFactory(initService: InitService) {
   return () => initService.init();
@@ -122,6 +124,8 @@ function initFactory(initService: InitService) {
     HttpComponent,
     AuthComponent,
     LoadingSpinnerComponent,
+    AlertComponent,
+    PlaceholderDirective,
   ],
   imports: [
     BrowserModule,
@@ -165,5 +169,6 @@ function initFactory(initService: InitService) {
     { provide: ErrorHandler, useClass: ErrorHandlerService },
   ],
   bootstrap: [AppComponent],
+  // entryComponents: [AlertComponent], // for angular < 9
 })
 export class AppModule {}
