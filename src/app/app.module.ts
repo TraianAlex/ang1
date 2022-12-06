@@ -62,6 +62,7 @@ import { LoggingInterceptorService } from './http/logging-interceptor.service';
 import { AuthInterceptorService } from './http/auth-interceptor.service';
 import { AuthComponent } from './recipes/auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AuthRecipesInterceptorService } from './recipes/auth/auth-recipes-interceptor.service';
 
 function initFactory(initService: InitService) {
   return () => initService.init();
@@ -134,6 +135,11 @@ function initFactory(initService: InitService) {
     {
       provide: APP_SERVICE_CONFIG,
       useValue: APP_CONFIG,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthRecipesInterceptorService,
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,

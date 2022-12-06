@@ -9,6 +9,7 @@ export const environment = {
   firebaseEndPoint: mySecrets.firebaseEndPoint,
   recipesEndPoint: mySecrets.recipesEndPoint,
   authSignUpRecipes: mySecrets.authSignUpRecipes,
+  authSignInRecipes: mySecrets.authSignInRecipes,
 };
 
 /*

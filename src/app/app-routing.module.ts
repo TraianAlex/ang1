@@ -29,12 +29,14 @@ import { PipesComponent } from './pipes/pipes.component';
 import { HttpComponent } from './http/http.component';
 import { RecipesResolverService } from './recipes/services/recipes-resolver.service';
 import { AuthComponent } from './recipes/auth/auth.component';
+import { AuthRecipesGuard } from './recipes/auth/auth-recipes.guard';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'recipes', pathMatch: 'full' },
   {
     path: 'recipes',
     component: FoodRecipesComponent,
+    canActivate: [AuthRecipesGuard],
     children: [
       { path: '', component: RecipeStartComponent, resolve: [RecipesResolverService] },
       { path: 'new', component: RecipeEditComponent, resolve: [RecipesResolverService] },
