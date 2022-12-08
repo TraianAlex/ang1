@@ -6,12 +6,14 @@ import { ServerResolverService } from './services/server-resolver.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { CanDeactivateGuardService } from './services/can-deactivate-guard.service';
 
+import { HomeComponent } from './home/home.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersComponent2 } from './servers/servers2.component';
 import { UserComponent } from './users/user/user.component';
 import { UsersComponent2 } from './users/users2.component';
 
 const routes: Routes = [
+  { path: 'users-servers', component: HomeComponent },
   {
     path: 'users-servers/users',
     component: UsersComponent2,

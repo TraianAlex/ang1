@@ -6,6 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderAppModule } from './header-app/header-app.module';
 import { RecipesModule } from './recipes/recipes.module';
+import { AccountsModule } from './accounts/accounts.module';
 import { DataBindingModule } from './data-binding/data-binding.module';
 import { ServersModule } from './servers/servers.module';
 import { UsersModule } from './users/users.module';
@@ -26,9 +27,6 @@ import { ReversePipe } from './pipes/reverse.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 
 import { AppComponent } from './app.component';
-import { AccountsComponent } from './accounts/accounts.component';
-import { AccountComponent } from './accounts/account/account.component';
-import { NewAccountComponent } from './accounts/new-account/new-account.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ObservableComponent } from './observable/observable.component';
@@ -47,9 +45,6 @@ function initFactory(initService: InitService) {
 @NgModule({
   declarations: [
     AppComponent,
-    AccountsComponent,
-    AccountComponent,
-    NewAccountComponent,
     PageNotFoundComponent,
     ErrorPageComponent,
     ObservableComponent,
@@ -68,6 +63,7 @@ function initFactory(initService: InitService) {
   imports: [
     BrowserModule,
     RecipesModule,
+    AccountsModule,
     DataBindingModule,
     ServersModule,
     UsersModule,
