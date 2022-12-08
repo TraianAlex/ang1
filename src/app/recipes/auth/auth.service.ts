@@ -1,9 +1,12 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+
+import { AppConfig } from 'src/app/app-config/app-config.interface';
+import { APP_SERVICE_CONFIG } from 'src/app/app-config/app-config.service';
+
 import { User } from './user.model';
 
 export interface AuthResponseData {
@@ -23,11 +26,15 @@ export class AuthService {
   user = new BehaviorSubject<User | null>(null);
   private tokenExpirationTimer: any;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    @Inject(APP_SERVICE_CONFIG) private config: AppConfig,
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
   signup(email: string, password: string) {
     return this.http
-      .post<AuthResponseData>(environment.authSignUpRecipes, {
+      .post<AuthResponseData>(this.config.authSignUpRecipes, {
         email: email,
         password: password,
         returnSecureToken: true,
@@ -47,7 +54,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this.http
-      .post<AuthResponseData>(environment.authSignInRecipes, {
+      .post<AuthResponseData>(this.config.authSignInRecipes, {
         email: email,
         password: password,
         returnSecureToken: true,
