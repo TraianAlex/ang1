@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HotelRoomsRoutingModule } from './hotel-rooms-routing.module';
+import { AppDirectivesModule } from '../app-directives/app-directives.module';
+
 import { RoomsComponent } from './rooms/rooms.component';
 import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
 import { ContainerComponent } from './container/container.component';
@@ -25,6 +27,12 @@ import { FilterPipe } from './pipes/filter.pipe';
     LoginComponent,
     FilterPipe,
   ],
-  imports: [CommonModule, HotelRoomsRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    HotelRoomsRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppDirectivesModule,
+  ],
 })
 export class HotelRoomsModule {}

@@ -2,6 +2,7 @@ import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { RecipesModule } from './recipes/recipes.module';
 import { DataBindingModule } from './data-binding/data-binding.module';
@@ -39,8 +40,6 @@ import { ReversePipe } from './pipes/reverse.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { RequestInterceptor } from './hotel/rooms/request.interceptor';
 import { InitService } from './hotel/rooms/init.service';
-import { HoverDirective } from './app-directives/hover/hover.directive';
-import { EmailvalidatorDirective } from './app-directives/email-validator/emailvalidator.directive';
 import { HeaderAppModule } from './header-app/header-app.module';
 import { ErrorHandlerService } from './services/error-handler.service';
 import { HttpComponent } from './http/http.component';
@@ -84,8 +83,6 @@ function initFactory(initService: InitService) {
     FilterPipe,
     ReversePipe,
     SortPipe,
-    HoverDirective,
-    EmailvalidatorDirective,
     HttpComponent,
   ],
   imports: [
