@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InitService } from './hotel/rooms/init.service';
+
 import { AuthService } from './recipes/auth/auth.service';
 
 @Component({
