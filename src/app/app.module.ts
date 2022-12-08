@@ -4,18 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipesModule } from './recipes/recipes.module';
+import { DataBindingModule } from './data-binding/data-binding.module';
 
 import { AppComponent } from './app.component';
 import { ServersComponent } from './servers/servers.component';
 import { CockpitComponent } from './servers/cockpit/cockpit.component';
 import { ServerElementComponent } from './servers/server-element/server-element.component';
-import { DataBindingComponent } from './data-binding/data-binding.component';
-import { GameControlComponent } from './data-binding/game-control/game-control.component';
-import { EvenComponent } from './data-binding/even/even.component';
-import { OddComponent } from './data-binding/odd/odd.component';
-import { BasicHighlightDirective } from './app-directives/basic-highlights/basic-hightlight.directive';
-import { BetterHighlightDirective } from './app-directives/better-highlights/better-hightlight.directive';
-import { UnlessDirective } from './app-directives/unless/unless.directive';
 import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AccountComponent } from './accounts/account/account.component';
@@ -66,13 +60,6 @@ function initFactory(initService: InitService) {
     ServersComponent,
     CockpitComponent,
     ServerElementComponent,
-    DataBindingComponent,
-    GameControlComponent,
-    EvenComponent,
-    OddComponent,
-    BasicHighlightDirective,
-    BetterHighlightDirective,
-    UnlessDirective,
     AccountsComponent,
     AccountComponent,
     NewAccountComponent,
@@ -108,6 +95,7 @@ function initFactory(initService: InitService) {
   imports: [
     BrowserModule,
     RecipesModule,
+    DataBindingModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

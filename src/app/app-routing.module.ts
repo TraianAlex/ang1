@@ -24,8 +24,7 @@ import { PipesComponent } from './pipes/pipes.component';
 import { HttpComponent } from './http/http.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'biding', pathMatch: 'full' },
-  { path: 'biding', component: DataBindingComponent },
+  { path: '', redirectTo: 'binding', pathMatch: 'full' },
   { path: 'accounts', component: AccountsComponent },
   { path: 'users', component: UsersComponent },
   { path: 'servers', component: ServersComponent },
