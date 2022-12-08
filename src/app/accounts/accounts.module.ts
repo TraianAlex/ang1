@@ -10,7 +10,7 @@ import { NewAccountComponent } from './new-account/new-account.component';
   declarations: [AccountsComponent, AccountComponent, NewAccountComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild([{ path: 'accounts', component: AccountsComponent }]),
+    RouterModule.forChild([{ path: '', component: AccountsComponent }]),
   ],
 })
 export class AccountsModule {}

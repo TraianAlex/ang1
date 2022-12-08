@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ObservableComponent } from './observable/observable.component';
@@ -14,6 +14,10 @@ import { HttpComponent } from './http/http.component';
 const appRoutes: Routes = [
   { path: '', redirectTo: 'binding', pathMatch: 'full' },
   { path: 'post', component: HttpComponent },
+  {
+    path: 'accounts',
+    loadChildren: () => import('./accounts/accounts.module').then((m) => m.AccountsModule),
+  },
   {
     path: 'hotel',
     loadChildren: () => import('./hotel/hotel-rooms.module').then((m) => m.HotelRoomsModule),
@@ -39,7 +43,7 @@ const appRoutes: Routes = [
   declarations: [],
   imports: [
     // RouterModule.forRoot(appRoutes, {useHash: true})
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules }),
   ],
   exports: [RouterModule],
 })

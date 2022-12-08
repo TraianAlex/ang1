@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core.module';
 import { HeaderAppModule } from './header-app/header-app.module';
 import { RecipesModule } from './recipes/recipes.module';
-import { AccountsModule } from './accounts/accounts.module';
 import { DataBindingModule } from './data-binding/data-binding.module';
 import { ServersModule } from './servers/servers.module';
 import { UsersModule } from './users/users.module';
@@ -51,7 +50,6 @@ import { HttpComponent } from './http/http.component';
   imports: [
     BrowserModule,
     RecipesModule,
-    AccountsModule,
     DataBindingModule,
     ServersModule,
     UsersModule,
