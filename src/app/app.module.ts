@@ -9,6 +9,7 @@ import { RecipesModule } from './recipes/recipes.module';
 import { DataBindingModule } from './data-binding/data-binding.module';
 import { ServersModule } from './servers/servers.module';
 import { UsersModule } from './users/users.module';
+import { UsersServersModule } from './users-servers/users-servers.module';
 
 import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service';
 import { InitService } from './hotel/rooms/init.service';
@@ -28,15 +29,8 @@ import { AppComponent } from './app.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AccountComponent } from './accounts/account/account.component';
 import { NewAccountComponent } from './accounts/new-account/new-account.component';
-import { UsersServersHeaderComponent } from './users-servers/header/users-servers-header.component';
-import { UsersComponent2 } from './users-servers/users/users2.component';
-import { UserComponent } from './users-servers/users/user/user.component';
-import { ServersComponent2 } from './users-servers/servers/servers2.component';
-import { ServerComponent } from './users-servers/servers/server/server.component';
-import { EditServerComponent } from './users-servers/servers/edit-server/edit-server.component';
-import { PageNotFoundComponent } from './users-servers/page-not-found/page-not-found.component';
-import { HomeComponent } from './users-servers/home/home.component';
-import { ErrorPageComponent } from './users-servers/error-page/error-page.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 import { ObservableComponent } from './observable/observable.component';
 import { ObsHomeComponent } from './observable/obs-home/obs-home.component';
 import { ObsUserComponent } from './observable/obs-user/obs-user.component';
@@ -56,14 +50,7 @@ function initFactory(initService: InitService) {
     AccountsComponent,
     AccountComponent,
     NewAccountComponent,
-    UsersServersHeaderComponent,
-    UsersComponent2,
-    UserComponent,
-    ServersComponent2,
-    ServerComponent,
-    EditServerComponent,
     PageNotFoundComponent,
-    HomeComponent,
     ErrorPageComponent,
     ObservableComponent,
     ObsHomeComponent,
@@ -84,6 +71,7 @@ function initFactory(initService: InitService) {
     DataBindingModule,
     ServersModule,
     UsersModule,
+    UsersServersModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

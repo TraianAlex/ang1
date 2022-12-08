@@ -1,16 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthGuardService } from './users-servers/services/auth-guard.service';
-import { ServerResolverService } from './users-servers/services/server-resolver.service';
-import { CanDeactivateGuardService } from './users-servers/services/can-deactivate-guard.service';
-
-import { UsersComponent2 } from './users-servers/users/users2.component';
-import { UserComponent } from './users-servers/users/user/user.component';
-import { ServersComponent2 } from './users-servers/servers/servers2.component';
-import { ServerComponent } from './users-servers/servers/server/server.component';
-import { EditServerComponent } from './users-servers/servers/edit-server/edit-server.component';
-import { ErrorPageComponent } from './users-servers/error-page/error-page.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { HomeComponent } from './users-servers/home/home.component';
 import { ObservableComponent } from './observable/observable.component';
@@ -43,25 +34,6 @@ const appRoutes: Routes = [
   { path: 'reactive', component: FormsReactiveComponent },
   { path: 'reactive2', component: FormsReactive2Component },
   { path: 'pipes', component: PipesComponent },
-  {
-    path: 'users-servers/users',
-    component: UsersComponent2,
-    children: [{ path: ':id/:name', component: UserComponent }],
-  },
-  {
-    path: 'users-servers/servers',
-    // canActivate: [AuthGuardService],
-    canActivateChild: [AuthGuardService],
-    component: ServersComponent2,
-    children: [
-      { path: ':id', component: ServerComponent, resolve: { server: ServerResolverService } },
-      {
-        path: ':id/edit',
-        component: EditServerComponent,
-        canDeactivate: [CanDeactivateGuardService],
-      },
-    ],
-  },
   // { path: 'not-found', component: PageNotFoundComponent },
   { path: 'not-found', component: ErrorPageComponent, data: { message: 'Page not found!' } },
   { path: '**', redirectTo: '/not-found' },
