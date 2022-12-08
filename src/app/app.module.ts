@@ -1,9 +1,10 @@
-import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from './core.module';
 import { HeaderAppModule } from './header-app/header-app.module';
 import { RecipesModule } from './recipes/recipes.module';
 import { AccountsModule } from './accounts/accounts.module';
@@ -11,15 +12,6 @@ import { DataBindingModule } from './data-binding/data-binding.module';
 import { ServersModule } from './servers/servers.module';
 import { UsersModule } from './users/users.module';
 import { UsersServersModule } from './users-servers/users-servers.module';
-
-import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service';
-import { InitService } from './hotel/rooms/init.service';
-import { ErrorHandlerService } from './services/error-handler.service';
-import { LoggingInterceptorService } from './http/logging-interceptor.service';
-import { AuthInterceptorService } from './http/auth-interceptor.service';
-import { AuthRecipesInterceptorService } from './recipes/auth/auth-recipes-interceptor.service';
-
-import { RequestInterceptor } from './hotel/rooms/request.interceptor';
 
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
@@ -37,10 +29,6 @@ import { FormsReactiveComponent } from './forms-reactive/forms-reactive.componen
 import { FormsReactive2Component } from './forms-reactive2/forms-reactive2.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { HttpComponent } from './http/http.component';
-
-function initFactory(initService: InitService) {
-  return () => initService.init();
-}
 
 @NgModule({
   declarations: [
@@ -73,39 +61,7 @@ function initFactory(initService: InitService) {
     ReactiveFormsModule,
     HttpClientModule,
     HeaderAppModule,
-  ],
-  providers: [
-    {
-      provide: APP_SERVICE_CONFIG,
-      useValue: APP_CONFIG,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthRecipesInterceptorService,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: RequestInterceptor,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoggingInterceptorService,
-      multi: true,
-    },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initFactory,
-      deps: [InitService],
-      multi: true,
-    },
-    { provide: ErrorHandler, useClass: ErrorHandlerService },
+    CoreModule,
   ],
   bootstrap: [AppComponent],
   // entryComponents: [AlertComponent], // for angular < 9
