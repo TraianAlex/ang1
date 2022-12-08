@@ -12,7 +12,6 @@ import { ServerComponent } from './users-servers/servers/server/server.component
 import { EditServerComponent } from './users-servers/servers/edit-server/edit-server.component';
 import { ErrorPageComponent } from './users-servers/error-page/error-page.component';
 import { AccountsComponent } from './accounts/accounts.component';
-import { UsersComponent } from './users/users.component';
 import { HomeComponent } from './users-servers/home/home.component';
 import { ObservableComponent } from './observable/observable.component';
 import { ObsHomeComponent } from './observable/obs-home/obs-home.component';
@@ -26,7 +25,6 @@ import { HttpComponent } from './http/http.component';
 const appRoutes: Routes = [
   { path: '', redirectTo: 'binding', pathMatch: 'full' },
   { path: 'accounts', component: AccountsComponent },
-  { path: 'users', component: UsersComponent },
   { path: 'users-servers', component: HomeComponent },
   { path: 'post', component: HttpComponent },
   {

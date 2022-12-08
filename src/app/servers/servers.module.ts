@@ -14,6 +14,5 @@ import { ServerElementComponent } from './server-element/server-element.componen
     FormsModule,
     RouterModule.forChild([{ path: 'servers', component: ServersComponent }]),
   ],
-  exports: [ServersComponent, CockpitComponent, ServerElementComponent],
 })
 export class ServersModule {}

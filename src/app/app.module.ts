@@ -8,6 +8,7 @@ import { HeaderAppModule } from './header-app/header-app.module';
 import { RecipesModule } from './recipes/recipes.module';
 import { DataBindingModule } from './data-binding/data-binding.module';
 import { ServersModule } from './servers/servers.module';
+import { UsersModule } from './users/users.module';
 
 import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service';
 import { InitService } from './hotel/rooms/init.service';
@@ -27,9 +28,6 @@ import { AppComponent } from './app.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AccountComponent } from './accounts/account/account.component';
 import { NewAccountComponent } from './accounts/new-account/new-account.component';
-import { UsersComponent } from './users/users.component';
-import { ActiveUsersComponent } from './users/active-users/active-users.component';
-import { InactiveUsersComponent } from './users/inactive-users/inactive-users.component';
 import { UsersServersHeaderComponent } from './users-servers/header/users-servers-header.component';
 import { UsersComponent2 } from './users-servers/users/users2.component';
 import { UserComponent } from './users-servers/users/user/user.component';
@@ -58,9 +56,6 @@ function initFactory(initService: InitService) {
     AccountsComponent,
     AccountComponent,
     NewAccountComponent,
-    UsersComponent,
-    ActiveUsersComponent,
-    InactiveUsersComponent,
     UsersServersHeaderComponent,
     UsersComponent2,
     UserComponent,
@@ -88,6 +83,7 @@ function initFactory(initService: InitService) {
     RecipesModule,
     DataBindingModule,
     ServersModule,
+    UsersModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
