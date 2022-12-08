@@ -47,8 +47,6 @@ import { HttpComponent } from './http/http.component';
 import { LoggingInterceptorService } from './http/logging-interceptor.service';
 import { AuthInterceptorService } from './http/auth-interceptor.service';
 import { AuthRecipesInterceptorService } from './recipes/auth/auth-recipes-interceptor.service';
-import { AlertComponent } from './shared/alert/alert.component';
-import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 
 function initFactory(initService: InitService) {
   return () => initService.init();
@@ -89,8 +87,6 @@ function initFactory(initService: InitService) {
     HoverDirective,
     EmailvalidatorDirective,
     HttpComponent,
-    AlertComponent,
-    PlaceholderDirective,
   ],
   imports: [
     BrowserModule,
