@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { CommentGuard } from '../comment/guard/comment.guard';
 import { LoginGuard } from './guards/login.guard';
 import { RoomGuard } from './guards/room.guard';
+
 import { HotelComponent } from './hotel.component';
 import { LoginComponent } from './login/login.component';
 import { RoomComponent } from './rooms/room/room.component';

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { BasicHighlightDirective } from './basic-highlights/basic-hightlight.directive';
 import { BetterHighlightDirective } from './better-highlights/better-hightlight.directive';
 import { UnlessDirective } from './unless/unless.directive';

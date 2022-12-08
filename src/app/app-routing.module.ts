@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
+import { AuthGuardService } from './users-servers/services/auth-guard.service';
+import { ServerResolverService } from './users-servers/services/server-resolver.service';
+import { CanDeactivateGuardService } from './users-servers/services/can-deactivate-guard.service';
+
 import { UsersComponent2 } from './users-servers/users/users2.component';
 import { UserComponent } from './users-servers/users/user/user.component';
 import { ServersComponent2 } from './users-servers/servers/servers2.component';
 import { ServerComponent } from './users-servers/servers/server/server.component';
 import { EditServerComponent } from './users-servers/servers/edit-server/edit-server.component';
 import { ErrorPageComponent } from './users-servers/error-page/error-page.component';
-import { AuthGuardService } from './users-servers/services/auth-guard.service';
-import { ServerResolverService } from './users-servers/services/server-resolver.service';
-import { CanDeactivateGuardService } from './users-servers/services/can-deactivate-guard.service';
-import { DataBindingComponent } from './data-binding/data-binding.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { UsersComponent } from './users/users.component';
-import { ServersComponent } from './servers/servers.component';
 import { HomeComponent } from './users-servers/home/home.component';
 import { ObservableComponent } from './observable/observable.component';
 import { ObsHomeComponent } from './observable/obs-home/obs-home.component';
@@ -27,7 +27,6 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'binding', pathMatch: 'full' },
   { path: 'accounts', component: AccountsComponent },
   { path: 'users', component: UsersComponent },
-  { path: 'servers', component: ServersComponent },
   { path: 'users-servers', component: HomeComponent },
   { path: 'post', component: HttpComponent },
   {

@@ -4,14 +4,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HeaderAppModule } from './header-app/header-app.module';
 import { RecipesModule } from './recipes/recipes.module';
 import { DataBindingModule } from './data-binding/data-binding.module';
+import { ServersModule } from './servers/servers.module';
+
+import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service';
+import { InitService } from './hotel/rooms/init.service';
+import { ErrorHandlerService } from './services/error-handler.service';
+import { LoggingInterceptorService } from './http/logging-interceptor.service';
+import { AuthInterceptorService } from './http/auth-interceptor.service';
+import { AuthRecipesInterceptorService } from './recipes/auth/auth-recipes-interceptor.service';
+
+import { RequestInterceptor } from './hotel/rooms/request.interceptor';
+
+import { ShortenPipe } from './pipes/shorten.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
+import { ReversePipe } from './pipes/reverse.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 import { AppComponent } from './app.component';
-import { ServersComponent } from './servers/servers.component';
-import { CockpitComponent } from './servers/cockpit/cockpit.component';
-import { ServerElementComponent } from './servers/server-element/server-element.component';
-import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AccountComponent } from './accounts/account/account.component';
 import { NewAccountComponent } from './accounts/new-account/new-account.component';
@@ -34,18 +46,7 @@ import { FormsComponent } from './forms/forms.component';
 import { FormsReactiveComponent } from './forms-reactive/forms-reactive.component';
 import { FormsReactive2Component } from './forms-reactive2/forms-reactive2.component';
 import { PipesComponent } from './pipes/pipes.component';
-import { ShortenPipe } from './pipes/shorten.pipe';
-import { FilterPipe } from './pipes/filter.pipe';
-import { ReversePipe } from './pipes/reverse.pipe';
-import { SortPipe } from './pipes/sort.pipe';
-import { RequestInterceptor } from './hotel/rooms/request.interceptor';
-import { InitService } from './hotel/rooms/init.service';
-import { HeaderAppModule } from './header-app/header-app.module';
-import { ErrorHandlerService } from './services/error-handler.service';
 import { HttpComponent } from './http/http.component';
-import { LoggingInterceptorService } from './http/logging-interceptor.service';
-import { AuthInterceptorService } from './http/auth-interceptor.service';
-import { AuthRecipesInterceptorService } from './recipes/auth/auth-recipes-interceptor.service';
 
 function initFactory(initService: InitService) {
   return () => initService.init();
@@ -54,9 +55,6 @@ function initFactory(initService: InitService) {
 @NgModule({
   declarations: [
     AppComponent,
-    ServersComponent,
-    CockpitComponent,
-    ServerElementComponent,
     AccountsComponent,
     AccountComponent,
     NewAccountComponent,
@@ -89,6 +87,7 @@ function initFactory(initService: InitService) {
     BrowserModule,
     RecipesModule,
     DataBindingModule,
+    ServersModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

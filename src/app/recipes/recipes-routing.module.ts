@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AuthRecipesGuard } from './auth/auth-recipes.guard';
+
+import { RecipesResolverService } from './services/recipes-resolver.service';
+
 import { AuthComponent } from './auth/auth.component';
 import { FoodRecipesComponent } from './food-recipes/food-recipes.component';
 import { RecipeDetailComponent } from './food-recipes/recipe-detail/recipe-detail.component';
 import { RecipeEditComponent } from './food-recipes/recipe-edit/recipe-edit.component';
 import { RecipeStartComponent } from './food-recipes/recipe-start/recipe-start.component';
-import { RecipesResolverService } from './services/recipes-resolver.service';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 const routes: Routes = [
