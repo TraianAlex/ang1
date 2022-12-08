@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HotelRoomsRoutingModule } from './hotel-rooms-routing.module';
 import { RoomsComponent } from './rooms/rooms.component';
@@ -10,7 +11,6 @@ import { HotelComponent } from './hotel.component';
 import { RoomComponent } from './rooms/room/room.component';
 import { RoomsAddComponent } from './rooms/rooms-add/rooms-add.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({

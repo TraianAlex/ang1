@@ -14,11 +14,6 @@ import { AccountsComponent } from './accounts/accounts.component';
 import { UsersComponent } from './users/users.component';
 import { ServersComponent } from './servers/servers.component';
 import { HomeComponent } from './users-servers/home/home.component';
-import { ShoppingListComponent } from './recipes/shopping-list/shopping-list.component';
-import { RecipeDetailComponent } from './recipes/food-recipes/recipe-detail/recipe-detail.component';
-import { RecipeEditComponent } from './recipes/food-recipes/recipe-edit/recipe-edit.component';
-import { RecipeStartComponent } from './recipes/food-recipes/recipe-start/recipe-start.component';
-import { FoodRecipesComponent } from './recipes/food-recipes/food-recipes.component';
 import { ObservableComponent } from './observable/observable.component';
 import { ObsHomeComponent } from './observable/obs-home/obs-home.component';
 import { ObsUserComponent } from './observable/obs-user/obs-user.component';
@@ -27,25 +22,9 @@ import { FormsReactiveComponent } from './forms-reactive/forms-reactive.componen
 import { FormsReactive2Component } from './forms-reactive2/forms-reactive2.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { HttpComponent } from './http/http.component';
-import { RecipesResolverService } from './recipes/services/recipes-resolver.service';
-import { AuthComponent } from './recipes/auth/auth.component';
-import { AuthRecipesGuard } from './recipes/auth/auth-recipes.guard';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'recipes', pathMatch: 'full' },
-  {
-    path: 'recipes',
-    component: FoodRecipesComponent,
-    canActivate: [AuthRecipesGuard],
-    children: [
-      { path: '', component: RecipeStartComponent, resolve: [RecipesResolverService] },
-      { path: 'new', component: RecipeEditComponent, resolve: [RecipesResolverService] },
-      { path: ':id', component: RecipeDetailComponent, resolve: [RecipesResolverService] },
-      { path: ':id/edit', component: RecipeEditComponent, resolve: [RecipesResolverService] },
-    ],
-  },
-  { path: 'shopping-list', component: ShoppingListComponent },
-  { path: 'auth', component: AuthComponent },
+  { path: '', redirectTo: 'biding', pathMatch: 'full' },
   { path: 'biding', component: DataBindingComponent },
   { path: 'accounts', component: AccountsComponent },
   { path: 'users', component: UsersComponent },

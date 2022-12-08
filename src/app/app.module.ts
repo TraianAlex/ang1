@@ -3,14 +3,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { RecipesModule } from './recipes/recipes.module';
+
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './recipes/header/header.component';
-import { FoodRecipesComponent } from './recipes/food-recipes/food-recipes.component';
-import { RecipeListComponent } from './recipes/food-recipes/recipe-list/recipe-list.component';
-import { RecipeDetailComponent } from './recipes/food-recipes/recipe-detail/recipe-detail.component';
-import { RecipeItemComponent } from './recipes/food-recipes/recipe-list/recipe-item/recipe-item.component';
-import { ShoppingListComponent } from './recipes/shopping-list/shopping-list.component';
-import { ShoppingEditComponent } from './recipes/shopping-list/shopping-edit/shopping-edit.component';
 import { ServersComponent } from './servers/servers.component';
 import { CockpitComponent } from './servers/cockpit/cockpit.component';
 import { ServerElementComponent } from './servers/server-element/server-element.component';
@@ -21,7 +16,6 @@ import { OddComponent } from './data-binding/odd/odd.component';
 import { BasicHighlightDirective } from './app-directives/basic-highlights/basic-hightlight.directive';
 import { BetterHighlightDirective } from './app-directives/better-highlights/better-hightlight.directive';
 import { UnlessDirective } from './app-directives/unless/unless.directive';
-import { DropdownDirective } from './recipes/shared/dropdown.directive';
 import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AccountComponent } from './accounts/account/account.component';
@@ -38,8 +32,6 @@ import { EditServerComponent } from './users-servers/servers/edit-server/edit-se
 import { PageNotFoundComponent } from './users-servers/page-not-found/page-not-found.component';
 import { HomeComponent } from './users-servers/home/home.component';
 import { ErrorPageComponent } from './users-servers/error-page/error-page.component';
-import { RecipeEditComponent } from './recipes/food-recipes/recipe-edit/recipe-edit.component';
-import { RecipeStartComponent } from './recipes/food-recipes/recipe-start/recipe-start.component';
 import { ObservableComponent } from './observable/observable.component';
 import { ObsHomeComponent } from './observable/obs-home/obs-home.component';
 import { ObsUserComponent } from './observable/obs-user/obs-user.component';
@@ -60,8 +52,6 @@ import { ErrorHandlerService } from './services/error-handler.service';
 import { HttpComponent } from './http/http.component';
 import { LoggingInterceptorService } from './http/logging-interceptor.service';
 import { AuthInterceptorService } from './http/auth-interceptor.service';
-import { AuthComponent } from './recipes/auth/auth.component';
-import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthRecipesInterceptorService } from './recipes/auth/auth-recipes-interceptor.service';
 import { AlertComponent } from './shared/alert/alert.component';
 import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
@@ -73,13 +63,6 @@ function initFactory(initService: InitService) {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FoodRecipesComponent,
-    RecipeListComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
     ServersComponent,
     CockpitComponent,
     ServerElementComponent,
@@ -90,7 +73,6 @@ function initFactory(initService: InitService) {
     BasicHighlightDirective,
     BetterHighlightDirective,
     UnlessDirective,
-    DropdownDirective,
     AccountsComponent,
     AccountComponent,
     NewAccountComponent,
@@ -106,8 +88,6 @@ function initFactory(initService: InitService) {
     PageNotFoundComponent,
     HomeComponent,
     ErrorPageComponent,
-    RecipeEditComponent,
-    RecipeStartComponent,
     ObservableComponent,
     ObsHomeComponent,
     ObsUserComponent,
@@ -122,13 +102,12 @@ function initFactory(initService: InitService) {
     HoverDirective,
     EmailvalidatorDirective,
     HttpComponent,
-    AuthComponent,
-    LoadingSpinnerComponent,
     AlertComponent,
     PlaceholderDirective,
   ],
   imports: [
     BrowserModule,
+    RecipesModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

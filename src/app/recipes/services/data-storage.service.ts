@@ -26,7 +26,7 @@ export class DataStorageService {
   fetchRecipes() {
     return this.http.get<Recipe[]>(environment.recipesEndPoint).pipe(
       map((recipes) => {
-        return recipes.map((recipe) => {
+        return recipes?.map((recipe) => {
           return {
             ...recipe,
             ingredients: recipe.ingredients ? recipe.ingredients : [],
