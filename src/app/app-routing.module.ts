@@ -36,6 +36,10 @@ const appRoutes: Routes = [
   { path: 'pipes', component: PipesComponent },
   // { path: 'not-found', component: PageNotFoundComponent },
   { path: 'not-found', component: ErrorPageComponent, data: { message: 'Page not found!' } },
+  {
+    path: 'standalone',
+    loadChildren: () => import('./stand-alone/stand-alone.module').then((m) => m.StandAloneModule),
+  },
   { path: '**', redirectTo: '/not-found' },
 ];
 
