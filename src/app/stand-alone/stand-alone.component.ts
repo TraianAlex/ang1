@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { WelcomeComponent } from './welcome/welcome.component';
 
 @Component({
   standalone: true,
-  imports: [WelcomeComponent],
+  imports: [WelcomeComponent, RouterModule],
   selector: 'app-stand-alone',
   templateUrl: './stand-alone.component.html',
-  styleUrls: ['./stand-alone.component.scss'],
 })
 export class StandAloneComponent implements OnInit {
   constructor() {}

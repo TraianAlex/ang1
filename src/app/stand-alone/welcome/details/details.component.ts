@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { AnalyticsService } from '../../shared/analytics.service';
 import { HighlightDirective } from '../../shared/highlight.directive';
-// import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   standalone: true,
