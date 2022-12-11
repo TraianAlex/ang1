@@ -5,7 +5,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 
 @Component({
   standalone: true,
-  imports: [WelcomeComponent, RouterModule],
+  imports: [RouterModule],
   selector: 'app-stand-alone',
   templateUrl: './stand-alone.component.html',
 })
