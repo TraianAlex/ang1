@@ -8,7 +8,6 @@ import { CustomValidator } from './validators/custom-validator';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
-  styleUrls: ['./booking.component.scss'],
 })
 export class BookingComponent implements OnInit {
   bookingForm!: FormGroup;

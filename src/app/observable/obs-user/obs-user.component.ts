@@ -6,7 +6,6 @@ import { ObsUserService } from '../obs-user.service';
 @Component({
   selector: 'app-obs-user',
   templateUrl: './obs-user.component.html',
-  styleUrls: ['./obs-user.component.scss'],
 })
 export class ObsUserComponent implements OnInit {
   id!: number;

@@ -7,7 +7,6 @@ import { Recipe } from '../recipe.model';
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
-  styleUrls: ['./recipe-list.component.scss'],
 })
 export class RecipeListComponent implements OnInit, OnDestroy {
   // @Output() recipeWasSelected = new EventEmitter<Recipe>();

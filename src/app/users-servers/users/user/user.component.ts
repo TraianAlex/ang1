@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs/internal/Subscription';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss'],
 })
 export class UserComponent implements OnInit, OnDestroy {
   user!: { id: number; name: string };
