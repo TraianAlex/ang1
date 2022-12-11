@@ -6,16 +6,8 @@ import { TodayComponent } from './today/today.component';
 import { DashboardComponent } from './dashboard.component';
 import { NavigationComponent } from '../navigation/navigation.component';
 
-
 @NgModule({
-  declarations: [
-    TodayComponent,
-    DashboardComponent
-  ],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule,
-    NavigationComponent,
-  ]
+  declarations: [DashboardComponent],
+  imports: [CommonModule, DashboardRoutingModule, NavigationComponent, TodayComponent],
 })
-export class DashboardModule { }
+export class DashboardModule {}
