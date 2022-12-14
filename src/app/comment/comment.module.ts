@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { CommentRoutingModule } from './comment-routing.module';
+
 import { CommentComponent } from './comment.component';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [CommentComponent],

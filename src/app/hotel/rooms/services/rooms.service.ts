@@ -1,10 +1,11 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { shareReplay } from 'rxjs';
+
 import { AppConfig } from 'src/app/app-config/app-config.interface';
 import { APP_SERVICE_CONFIG } from 'src/app/app-config/app-config.service';
+
 import { RoomList } from '../rooms';
-import { shareReplay } from 'rxjs';
-//import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -52,7 +53,6 @@ export class RoomsService {
     .pipe(shareReplay(1));
 
   constructor(@Inject(APP_SERVICE_CONFIG) private config: AppConfig, private http: HttpClient) {
-    //console.log(environment.apiEndpoint)
     console.log(this.config.apiEndpoint);
   }
 

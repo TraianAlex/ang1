@@ -13,9 +13,11 @@ export class RequestInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    console.log('request interceptor', request);
     if (request.method === 'POST') {
-      const newRequest = request.clone({ headers: new HttpHeaders({ token: '1xe333' }) });
+      const newRequest = request.clone({
+        headers: new HttpHeaders({ 'Access-Control-Allow-Origin': '*' }),
+      });
+      console.log('request interceptor', newRequest);
       return next.handle(newRequest);
     }
     return next.handle(request);

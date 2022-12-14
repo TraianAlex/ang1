@@ -24,7 +24,7 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/biding"
+          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="/binding"
             >Data Binding</a
           >
         </li>
@@ -162,6 +162,32 @@
               >
             </li>
           </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Http
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a
+                class="dropdown-item"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                routerLink="/post"
+                >Post</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/standalone">Standalone</a>
         </li>
       </ul>
     </div>

@@ -5,6 +5,8 @@
 /tmp
 /out-tsc
 /bazel-out
+/src/environments/environment.secret.ts
+/src/assets/note.txt
 
 # Node
 /node_modules

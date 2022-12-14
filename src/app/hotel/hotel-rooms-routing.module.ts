@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { CommentGuard } from '../comment/guard/comment.guard';
 import { LoginGuard } from './guards/login.guard';
 import { RoomGuard } from './guards/room.guard';
+
 import { HotelComponent } from './hotel.component';
 import { LoginComponent } from './login/login.component';
 import { RoomComponent } from './rooms/room/room.component';
@@ -30,6 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('../comment/comment.module').then((m) => m.CommentModule),
     resolve: { comments: CommentGuard },
   },
+  { path: 'posts', loadChildren: () => import('../posts/posts.module').then((m) => m.PostsModule) },
 ];
 
 @NgModule({

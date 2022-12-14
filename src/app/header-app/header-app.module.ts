@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderAppComponent } from './header-app.component';
+
 import { AppRoutingModule } from '../app-routing.module';
+
+import { HeaderAppComponent } from './header-app.component';
 
 @NgModule({
   declarations: [HeaderAppComponent],
