@@ -1,0 +1,38 @@
+{
+  "rooms": [
+    {
+      "id": 1,
+      "roomNumber": 1,
+      "roomType": "Deluxe Room",
+      "amenities": "Free Wi-Fi, Tv, Bathroom",
+      "price": 100,
+      "photos": "https://www.1hotels.com/sites/default/files/styles/cards_2_constrained/public/2021-04/1_Hotel_Guestrooms07V2.jpg?h=dd930c52&itok=pzuQlbm2",
+      "checkinTime": "-002021-11-11T05:17:32.000Z",
+      "checkoutTime": "-002021-11-12T05:17:32.000Z",
+      "rating": 3.5
+    },
+    {
+      "id": 2,
+      "roomNumber": 2,
+      "roomType": "Deluxe Room",
+      "amenities": "Air COnditioner, Free Wi-Fi, Tv, Bathroom",
+      "price": 200,
+      "photos": "https://www.1hotels.com/sites/default/files/styles/cards_2_constrained/public/2021-04/1_Hotel_Guestrooms07V2.jpg?h=dd930c52&itok=pzuQlbm2",
+      "checkinTime": "-002021-11-11T05:17:32.000Z",
+      "checkoutTime": "-002021-11-12T05:17:32.000Z",
+      "rating": 4.5654
+    },
+    {
+      "id": 3,
+      "roomNumber": 3,
+      "roomType": "Pivate Suite",
+      "amenities": "Air COnditioner, Free Wi-Fi, Tv, Bathroom, Kitchen",
+      "price": 300,
+      "photos": "https://www.1hotels.com/sites/default/files/styles/cards_2_constrained/public/2021-04/1_Hotel_Guestrooms07V2.jpg?h=dd930c52&itok=pzuQlbm2",
+      "checkinTime": "-002021-11-11T05:17:32.000Z",
+      "checkoutTime": "-002021-11-12T05:17:32.000Z",
+      "rating": 4.7
+    }
+  ],
+  "posts": []
+}

@@ -11,7 +11,7 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { HttpEventType } from '@angular/common/http';
-import { catchError, map, of, Subject, Subscription } from 'rxjs';
+import { catchError, map, Observable, of, Subject, Subscription } from 'rxjs';
 import { HeaderAppComponent } from '../../header-app/header-app.component';
 import { Room, RoomList } from './rooms';
 import { RoomsService } from './services/rooms.service';
@@ -24,47 +24,47 @@ import { FormControl } from '@angular/forms';
 })
 export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterViewChecked, OnDestroy {
   private subscription!: Subscription;
+  private roomsChangedSubs!: Subscription;
+  private roomsSubscription!: Subscription;
+  roomsChanged = new Subject<RoomList[]>();
   error$ = new Subject<string>();
   getError$ = this.error$.asObservable();
-  rooms$ = this.roomsService.getRooms$.pipe(
-    catchError((err) => {
-      //console.error(err);
-      this.error$.next(err.message); // usually not here. moved to a service or exception handling
-      return of([]);
-    })
-  );
+  // rooms$ = this.roomsService.getRooms$.pipe(
+  //   catchError((err) => {
+  //     // console.error(err);
+  //     this.error$.next(err.message); // usually not here. moved to a service or exception handling
+  //     return of([]);
+  //   })
+  // );
   // roomsCount$ = this.roomsService.getRooms$.pipe(
   //   map(rooms => rooms.length)
   // );
   priceFilter = new FormControl(0);
 
-  roomsChanged = new Subject<RoomList[]>();
-  hotelName = 'Hilton';
-  numberOfRooms = 10;
+  // numberOfRooms = 10;
   hideRooms = true;
-  rooms: Room = {
-    totalRooms: 20,
-    availableRooms: 10,
-    bookedRooms: 5,
-  };
-  roomList: RoomList[] = [];
+  // rooms: Room = {
+  //   totalRooms: 20,
+  //   availableRooms: 10,
+  //   bookedRooms: 5,
+  // };
+  roomList!: RoomList[];
   selectedRoom!: RoomList;
   title = 'Room list';
   totalBytes = 0;
 
-  @ViewChild(HeaderAppComponent) headerComponent!: HeaderAppComponent; // , {static: true}
-  @ViewChildren(HeaderAppComponent) headerChildrenComponent!: QueryList<HeaderAppComponent>;
+  // @ViewChild(HeaderAppComponent) headerComponent!: HeaderAppComponent; // , {static: true}
+  // @ViewChildren(HeaderAppComponent) headerChildrenComponent!: QueryList<HeaderAppComponent>;
 
   constructor(@SkipSelf() private roomsService: RoomsService) {
-    console.log('a singleton instance initialized');
+    // console.log('a singleton instance initialized');
   }
 
   ngOnInit(): void {
-    this.roomsChanged.subscribe((data) => {
+    this.roomsChangedSubs = this.roomsChanged.subscribe((data) => {
       this.roomList = data;
     });
-    //console.log(this.headerComponent);
-    this.roomList = this.roomsService.getRooms();
+    // console.log('headerComponent', this.headerComponent);
     this.subscription = this.roomsService.getPhotos().subscribe((event) => {
       switch (event.type) {
         case HttpEventType.Sent: {
@@ -84,9 +84,9 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
         }
       }
     });
-    // this.subscription = this.roomsService.getRooms$.subscribe(rooms => {
-    //   this.roomList = rooms;
-    // });
+    this.roomsSubscription = this.roomsService
+      .getRooms()
+      .subscribe((rooms) => (this.roomList = rooms));
   }
 
   ngDoCheck(): void {
@@ -94,10 +94,10 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
   }
 
   ngAfterViewInit(): void {
-    //console.log(this.headerComponent);
-    //this.headerComponent.title = 'Rooms view';
-    //console.log(this.headerChildrenComponent);
-    //this.headerChildrenComponent.last.title = 'Last Title';
+    // console.log('header component', this.headerComponent);
+    // this.headerComponent.title = 'Rooms view';
+    // console.log('headerChildrenComponent', this.headerChildrenComponent);
+    // this.headerChildrenComponent.last.title = 'Last Title';
   }
 
   ngAfterViewChecked(): void {
@@ -106,17 +106,16 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
 
   toggle() {
     this.hideRooms = !this.hideRooms;
-    this.title = 'Rooms List';
+    this.title = 'Rooms List toggled';
   }
 
   selectRoom(room: RoomList) {
     this.selectedRoom = room;
-    //console.log(room);
   }
 
   addRoom() {
     const room: RoomList = {
-      roomNumber: 4,
+      roomNumber: 3,
       roomType: 'Other Room',
       amenities: 'Free Wi-Fi, Tv, Bathroom',
       price: 150,
@@ -126,45 +125,34 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
       checkoutTime: new Date('15-Nov-2021'),
       rating: 4.2,
     };
-    //this.roomList.push(room);
-    this.roomList = [...this.roomList, room];
-    // this.roomsService.addRoom(room).subscribe(data => {
-    //   this.roomList = data;
-    // });
+    this.roomsService.addRoom(room).subscribe((data) => {
+      this.roomList = [...this.roomList, data];
+    });
   }
 
   editRoom() {
-    const room: RoomList = {
-      roomNumber: 3,
+    const formData = {
+      id: 1,
       roomType: 'Other Room changed',
-      amenities: 'Free Wi-Fi, Tv, Bathroom',
-      price: 150,
-      photos:
-        'https://www.1hotels.com/sites/default/files/styles/cards_2_constrained/public/2021-04/1_Hotel_Guestrooms07V2.jpg?h=dd930c52&itok=pzuQlbm2',
-      checkinTime: new Date('14-Nov-2021'),
-      checkoutTime: new Date('15-Nov-2021'),
-      rating: 4.2,
     };
-    // this.roomList.splice(room.roomNumber - 1, 1);
-    // this.roomList = [...this.roomList, room];
-    this.roomList.splice(+room.roomNumber - 1, 1, room);
-    this.roomsChanged.next(this.roomList.slice());
-    // this.roomsService.editRoom(room).subscribe(data => {
-    //   this.roomList = data;
-    // });
+    this.roomsService.editRoom(formData).subscribe((newRoom) => {
+      this.roomList.splice(+formData.id - 1, 1, newRoom);
+      this.roomsChanged.next(this.roomList.slice());
+    });
   }
 
   deleteRoom(id: string) {
-    this.roomList.splice(+id - 1, 1);
-    this.roomsChanged.next(this.roomList.slice());
-    // this.roomsService.delete(id).subscribe(data => {
-    //   this.roomList = data;
-    // });
+    this.roomsService.delete(id).subscribe((data) => {
+      this.roomList.splice(+id - 1, 1);
+      this.roomsChanged.next(this.roomList.slice());
+    });
   }
 
   ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+    this.roomsChangedSubs.unsubscribe();
+    this.roomsSubscription.unsubscribe();
   }
 }
