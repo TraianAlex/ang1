@@ -1,0 +1,39 @@
+<header
+  style="display: flex; gap: 2rem; justify-content: center; align-items: center; margin: 1.5rem 0"
+>
+  <h4>{{ title }}</h4>
+  <button
+    class="btn"
+    [ngStyle]="{ 'background-color': showAddTodo ? 'red' : 'green' }"
+    (click)="toggleAddTask()"
+  >
+    {{ showAddTodo ? 'Close' : 'Add' }}
+  </button>
+</header>
+<div class="mb-4" *ngIf="showAddTodo">
+  <div class="form-group">
+    <label for="description">New Item</label>
+    <input
+      type="text"
+      id="description"
+      class="form-control"
+      #desc
+      (keyup)="keyPressed($event, desc)"
+      required
+    />
+  </div>
+  <div class="form-group mt-3">
+    <label for="daytime">Day & Time</label>
+    <input
+      type="text"
+      id="daytime"
+      class="form-control"
+      #daytime
+      (keyup)="keyPressed($event, daytime)"
+      required
+    />
+  </div>
+  <button class="btn btn-primary mt-3" type="button" (click)="addItem(desc.value, daytime.value)">
+    Save
+  </button>
+</div>

@@ -29,6 +29,7 @@ export class RoomsAddComponent implements OnInit {
     this.roomsService.addRoom(this.room).subscribe((room) => {
       this.successMessage = 'Room added successfully';
       roomsForm.reset(); // roomsForm.resetForm({ roomType: '', amenities: '' });
+      this.roomsService.roomAdded.next(room);
     });
   }
 }

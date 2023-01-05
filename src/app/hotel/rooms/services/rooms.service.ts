@@ -15,6 +15,7 @@ export class RoomsService {
   // getRooms$ = this.http
   //   .get<RoomList[]>(`${this.config.apiEndpoint}/rooms`, { headers: this.headers })
   //   .pipe(shareReplay(1));
+  roomAdded = new Subject<RoomList>();
 
   constructor(@Inject(APP_SERVICE_CONFIG) private config: AppConfig, private http: HttpClient) {
     console.log(this.config.apiEndpoint);

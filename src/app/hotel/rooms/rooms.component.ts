@@ -26,6 +26,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
   private subscription!: Subscription;
   private roomsChangedSubs!: Subscription;
   private roomsSubscription!: Subscription;
+  private roomAdded!: Subscription;
   roomsChanged = new Subject<RoomList[]>();
   error$ = new Subject<string>();
   getError$ = this.error$.asObservable();
@@ -63,6 +64,9 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
   ngOnInit(): void {
     this.roomsChangedSubs = this.roomsChanged.subscribe((data) => {
       this.roomList = data;
+    });
+    this.roomAdded = this.roomsService.roomAdded.subscribe((data) => {
+      this.roomList = [...this.roomList, data];
     });
     // console.log('headerComponent', this.headerComponent);
     this.subscription = this.roomsService.getPhotos().subscribe((event) => {
@@ -154,5 +158,6 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
     }
     this.roomsChangedSubs.unsubscribe();
     this.roomsSubscription.unsubscribe();
+    this.roomAdded.unsubscribe();
   }
 }
