@@ -9,7 +9,7 @@ import { RoomsService } from '../services/rooms.service';
   styleUrls: ['./rooms-add.component.scss'],
 })
 export class RoomsAddComponent implements OnInit {
-  room: RoomList = {
+  room: Omit<RoomList, 'id'> = {
     roomNumber: '',
     roomType: '',
     amenities: '',

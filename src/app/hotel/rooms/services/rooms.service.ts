@@ -16,6 +16,7 @@ export class RoomsService {
   //   .get<RoomList[]>(`${this.config.apiEndpoint}/rooms`, { headers: this.headers })
   //   .pipe(shareReplay(1));
   roomAdded = new Subject<RoomList>();
+  roomDeleted = new Subject<RoomList>();
 
   constructor(@Inject(APP_SERVICE_CONFIG) private config: AppConfig, private http: HttpClient) {
     console.log(this.config.apiEndpoint);
@@ -25,7 +26,7 @@ export class RoomsService {
     return this.http.get<RoomList[]>(`${this.config.apiEndpoint}/rooms`, { headers: this.headers });
   }
 
-  addRoom(room: RoomList) {
+  addRoom(room: Omit<RoomList, 'id'>) {
     return this.http.post<RoomList>(`${this.config.apiEndpoint}/rooms`, room, {
       headers: this.headers,
     });
@@ -35,7 +36,11 @@ export class RoomsService {
     return this.http.patch<RoomList>(`${this.config.apiEndpoint}/rooms/${room.id}`, room);
   }
 
-  delete(id: string) {
+  delete(room: RoomList) {
+    return this.http.delete(`${this.config.apiEndpoint}/rooms/${room.id}`);
+  }
+
+  delete2(id: number | string) {
     return this.http.delete(`${this.config.apiEndpoint}/rooms/${id}`);
   }
 

@@ -9,7 +9,6 @@ import { Todo, TodosService } from '../todos.service';
   styleUrls: ['./new-todo.component.scss'],
 })
 export class NewTodoComponent implements OnInit {
-  //private subject = new Subject<any>();
   showAddTodo: boolean = false;
   @ViewChild('desc', { static: false }) desc!: ElementRef;
   @ViewChild('daytime', { static: false }) day!: ElementRef;
@@ -21,7 +20,6 @@ export class NewTodoComponent implements OnInit {
 
   toggleAddTask() {
     this.showAddTodo = !this.showAddTodo;
-    //this.subject.next(this.showAddTodo);
   }
 
   keyPressed($event: { which: number }, input: any) {

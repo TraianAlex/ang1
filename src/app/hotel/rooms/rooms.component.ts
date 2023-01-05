@@ -25,8 +25,9 @@ import { FormControl } from '@angular/forms';
 export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterViewChecked, OnDestroy {
   private subscription!: Subscription;
   private roomsChangedSubs!: Subscription;
-  private roomsSubscription!: Subscription;
-  private roomAdded!: Subscription;
+  private roomsGetSub!: Subscription;
+  private roomAddedSub!: Subscription;
+  private roomDeleteSub!: Subscription;
   roomsChanged = new Subject<RoomList[]>();
   error$ = new Subject<string>();
   getError$ = this.error$.asObservable();
@@ -65,8 +66,11 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
     this.roomsChangedSubs = this.roomsChanged.subscribe((data) => {
       this.roomList = data;
     });
-    this.roomAdded = this.roomsService.roomAdded.subscribe((data) => {
+    this.roomAddedSub = this.roomsService.roomAdded.subscribe((data) => {
       this.roomList = [...this.roomList, data];
+    });
+    this.roomDeleteSub = this.roomsService.roomDeleted.subscribe((room) => {
+      this.roomList = this.roomList.filter((t) => +t.id !== room.id);
     });
     // console.log('headerComponent', this.headerComponent);
     this.subscription = this.roomsService.getPhotos().subscribe((event) => {
@@ -88,9 +92,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
         }
       }
     });
-    this.roomsSubscription = this.roomsService
-      .getRooms()
-      .subscribe((rooms) => (this.roomList = rooms));
+    this.roomsGetSub = this.roomsService.getRooms().subscribe((rooms) => (this.roomList = rooms));
   }
 
   ngDoCheck(): void {
@@ -118,7 +120,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
   }
 
   addRoom() {
-    const room: RoomList = {
+    const room: Omit<RoomList, 'id'> = {
       roomNumber: 3,
       roomType: 'Other Room',
       amenities: 'Free Wi-Fi, Tv, Bathroom',
@@ -136,7 +138,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
 
   editRoom() {
     const formData = {
-      id: 1,
+      id: 2,
       roomType: 'Other Room changed',
     };
     this.roomsService.editRoom(formData).subscribe((newRoom) => {
@@ -145,19 +147,18 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
     });
   }
 
-  deleteRoom(id: string) {
-    this.roomsService.delete(id).subscribe((data) => {
+  deleteRoom2(id: string) {
+    this.roomsService.delete2(id).subscribe(() => {
       this.roomList.splice(+id - 1, 1);
       this.roomsChanged.next(this.roomList.slice());
     });
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-    this.roomsChangedSubs.unsubscribe();
-    this.roomsSubscription.unsubscribe();
-    this.roomAdded.unsubscribe();
+    this.subscription?.unsubscribe();
+    this.roomsChangedSubs?.unsubscribe();
+    this.roomsGetSub?.unsubscribe();
+    this.roomAddedSub?.unsubscribe();
+    this.roomDeleteSub?.unsubscribe();
   }
 }
