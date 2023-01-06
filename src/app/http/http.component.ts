@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { Post } from './post.model';
 import { PostsService } from './posts.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-http',
@@ -10,6 +11,7 @@ import { PostsService } from './posts.service';
   styleUrls: ['./http.component.scss'],
 })
 export class HttpComponent implements OnInit, OnDestroy {
+  @ViewChild('postForm', { static: false }) postForm!: NgForm;
   loadedPosts: Post[] = [];
   isFetching = false;
   error: string | null = null;
@@ -23,16 +25,16 @@ export class HttpComponent implements OnInit, OnDestroy {
     });
 
     this.isFetching = true;
-    this.postsService.fetchPosts().subscribe(
-      (posts) => {
+    this.postsService.fetchPosts().subscribe({
+      next: (posts) => {
         this.isFetching = false;
         this.loadedPosts = posts;
       },
-      (error) => {
+      error: (error) => {
         this.isFetching = false;
         this.error = error.message;
-      }
-    );
+      },
+    });
   }
 
   onCreatePost(postData: Post) {
@@ -42,21 +44,22 @@ export class HttpComponent implements OnInit, OnDestroy {
     //     console.log(responseData);
     //   });
     this.postsService.createAndStorePost(postData.title, postData.content);
+    this.postForm.reset();
   }
 
   onFetchPosts() {
     this.isFetching = true;
-    this.postsService.fetchPosts().subscribe(
-      (posts) => {
+    this.postsService.fetchPosts().subscribe({
+      next: (posts) => {
         this.isFetching = false;
         this.loadedPosts = posts;
       },
-      (error) => {
+      error: (error) => {
         this.isFetching = false;
         this.error = error.message;
         console.log(error);
-      }
-    );
+      },
+    });
   }
 
   onClearPosts() {

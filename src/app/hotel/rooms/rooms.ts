@@ -5,6 +5,7 @@ export interface Room {
 }
 
 export interface RoomList {
+  id: string | number;
   roomNumber: string | number;
   roomType: string;
   amenities: string;

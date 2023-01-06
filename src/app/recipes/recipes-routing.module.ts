@@ -18,7 +18,7 @@ const routes: Routes = [
     component: FoodRecipesComponent,
     canActivate: [AuthRecipesGuard],
     children: [
-      { path: 'recipes', component: RecipeStartComponent, resolve: [RecipesResolverService] },
+      { path: '', component: RecipeStartComponent, resolve: [RecipesResolverService] },
       { path: 'new', component: RecipeEditComponent, resolve: [RecipesResolverService] },
       { path: ':id', component: RecipeDetailComponent, resolve: [RecipesResolverService] },
       { path: ':id/edit', component: RecipeEditComponent, resolve: [RecipesResolverService] },

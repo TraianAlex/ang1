@@ -9,7 +9,7 @@ import { RoomsService } from '../services/rooms.service';
   styleUrls: ['./rooms-add.component.scss'],
 })
 export class RoomsAddComponent implements OnInit {
-  room: RoomList = {
+  room: Omit<RoomList, 'id'> = {
     roomNumber: '',
     roomType: '',
     amenities: '',
@@ -29,6 +29,7 @@ export class RoomsAddComponent implements OnInit {
     this.roomsService.addRoom(this.room).subscribe((room) => {
       this.successMessage = 'Room added successfully';
       roomsForm.reset(); // roomsForm.resetForm({ roomType: '', amenities: '' });
+      this.roomsService.roomAdded.next(room);
     });
   }
 }

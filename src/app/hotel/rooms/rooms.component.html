@@ -1,15 +1,23 @@
-<h3>Welcome to {{ hotelName }} <span class="text-muted">from room component</span></h3>
+<h3>Welcome <span class="text-muted">from rooms component</span></h3>
 
-<div [hidden]="!hideRooms">
+<!-- <div [hidden]="!hideRooms">
   Number of rooms:
   <span
     [ngStyle]="{ color: rooms.availableRooms ? 'steelblue' : 'red' }"
     [innerText]="numberOfRooms"
   >
   </span>
-</div>
+</div> -->
 
-{{ !rooms.availableRooms && 'No rooms' }}
+<!-- {{ !rooms.availableRooms && 'No rooms' }} -->
+
+<button class="btn btn-primary me-1" (click)="toggle()">Toggle</button>
+<button class="btn btn-primary me-1" (click)="editRoom()">Edit Room 3</button>
+<button class="btn btn-primary me-1" (click)="deleteRoom2('1')">Delete Room 3</button>
+
+<h4>Total bytes loaded {{ totalBytes }}</h4>
+
+<!-- <h5>{{ rooms$ | async | json }}</h5> -->
 
 <button class="btn btn-primary me-1" type="button" (click)="addRoom()">Add room</button>
 <button class="btn btn-primary me-1" type="button" routerLink="/hotel/rooms/add">
@@ -25,13 +33,14 @@
 </div>
 
 <h5>Error(api): {{ getError$ | async }}</h5>
-<!-- <h5>Number of rooms(api): {{ roomsCount$ | async }}</h5> -->
+<!-- <h4>Number of rooms(api): {{ roomsCount$ | async }}</h4> -->
 <!-- {{ priceFilter | json }} -->
 <div>
   <input type="number" class="form-control" placeholder="Price" [formControl]="priceFilter" />
 </div>
-<div *ngIf="rooms.availableRooms > 0 && hideRooms">
-  <!-- <div *ngIf="rooms$ | async as rooms">  [rooms]="rooms" -->
+<!-- <div *ngIf="rooms.availableRooms > 0 && hideRooms"> -->
+<div *ngIf="hideRooms">
+  <!-- <div *ngIf="roomList | async as rooms"> -->
   <app-rooms-list
     [rooms]="roomList"
     [title]="title"
@@ -39,13 +48,5 @@
     (selectedRoom)="selectRoom($event)"
   ></app-rooms-list>
 </div>
-
-<button class="btn btn-primary me-1" (click)="toggle()">Toggle</button>
-<button class="btn btn-primary me-1" (click)="editRoom()">Edit Room 3</button>
-<button class="btn btn-primary me-1" (click)="deleteRoom('3')">Delete Room 3</button>
-
-<h4>Total bytes loaded {{ totalBytes }}</h4>
-
-<!-- <h5>{{ rooms$ | async | json }}</h5> -->
 
 <pre [hidden]="hideRooms">{{ roomList | json }}</pre>

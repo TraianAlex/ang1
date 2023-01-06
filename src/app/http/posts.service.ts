@@ -19,17 +19,18 @@ export class PostsService {
   createAndStorePost(title: string, content: string) {
     const postData: Post = { title: title, content: content };
     this.http
-      .post<{ name: string }>(this.config.firebaseEndPoint, postData, {
+      .post<{ name: string }>(`${this.config.apiEndpoint}/posts`, postData, {
+        // firebaseEndPoint
         observe: 'response', // body(default) return data extracted and converted to js object automatically
       })
-      .subscribe(
-        (responseData) => {
+      .subscribe({
+        next: (responseData) => {
           console.log(responseData);
         },
-        (error) => {
+        error: (error) => {
           this.error.next(error.message);
-        }
-      );
+        },
+      });
   }
 
   fetchPosts() {
@@ -37,7 +38,8 @@ export class PostsService {
     searchParams = searchParams.append('print', 'pretty');
     searchParams = searchParams.append('custom', 'key');
     return this.http
-      .get<{ [key: string]: Post }>(this.config.firebaseEndPoint, {
+      .get<{ [key: string]: Post }>(`${this.config.apiEndpoint}/posts`, {
+        // firebaseEndPoint
         headers: new HttpHeaders({ 'Custom-Header': 'Hello' }),
         params: searchParams,
         responseType: 'json', // text, blob
@@ -61,7 +63,8 @@ export class PostsService {
 
   deletePosts() {
     return this.http
-      .delete(this.config.firebaseEndPoint, {
+      .delete(`${this.config.apiEndpoint}/posts`, {
+        // firebaseEndPoint
         observe: 'events',
         responseType: 'text',
       })

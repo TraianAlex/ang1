@@ -1,4 +1,4 @@
-<h4>{{ title }}</h4>
+<h4>title: {{ title }}</h4>
 <!-- {{ roomList }} -->
 <table class="table">
   <tr>
@@ -22,6 +22,7 @@
       let o = odd;
       let i = index
     "
+    (click)="goToRoom(room.id)"
   >
     <td>{{ i + 1 | percent }}</td>
     <td>{{ e ? 'Even' : 'Odd' }}</td>
@@ -44,6 +45,7 @@
         <!--/hotel/rooms-->
         Book room
       </button>
+      <button type="button" class="btn btn-primary" (click)="removeRoom(room)">Delete</button>
     </td>
   </tr>
 </table>

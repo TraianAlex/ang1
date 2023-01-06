@@ -22,13 +22,14 @@ export class DataStorageService {
 
   storeRecipes() {
     const recipes = this.recipeService.getRecipes();
-    this.http.put(this.config.recipesEndPoint, recipes).subscribe((response) => {
+    this.http.put(`${this.config.apiEndpoint}/recipes`, recipes).subscribe((response) => {
+      // recipesEndPoint
       console.log(response);
     });
   }
 
   fetchRecipes() {
-    return this.http.get<Recipe[]>(this.config.recipesEndPoint).pipe(
+    return this.http.get<Recipe[]>(`${this.config.apiEndpoint}/recipes`).pipe(
       map((recipes) => {
         return recipes?.map((recipe) => {
           return {

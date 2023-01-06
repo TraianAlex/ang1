@@ -40,6 +40,7 @@ const appRoutes: Routes = [
     path: 'standalone',
     loadChildren: () => import('./stand-alone/stand-alone.module').then((m) => m.StandAloneModule),
   },
+  { path: 'todos', loadChildren: () => import('./todos/todos.module').then((m) => m.TodosModule) },
   { path: '**', redirectTo: '/not-found' },
 ];
 
@@ -47,7 +48,7 @@ const appRoutes: Routes = [
   declarations: [],
   imports: [
     // RouterModule.forRoot(appRoutes, {useHash: true})
-    RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules }),
+    RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules }), // , enableTracing: true
   ],
   exports: [RouterModule],
 })

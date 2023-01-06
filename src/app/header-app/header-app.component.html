@@ -161,6 +161,15 @@
                 >Pipes</a
               >
             </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                routerLink="/todos"
+                >Todos</a
+              >
+            </li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -193,4 +202,4 @@
     </div>
   </div>
 </nav>
-<h3>{{ title }}</h3>
+<h4>{{ title }}</h4>
