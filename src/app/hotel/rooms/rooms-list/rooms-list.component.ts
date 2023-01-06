@@ -8,6 +8,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { RoomList } from '../rooms';
 import { RoomsService } from '../services/rooms.service';
@@ -23,7 +24,7 @@ export class RoomsListComponent implements OnInit, OnChanges {
   @Input() price: number = 0;
   @Output() selectedRoom = new EventEmitter<RoomList>();
 
-  constructor(private roomsService: RoomsService) {}
+  constructor(private roomsService: RoomsService, private router: Router) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['title']) {
@@ -40,5 +41,9 @@ export class RoomsListComponent implements OnInit, OnChanges {
   removeRoom(room: RoomList) {
     this.roomsService.delete(room).subscribe();
     this.roomsService.roomDeleted.next(room);
+  }
+
+  goToRoom(id: string | number) {
+    this.router.navigate(['/hotel/rooms/' + id]);
   }
 }

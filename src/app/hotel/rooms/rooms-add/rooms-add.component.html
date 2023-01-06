@@ -12,6 +12,16 @@
     <form #roomsForm="ngForm" (ngSubmit)="addRoom(roomsForm)">
       <div class="mb-3">
         <input
+          type="number"
+          class="form-control"
+          name="roomNumber"
+          placeholder="Room number"
+          [(ngModel)]="room.roomNumber"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <input
           type="text"
           class="form-control"
           name="roomType"

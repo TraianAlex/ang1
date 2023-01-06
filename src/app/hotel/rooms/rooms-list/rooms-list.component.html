@@ -22,6 +22,7 @@
       let o = odd;
       let i = index
     "
+    (click)="goToRoom(room.id)"
   >
     <td>{{ i + 1 | percent }}</td>
     <td>{{ e ? 'Even' : 'Odd' }}</td>
