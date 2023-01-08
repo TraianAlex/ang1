@@ -28,6 +28,7 @@ import { FormsReactiveComponent } from './forms-reactive/forms-reactive.componen
 import { FormsReactive2Component } from './forms-reactive2/forms-reactive2.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { HttpComponent } from './http/http.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { HttpComponent } from './http/http.component';
     HttpClientModule,
     HeaderAppModule,
     CoreModule,
+    SharedModule
   ],
   bootstrap: [AppComponent],
   // entryComponents: [AlertComponent], // for angular < 9
