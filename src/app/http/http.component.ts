@@ -38,13 +38,9 @@ export class HttpComponent implements OnInit, OnDestroy {
   }
 
   onCreatePost(postData: Post) {
-    // this.http
-    //   .post<{ name: string }>(environment.firebaseEndPoint, postData)
-    //   .subscribe((responseData) => {
-    //     console.log(responseData);
-    //   });
     this.postsService.createAndStorePost(postData.title, postData.content);
     this.postForm.reset();
+    this.onFetchPosts();
   }
 
   onFetchPosts() {
