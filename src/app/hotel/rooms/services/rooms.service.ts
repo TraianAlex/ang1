@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable, shareReplay, Subject } from 'rxjs';
 
@@ -11,6 +11,7 @@ import { RoomList } from '../rooms';
   providedIn: 'root',
 })
 export class RoomsService {
+  private config: AppConfig = inject(APP_SERVICE_CONFIG); // @Inject(APP_SERVICE_CONFIG) private config: AppConfig,
   headers = new HttpHeaders({ token: '123456' });
   // getRooms$ = this.http
   //   .get<RoomList[]>(`${this.config.apiEndpoint}/rooms`, { headers: this.headers })
@@ -18,7 +19,7 @@ export class RoomsService {
   roomAdded = new Subject<RoomList>();
   roomDeleted = new Subject<RoomList>();
 
-  constructor(@Inject(APP_SERVICE_CONFIG) private config: AppConfig, private http: HttpClient) {
+  constructor(private http: HttpClient) {
     console.log(this.config.apiEndpoint);
   }
 

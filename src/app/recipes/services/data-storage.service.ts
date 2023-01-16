@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { exhaustMap, map, take, tap } from 'rxjs/operators';
 
@@ -13,11 +13,11 @@ import { Recipe } from '../food-recipes/recipe.model';
   providedIn: 'root',
 })
 export class DataStorageService {
+  private config: AppConfig = inject(APP_SERVICE_CONFIG); // @Inject(APP_SERVICE_CONFIG) private config: AppConfig,
+
   constructor(
-    @Inject(APP_SERVICE_CONFIG) private config: AppConfig,
     private http: HttpClient,
-    private recipeService: RecipesService,
-    private authService: AuthService
+    private recipeService: RecipesService // private authService: AuthService
   ) {}
 
   storeRecipes() {

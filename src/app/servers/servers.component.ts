@@ -1,7 +1,7 @@
 import {
   AfterViewInit,
   Component,
-  Inject,
+  inject,
   OnInit,
   Optional,
   ViewChild,
@@ -27,6 +27,7 @@ export class ServersComponent implements OnInit, AfterViewInit {
   // newServerContent = '';
 
   @ViewChild('user', { read: ViewContainerRef }) vcr!: ViewContainerRef;
+  private localStorage: Storage = inject(localStorageToken); // @Inject(localStorageToken) private localStorage: Storage
   serverCreationStatus = 'No server was created!';
   allowNewServer = false;
   serverName = 'Test server name';
@@ -38,10 +39,7 @@ export class ServersComponent implements OnInit, AfterViewInit {
   showSecret = false;
   log: Array<number | Date> = [];
 
-  constructor(
-    @Optional() private loggerService: LoggerService,
-    @Inject(localStorageToken) private localStorage: Storage
-  ) {
+  constructor(@Optional() private loggerService: LoggerService) {
     this.serverStatus = Math.random() > 0.5 ? 'online' : 'offline';
     setTimeout(() => {
       this.allowNewServer = true;

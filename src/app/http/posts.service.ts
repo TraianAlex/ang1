@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpEventType, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, map, Subject, tap, throwError } from 'rxjs';
 
@@ -12,9 +12,11 @@ import { Post } from './post.model';
   providedIn: 'root',
 })
 export class PostsService {
+  private config: AppConfig = inject(APP_SERVICE_CONFIG); // @Inject(APP_SERVICE_CONFIG) private config: AppConfig,
+  headers = new HttpHeaders({ token: '123456' });
   error = new Subject<string>();
 
-  constructor(@Inject(APP_SERVICE_CONFIG) private config: AppConfig, private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   createAndStorePost(title: string, content: string) {
     const postData: Post = { title: title, content: content };

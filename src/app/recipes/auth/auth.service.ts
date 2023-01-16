@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -23,14 +23,11 @@ export interface AuthResponseData {
   providedIn: 'root',
 })
 export class AuthService {
+  private config: AppConfig = inject(APP_SERVICE_CONFIG); // @Inject(APP_SERVICE_CONFIG) private config: AppConfig,
   user = new BehaviorSubject<User | null>(null);
   private tokenExpirationTimer: any;
 
-  constructor(
-    @Inject(APP_SERVICE_CONFIG) private config: AppConfig,
-    private http: HttpClient,
-    private router: Router
-  ) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   signup(email: string, password: string) {
     return this.http

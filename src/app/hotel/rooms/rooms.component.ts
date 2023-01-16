@@ -23,11 +23,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./rooms.component.scss'],
 })
 export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterViewChecked, OnDestroy {
-  private subscription!: Subscription;
-  private roomsChangedSubs!: Subscription;
-  private roomsGetSub!: Subscription;
-  private roomAddedSub!: Subscription;
-  private roomDeleteSub!: Subscription;
+  subscriptions: Subscription[] = [];
   roomsChanged = new Subject<RoomList[]>();
   error$ = new Subject<string>();
   getError$ = this.error$.asObservable();
@@ -63,36 +59,38 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
   }
 
   ngOnInit(): void {
-    this.roomsChangedSubs = this.roomsChanged.subscribe((data) => {
-      this.roomList = data;
-    });
-    this.roomAddedSub = this.roomsService.roomAdded.subscribe((data) => {
-      this.roomList = [...this.roomList, data];
-    });
-    this.roomDeleteSub = this.roomsService.roomDeleted.subscribe((room) => {
-      this.roomList = this.roomList.filter((t) => +t.id !== room.id);
-    });
-    // console.log('headerComponent', this.headerComponent);
-    this.subscription = this.roomsService.getPhotos().subscribe((event) => {
-      switch (event.type) {
-        case HttpEventType.Sent: {
-          console.log('Request has been made');
-          break;
+    this.subscriptions.push(
+      this.roomsChanged.subscribe((data) => {
+        this.roomList = data;
+      }),
+      this.roomsService.roomAdded.subscribe((data) => {
+        this.roomList = [...this.roomList, data];
+      }),
+      this.roomsService.roomDeleted.subscribe((room) => {
+        this.roomList = this.roomList.filter((t) => +t.id !== room.id);
+      }),
+      // console.log('headerComponent', this.headerComponent);
+      this.roomsService.getPhotos().subscribe((event) => {
+        switch (event.type) {
+          case HttpEventType.Sent: {
+            console.log('Request has been made');
+            break;
+          }
+          case HttpEventType.ResponseHeader: {
+            console.log('Request success!');
+            break;
+          }
+          case HttpEventType.DownloadProgress: {
+            this.totalBytes += event.loaded;
+            break;
+          }
+          case HttpEventType.Response: {
+            console.log('Request complete!', event.body);
+          }
         }
-        case HttpEventType.ResponseHeader: {
-          console.log('Request success!');
-          break;
-        }
-        case HttpEventType.DownloadProgress: {
-          this.totalBytes += event.loaded;
-          break;
-        }
-        case HttpEventType.Response: {
-          console.log('Request complete!', event.body);
-        }
-      }
-    });
-    this.roomsGetSub = this.roomsService.getRooms().subscribe((rooms) => (this.roomList = rooms));
+      }),
+      this.roomsService.getRooms().subscribe((rooms) => (this.roomList = rooms))
+    );
   }
 
   ngDoCheck(): void {
@@ -155,10 +153,6 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
   }
 
   ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
-    this.roomsChangedSubs?.unsubscribe();
-    this.roomsGetSub?.unsubscribe();
-    this.roomAddedSub?.unsubscribe();
-    this.roomDeleteSub?.unsubscribe();
+    this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 }
