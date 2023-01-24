@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class DataService {
-  private subject = new Subject<any>();
+export class DataService<T> {
+  //private subject = new Subject<T>();
+  private subject: Subject<T> = new BehaviorSubject<T>(null as unknown as T);
 
   constructor() {}
 
-  setData(data: any): void {
+  setData(data: T): void {
     this.subject.next(data);
   }
 
-  getData(): Observable<any> {
+  getData(): Observable<T> {
     return this.subject.asObservable();
   }
 
   clearData(): void {
-    this.subject.next(null);
+    this.subject.next(null as unknown as T);
   }
 }

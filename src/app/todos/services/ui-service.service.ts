@@ -9,7 +9,7 @@ import { DataService } from 'src/app/services/data-service.service';
 export class UiService {
   private showAddTask: boolean = false;
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService<boolean>) {}
 
   toggleAddTask(): void {
     this.showAddTask = !this.showAddTask;
