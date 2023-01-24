@@ -4,13 +4,13 @@
   <h4>{{ title }}</h4>
   <button
     class="btn"
-    [ngStyle]="{ 'background-color': showAddTodo ? 'red' : 'green' }"
+    [ngStyle]="{ 'background-color': showAddTask ? 'red' : 'green' }"
     (click)="toggleAddTask()"
   >
-    {{ showAddTodo ? 'Close' : 'Add' }}
+    {{ showAddTask ? 'Close' : 'Add' }}
   </button>
 </header>
-<div class="mb-4" *ngIf="showAddTodo">
+<div class="mb-4" *ngIf="showAddTask">
   <div class="form-group">
     <label for="description">New Item</label>
     <input

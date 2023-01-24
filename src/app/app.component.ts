@@ -15,22 +15,55 @@ export class AppComponent implements OnInit {
 }
 
 /*
- import { Subject } from 'rxjs';
+export class DataService = {
+  private subject = new Subject<any>();
 
-    const subject = new Subject();
-    export const dataService = {
-      setData: (d: boolean) => subject.next({ value: d }),
-      clearData: () => subject.next(),
-      getData: () => subject.asObservable()
-    };
+  setData(d: any): void {
+    this.subject.next(d);
+  }
+
+  clearData(): void {
+    this.subject.next(null);
+  }
+
+  getData(): Observable<any> {
+    return this.subject.asObservable();
+  }
+};
 -------------------------------------------------
-  const showAdvanceSearch = props.expandedRow ? true : false;
-  dataService.setData(showAdvanceSearch);
------------------------------------------------------
-  import { dataService } from "../table/table";
+  showAdvanceSearch = condition ? true : false;
 
-  const [showAdvanceSearch, setShowAdvanceSearch] = useState(true)
-    dataService.getData().subscribe((message: any) => {
-      setShowAdvanceSearch(message.value);
+  constructor(dataService: DataService) {}
+
+  onToggleTask() {
+    this.dataService.setData(showAdvanceSearch);
+  }
+-----------------------------------------------------
+  myVar: boolean = false;
+
+  constructor(dataService: DataService) {}
+
+  ngOnInit() {
+    this.dataService.getData().subscribe((data: any) => {
+      this.myVal = data.value;
     });
+  }
+-----------------------------------------------------
+const subject = new Subject();
+
+export const dataService = {
+  setData: (d: boolean) => subject.next({ value: d }),
+  clearData: () => subject.next(),
+  getData: () => subject.asObservable()
+};
+-------------------------------------------------
+const showAdvanceSearch = condition ? true : false;
+
+dataService.setData(showAdvanceSearch);
+-----------------------------------------------------
+const [data, setData] = useState(true);
+
+dataService.getData().subscribe((message: any) => {
+  setData(message.value);
+});
 */

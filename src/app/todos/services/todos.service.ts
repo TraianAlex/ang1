@@ -2,8 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 
-import { AppConfig } from '../app-config/app-config.interface';
-import { APP_SERVICE_CONFIG } from '../app-config/app-config.service';
+import { AppConfig } from '../../app-config/app-config.interface';
+import { APP_SERVICE_CONFIG } from '../../app-config/app-config.service';
 
 export type Todo = {
   id?: number | string;

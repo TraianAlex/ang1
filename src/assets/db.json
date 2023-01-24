@@ -137,7 +137,7 @@
       "id": 1,
       "text": "Go to soccer",
       "day": "May 5th at 2:30pm",
-      "completed": false,
+      "completed": true,
       "reminder": true
     },
     {
