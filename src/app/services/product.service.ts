@@ -35,10 +35,13 @@ class Product implements OnInit {
   //let prodList = response.productList;
   ngOnInit(): void {
     // create a subscription that is not depreciated
-    this.productService.getProductList<{ productList: Product[] }>().subscribe((response) => {
-      // continue with the response
-      this.productList = response.productList;
-    }, this.handleError('error'));
+    this.productService.getProductList<{ productList: Product[] }>().subscribe({
+      next: (response) => {
+        // continue with the response
+        this.productList = response.productList;
+      },
+      error: this.handleError,
+    });
 
     // this.productService
     //   .getProductIDAndName<{ prodName: string; productID: number }>()
