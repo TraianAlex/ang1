@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { interval, Observable, Subscription } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
-import { autoUnsubscribe } from 'src/app/shared/decorators/auto-unsubscribe';
+import { autoUnsubscribe, UnsubscribeOnDestroy } from 'src/app/shared/decorators/auto-unsubscribe';
 
 type Observer = {
   next: (arg0: number) => void;
@@ -14,30 +14,45 @@ type Observer = {
   templateUrl: './obs-home.component.html',
   styleUrls: ['./obs-home.component.scss'],
 })
-@autoUnsubscribe
+//@autoUnsubscribe
 export class ObsHomeComponent implements OnInit {
+  @UnsubscribeOnDestroy()
   private firstObsSubscription!: Subscription;
   private firstCustomObsSubscription!: Subscription;
 
   temp: number = 0;
   tempCustom: number | string = 0;
 
-  constructor() {}
+  constructor() {
+    this.firstObsSubscription = new Subscription();
+  }
 
   ngOnInit(): void {
-    this.firstObsSubscription = interval(1000).subscribe((count) => {
-      console.log(count);
-      this.temp = count;
-    });
+    this.firstObsSubscription.add(
+      interval(1000).subscribe((count) => {
+        console.log('count1', count);
+        this.temp = count;
+      })
+    );
 
-    const customIntervalObservable = Observable.create((observer: Observer) => {
+    this.firstObsSubscription.add(
+      interval(1000).subscribe((count) => {
+        console.log('count2', count);
+        this.temp = count;
+        // if (count === 10) {
+        //   this.firstObsSubscription.unsubscribe();
+        // }
+      })
+    );
+
+    const customIntervalObservable = new Observable((observer: Observer) => {
       let count = 0;
       setInterval(() => {
         observer.next(count);
         if (count === 5) {
           observer.complete();
         }
-        if (count > 3) {
+        if (count > 5) {
           observer.error(new Error('Count is greater 3!'));
         }
         count++;
@@ -54,24 +69,28 @@ export class ObsHomeComponent implements OnInit {
           return 'Round: ' + (data + 1);
         })
       )
-      .subscribe(
-        (data: number) => {
+      .subscribe({
+        next: (data: number | string) => {
           console.log(data);
           this.tempCustom = data;
         },
-        (error: { message: string }) => {
+        error: (error: { message: string }) => {
           console.log(error);
           this.tempCustom = error.message;
           alert(error.message);
         },
-        () => {
+        complete: () => {
           console.log('Completed!');
-        }
-      );
+        },
+      });
+  }
+
+  changeTemp() {
+    this.temp = this.temp + 100;
   }
 
   //ngOnDestroy(): void {
-    //this.firstObsSubscription.unsubscribe();
-    //this.firstCustomObsSubscription.unsubscribe();
+  //this.firstObsSubscription.unsubscribe();
+  //this.firstCustomObsSubscription.unsubscribe();
   //}
 }
