@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { interval, Observable, Subscription } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
+import { autoUnsubscribe } from 'src/app/shared/decorators/auto-unsubscribe';
 
 type Observer = {
   next: (arg0: number) => void;
@@ -13,7 +14,8 @@ type Observer = {
   templateUrl: './obs-home.component.html',
   styleUrls: ['./obs-home.component.scss'],
 })
-export class ObsHomeComponent implements OnInit, OnDestroy {
+@autoUnsubscribe
+export class ObsHomeComponent implements OnInit {
   private firstObsSubscription!: Subscription;
   private firstCustomObsSubscription!: Subscription;
 
@@ -68,8 +70,8 @@ export class ObsHomeComponent implements OnInit, OnDestroy {
       );
   }
 
-  ngOnDestroy(): void {
-    this.firstObsSubscription.unsubscribe();
-    this.firstCustomObsSubscription.unsubscribe();
-  }
+  //ngOnDestroy(): void {
+    //this.firstObsSubscription.unsubscribe();
+    //this.firstCustomObsSubscription.unsubscribe();
+  //}
 }
