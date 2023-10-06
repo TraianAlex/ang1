@@ -14,4 +14,11 @@ describe('DataServiceService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should emit the state', () => {
+    service.setData('Hello');
+    service.state$.subscribe((state: any) => {
+      expect(state).toBe('Hello');
+    });
+  });
 });

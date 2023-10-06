@@ -22,4 +22,10 @@ describe('RoomsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should toggle', () => {
+    component.hideRooms = false;
+    component.toggle();
+    expect(component.hideRooms).toBe(true);
+  });
 });
