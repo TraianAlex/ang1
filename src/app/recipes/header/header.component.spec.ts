@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 import { HeaderComponent } from './header.component';
+import { APP_CONFIG, APP_SERVICE_CONFIG } from 'src/app/app-config/app-config.service';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -9,6 +11,7 @@ describe('HeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent],
+      providers: [HttpClient, HttpHandler, { provide: APP_SERVICE_CONFIG, useValue: APP_CONFIG }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);

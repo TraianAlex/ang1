@@ -56,7 +56,7 @@ export class ServerElementComponent
 
   ngAfterContentInit(): void {
     console.log('ngAfterContentInit called');
-    console.log('Text content2: ', this.paragraph.nativeElement.textContent);
+    console.log('Text content2: ', this.paragraph?.nativeElement.textContent);
   }
 
   ngAfterContentChecked(): void {

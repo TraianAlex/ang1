@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
 
 import { FormsReactiveComponent } from './forms-reactive.component';
 
@@ -8,7 +9,8 @@ describe('FormsReactiveComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormsReactiveComponent ]
+      declarations: [ FormsReactiveComponent ],
+      providers: [FormBuilder],
     })
     .compileComponents();
 

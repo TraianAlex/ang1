@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgForm } from '@angular/forms';
 
 import { ShoppingEditComponent } from './shopping-edit.component';
 
@@ -8,7 +9,7 @@ describe('ShoppingEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ShoppingEditComponent],
+      declarations: [ShoppingEditComponent, NgForm],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ShoppingEditComponent);

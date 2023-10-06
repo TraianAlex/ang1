@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
 
 import { RecipeListComponent } from './recipe-list.component';
+import { fakeActivatedRoute } from 'src/app/test-utils/moks';
 
 describe('RecipeListComponent', () => {
   let component: RecipeListComponent;
@@ -9,6 +11,12 @@ describe('RecipeListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RecipeListComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: fakeActivatedRoute,
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(RecipeListComponent);

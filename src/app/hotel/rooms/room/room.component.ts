@@ -21,6 +21,6 @@ export class RoomComponent implements OnInit {
     // this.router.paramMap.subscribe((params) => {
     //   this.roomId = params.get('id');
     // });
-    this.roomId$ = this.router.paramMap.pipe(map((params) => params.get('id')));
+    this.roomId$ = this.router.paramMap?.pipe(map((params) => params.get('id')));
   }
 }

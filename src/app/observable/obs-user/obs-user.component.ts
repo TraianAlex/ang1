@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
+
 import { ObsUserService } from '../obs-user.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class ObsUserComponent implements OnInit {
   constructor(private route: ActivatedRoute, private userService: ObsUserService) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
+    this.route.params?.subscribe((params: Params) => {
       this.id = +params['id'];
     });
     this.stream.subscribe((data) => console.log(data));

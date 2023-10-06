@@ -22,7 +22,7 @@ export class BookingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const roomId = this.route.snapshot.paramMap.get('id');
+    const roomId = this.route.snapshot.paramMap?.get('id');
     this.bookingForm = this.fb.group(
       {
         userData: this.fb.group({

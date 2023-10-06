@@ -25,7 +25,7 @@ export class RecipeEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
+    this.route.params?.subscribe((params: Params) => {
       this.id = +params['id'];
       this.editMode = params['id'] != null;
       this.initForm();
@@ -85,21 +85,18 @@ export class RecipeEditComponent implements OnInit {
         for (let ingredient of recipe.ingredients) {
           newEl = new FormGroup({
             name: new FormControl(ingredient.name, Validators.required),
-            amount: new FormControl(ingredient.amount, [
-              Validators.required,
-              Validators.pattern(/^[1-9]+[0-9]*$/)
-            ]),
+            amount: new FormControl(ingredient.amount, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)]),
           });
           recipeIngredients.push(newEl);
-        // for (let ingredient of recipe.ingredients) {
-        //   newEl = this.fb.group({
-        //     name: this.fb.control(ingredient.name, Validators.required),
-        //     amount: this.fb.control(ingredient.amount, [
-        //       Validators.required,
-        //       Validators.pattern(/^[1-9]+[0-9]*$/),
-        //     ]),
-        //   });
-        //   recipeIngredients.push(newEl);
+          // for (let ingredient of recipe.ingredients) {
+          //   newEl = this.fb.group({
+          //     name: this.fb.control(ingredient.name, Validators.required),
+          //     amount: this.fb.control(ingredient.amount, [
+          //       Validators.required,
+          //       Validators.pattern(/^[1-9]+[0-9]*$/),
+          //     ]),
+          //   });
+          //   recipeIngredients.push(newEl);
         }
       }
     }
