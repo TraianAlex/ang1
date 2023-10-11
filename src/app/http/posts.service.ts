@@ -20,7 +20,7 @@ export class PostsService {
 
   createAndStorePost(title: string, content: string) {
     const postData: Post = { title: title, content: content };
-    this.http
+    return this.http
       .post<{ name: string }>(`${this.config.apiEndpoint}/posts`, postData, {
         // firebaseEndPoint
         observe: 'response', // body(default) return data extracted and converted to js object automatically

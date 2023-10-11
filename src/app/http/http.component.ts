@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { Post } from './post.model';
 import { PostsService } from './posts.service';
@@ -15,14 +14,16 @@ export class HttpComponent implements OnInit, OnDestroy {
   loadedPosts: Post[] = [];
   isFetching = false;
   error: string | null = null;
-  private errorSub!: Subscription;
+  errorSub: Subscription = new Subscription();
 
   constructor(private postsService: PostsService) {}
 
   ngOnInit(): void {
-    this.errorSub = this.postsService.error.subscribe((errorMessage) => {
-      this.error = errorMessage;
-    });
+    this.errorSub.add(
+      this.postsService.error.subscribe((errorMessage) => {
+        this.error = errorMessage;
+      })
+    );
 
     this.isFetching = true;
     this.postsService.fetchPosts().subscribe({
