@@ -14,12 +14,12 @@ export class HttpComponent implements OnInit, OnDestroy {
   loadedPosts: Post[] = [];
   isFetching = false;
   error: string | null = null;
-  errorSub: Subscription = new Subscription();
+  sub: Subscription = new Subscription();
 
   constructor(private postsService: PostsService) {}
 
   ngOnInit(): void {
-    this.errorSub.add(
+    this.sub.add(
       this.postsService.error.subscribe((errorMessage) => {
         this.error = errorMessage;
       })
@@ -46,17 +46,19 @@ export class HttpComponent implements OnInit, OnDestroy {
 
   onFetchPosts() {
     this.isFetching = true;
-    this.postsService.fetchPosts().subscribe({
-      next: (posts) => {
-        this.isFetching = false;
-        this.loadedPosts = posts;
-      },
-      error: (error) => {
-        this.isFetching = false;
-        this.error = error.message;
-        console.log(error);
-      },
-    });
+    this.sub.add(
+      this.postsService.fetchPosts().subscribe(
+        (posts) => {
+          this.isFetching = false;
+          this.loadedPosts = posts;
+        },
+        (error) => {
+          this.isFetching = false;
+          this.error = error.message;
+          console.log(error);
+        }
+      )
+    );
   }
 
   onClearPosts() {
@@ -70,7 +72,7 @@ export class HttpComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.errorSub.unsubscribe();
+    this.sub.unsubscribe();
   }
 
   // private fetchPosts() {

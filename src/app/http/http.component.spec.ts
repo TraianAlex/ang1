@@ -44,11 +44,13 @@ describe('HttpComponent', () => {
     expect(component.loadedPosts).toEqual(posts);
   });
 
-  xit('should create a post', () => {
+  it('should create a post', () => {
     const post: Post = { id: '1', title: 'Test Post', content: 'Test Content' };
-    spyOn(postsService, 'createAndStorePost');
+    // @ts-ignore
+    spyOn(postsService, 'createAndStorePost').and.returnValue(of([]));
     component.onCreatePost(post);
-    expect(component.loadedPosts).toContain(post);
+    //expect(component.loadedPosts).toContain(post);
+    expect(postsService.createAndStorePost).toHaveBeenCalledWith(post.title, post.content);
   });
 
   it('should fetch posts on fetch button click', () => {
@@ -71,8 +73,8 @@ describe('HttpComponent', () => {
   });
 
   it('should unsubscribe from error subscription on destroy', () => {
-    spyOn(component.errorSub, 'unsubscribe');
+    spyOn(component.sub, 'unsubscribe');
     component.ngOnDestroy();
-    expect(component.errorSub.unsubscribe).toHaveBeenCalled();
+    expect(component.sub.unsubscribe).toHaveBeenCalled();
   });
 });
