@@ -96,6 +96,16 @@
       "title": "uuuu",
       "content": "uuuu",
       "id": 8
+    },
+    {
+      "title": "sdfsdfsdf",
+      "content": "sdfsdfsd",
+      "id": 9
+    },
+    {
+      "title": "sdfsdfsd",
+      "content": "sdfsdfs",
+      "id": 10
     }
   ],
   "recipes": [
@@ -144,36 +154,22 @@
       "id": 2,
       "text": "Do laundry",
       "day": "May 6th at 1:30pm",
-      "completed": false,
+      "completed": true,
       "reminder": true
     },
     {
       "id": 3,
       "text": "Food Shopping",
       "day": "May 7th at 12:30pm",
-      "completed": false,
+      "completed": true,
       "reminder": false
     },
     {
-      "text": "wwwww",
-      "day": "ggggg",
-      "completed": false,
+      "text": "groceries",
+      "day": "12/12/2023",
+      "completed": true,
       "reminder": true,
-      "id": 4
-    },
-    {
-      "text": "yyyy",
-      "day": "ooooo",
-      "completed": false,
-      "reminder": true,
-      "id": 5
-    },
-    {
-      "text": "hhhh",
-      "day": "hhhhh",
-      "completed": false,
-      "reminder": true,
-      "id": 6
+      "id": 7
     }
   ]
 }
