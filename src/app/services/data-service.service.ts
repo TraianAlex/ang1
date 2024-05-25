@@ -5,12 +5,10 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class DataService<T> {
-  //private subject = new Subject<T>();
-  private subject: Subject<T> = new BehaviorSubject<T>(null as unknown as T);
+  private subject = new Subject<T>();
+  //private subject: Subject<T> = new BehaviorSubject<T>(null as unknown as T);
 
   state$ = this.subject.asObservable();
-
-  constructor() {}
 
   setData(data: T): void {
     this.subject.next(data);

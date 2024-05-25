@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 
 import { AppConfig } from '../../app-config/app-config.interface';
 import { APP_SERVICE_CONFIG } from '../../app-config/app-config.service';
@@ -33,7 +33,9 @@ export class TodosService {
   }
 
   addTodo(todo: Todo): Observable<Todo> {
-    return this.http.post<Todo>(`${this.config.apiEndpoint}/todos`, todo, httpOptions);
+    return this.http
+      .post<Todo>(`${this.config.apiEndpoint}/todos`, todo, httpOptions)
+      .pipe(tap((todo) => this.todoAdded.next(todo)));
   }
 
   updateTodo(todo: Todo): Observable<Todo> {

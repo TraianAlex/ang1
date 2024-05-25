@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { Todo, TodosService } from '../services/todos.service';
@@ -10,13 +10,13 @@ import { UiService } from '../services/ui-service.service';
   styleUrls: ['./new-todo.component.scss'],
 })
 export class NewTodoComponent implements OnInit, OnDestroy {
-  showAddTask: boolean = false;
-  @ViewChild('desc', { static: false }) desc!: ElementRef;
+  private todoService = inject(TodosService);
+  private uiService = inject(UiService);
+  subscription = new Subscription();
+  @ViewChild('description', { static: false }) description!: ElementRef;
   @ViewChild('daytime', { static: false }) day!: ElementRef;
-  title: string = 'To Do';
-  subscription!: Subscription;
 
-  constructor(private todoService: TodosService, private uiService: UiService) {}
+  showAddTask: boolean = false;
 
   ngOnInit(): void {
     this.subscription = this.uiService.onToggle().subscribe((value) => (this.showAddTask = value));
@@ -40,10 +40,11 @@ export class NewTodoComponent implements OnInit, OnDestroy {
       completed: false,
       reminder: true,
     };
-    this.todoService.addTodo(newTodo).subscribe((todo) => {
-      this.todoService.todoAdded.next(todo);
-    });
-    this.desc.nativeElement.value = '';
+    this.todoService.addTodo(newTodo).subscribe();
+    //(todo) => {
+    //this.todoService.todoAdded.next(todo);
+    //});
+    this.description.nativeElement.value = '';
     this.day.nativeElement.value = '';
   }
 

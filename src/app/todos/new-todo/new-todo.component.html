@@ -1,12 +1,6 @@
-<header
-  style="display: flex; gap: 2rem; justify-content: center; align-items: center; margin: 1.5rem 0"
->
-  <h4>{{ title }}</h4>
-  <button
-    class="btn"
-    [ngStyle]="{ 'background-color': showAddTask ? 'red' : 'green' }"
-    (click)="toggleAddTask()"
-  >
+<header style="display: flex; gap: 2rem; justify-content: center; align-items: center; margin: 1.5rem 0">
+  <h4>To Do</h4>
+  <button class="btn" [ngStyle]="{ 'background-color': showAddTask ? 'red' : 'green' }" (click)="toggleAddTask()">
     {{ showAddTask ? 'Close' : 'Add' }}
   </button>
 </header>
@@ -17,23 +11,14 @@
       type="text"
       id="description"
       class="form-control"
-      #desc
-      (keyup)="keyPressed($event, desc)"
+      #description
+      (keyup)="keyPressed($event, description)"
       required
     />
   </div>
   <div class="form-group mt-3">
     <label for="daytime">Day & Time</label>
-    <input
-      type="text"
-      id="daytime"
-      class="form-control"
-      #daytime
-      (keyup)="keyPressed($event, daytime)"
-      required
-    />
+    <input type="text" id="daytime" class="form-control" #daytime (keyup)="keyPressed($event, daytime)" required />
   </div>
-  <button class="btn btn-primary mt-3" type="button" (click)="addItem(desc.value, daytime.value)">
-    Save
-  </button>
+  <button class="btn btn-primary mt-3" type="button" (click)="addItem(description.value, daytime.value)">Save</button>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { Todo, TodosService } from '../services/todos.service';
@@ -9,17 +9,13 @@ import { Todo, TodosService } from '../services/todos.service';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit, OnDestroy {
-  private getTodosSub!: Subscription;
-  private addTodoSub!: Subscription;
+  private todoService = inject(TodosService);
+  private todosSub = new Subscription();
   items: Todo[] = [];
 
-  constructor(private todoService: TodosService) {}
-
   ngOnInit(): void {
-    this.getTodosSub = this.todoService.todoAdded.subscribe(
-      (todo) => (this.items = [...this.items, todo])
-    );
-    this.addTodoSub = this.todoService.getTodos().subscribe((todos) => (this.items = todos));
+    this.todosSub.add(this.todoService.todoAdded.subscribe((todo) => (this.items = [...this.items, todo])));
+    this.todosSub.add(this.todoService.getTodos().subscribe((todos) => (this.items = todos)));
   }
 
   setCompleted(item: Todo, checked: boolean): void {
@@ -43,7 +39,6 @@ export class TodoListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.getTodosSub.unsubscribe();
-    this.addTodoSub.unsubscribe();
+    this.todosSub.unsubscribe();
   }
 }
