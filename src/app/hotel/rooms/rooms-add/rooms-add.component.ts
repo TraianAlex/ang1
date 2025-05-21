@@ -7,6 +7,7 @@ import { RoomsService } from '../services/rooms.service';
   selector: 'app-rooms-add',
   templateUrl: './rooms-add.component.html',
   styleUrls: ['./rooms-add.component.scss'],
+  standalone: false,
 })
 export class RoomsAddComponent implements OnInit {
   room: Omit<RoomList, 'id'> = {

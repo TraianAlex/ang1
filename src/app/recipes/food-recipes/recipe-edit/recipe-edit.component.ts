@@ -7,6 +7,7 @@ import { RecipesService } from '../../services/recipes.service';
   selector: 'app-recipe-edit',
   templateUrl: './recipe-edit.component.html',
   styleUrls: ['./recipe-edit.component.scss'],
+  standalone: false,
 })
 export class RecipeEditComponent implements OnInit {
   id!: number;

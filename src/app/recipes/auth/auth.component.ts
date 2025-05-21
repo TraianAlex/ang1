@@ -6,10 +6,7 @@ import { AlertComponent } from 'src/app/shared/alert/alert.component';
 import { PlaceholderDirective } from 'src/app/shared/placeholder/placeholder.directive';
 import { AuthResponseData, AuthService } from './auth.service';
 
-@Component({
-  selector: 'app-auth',
-  templateUrl: './auth.component.html',
-})
+@Component({ selector: 'app-auth', templateUrl: './auth.component.html', standalone: false })
 export class AuthComponent implements OnInit, OnDestroy {
   isLoginMode = true;
   isLoading = false;

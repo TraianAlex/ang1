@@ -17,6 +17,7 @@ import { RoomsService } from '../services/rooms.service';
   selector: 'app-rooms-list',
   templateUrl: './rooms-list.component.html',
   // changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class RoomsListComponent implements OnInit, OnChanges {
   @Input() rooms: RoomList[] = [];

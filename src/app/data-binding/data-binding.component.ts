@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-@Component({
-  selector: 'app-data-binding',
-  templateUrl: './data-binding.component.html',
-})
+@Component({ selector: 'app-data-binding', templateUrl: './data-binding.component.html', standalone: false })
 export class DataBindingComponent implements OnInit {
   oddNumbers: number[] = [];
   evenNumbers: number[] = [];

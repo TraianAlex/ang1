@@ -21,6 +21,7 @@ import { FormControl } from '@angular/forms';
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.scss'],
+  standalone: false,
 })
 export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterViewChecked, OnDestroy {
   subscriptions: Subscription[] = [];

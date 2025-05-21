@@ -5,39 +5,26 @@ import { exhaustMap, mergeMap, switchMap } from 'rxjs/operators';
 import { BookingService } from './booking.service';
 import { CustomValidator } from './validators/custom-validator';
 
-@Component({
-  selector: 'app-booking',
-  templateUrl: './booking.component.html',
-})
+@Component({ selector: 'app-booking', templateUrl: './booking.component.html', standalone: false })
 export class BookingComponent implements OnInit {
   bookingForm!: FormGroup;
   get guests() {
     return this.bookingForm.get('guests') as FormArray;
   }
 
-  constructor(
-    private fb: FormBuilder,
-    private bookingService: BookingService,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private fb: FormBuilder, private bookingService: BookingService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     const roomId = this.route.snapshot.paramMap?.get('id');
     this.bookingForm = this.fb.group(
       {
         userData: this.fb.group({
-          roomId: new FormControl(
-            { value: roomId || '11', disabled: true },
-            { validators: [Validators.required] }
-          ),
+          roomId: new FormControl({ value: roomId || '11', disabled: true }, { validators: [Validators.required] }),
           guestEmail: ['', [Validators.required, Validators.email]],
           checkinDate: [''],
           checkoutDate: [''],
           bookingStatus: [''],
-          bookingAmount: [
-            '',
-            { updateOn: 'blur', validators: [Validators.required, Validators.email] },
-          ],
+          bookingAmount: ['', { updateOn: 'blur', validators: [Validators.required, Validators.email] }],
           bookingDate: [''],
           mobileNumber: ['', { updateOn: 'blur' }],
           guestName: [

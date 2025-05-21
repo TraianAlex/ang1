@@ -1,12 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  inject,
-  OnInit,
-  Optional,
-  ViewChild,
-  ViewContainerRef,
-} from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit, Optional, ViewChild, ViewContainerRef } from '@angular/core';
 import { localStorageToken } from '../services/localstorage.token';
 import { LoggerService } from '../services/logger.service';
 
@@ -20,6 +12,7 @@ type Servers = {
   selector: 'app-servers',
   templateUrl: './servers.component.html',
   styleUrls: ['./servers.component.scss'],
+  standalone: false,
 })
 export class ServersComponent implements OnInit, AfterViewInit {
   serverElements: Servers[] = [{ type: 'server', name: 'Testserver', content: 'Just a test' }];

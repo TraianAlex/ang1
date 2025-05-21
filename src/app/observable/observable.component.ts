@@ -6,6 +6,7 @@ import { ObsUserService } from './obs-user.service';
   selector: 'app-observable',
   templateUrl: './observable.component.html',
   styleUrls: ['./observable.component.scss'],
+  standalone: false,
 })
 export class ObservableComponent implements OnInit, OnDestroy {
   userActivated = false;

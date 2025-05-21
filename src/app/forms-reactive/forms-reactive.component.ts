@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   selector: 'app-forms-reactive',
   templateUrl: './forms-reactive.component.html',
   styleUrls: ['./forms-reactive.component.scss'],
+  standalone: false,
 })
 export class FormsReactiveComponent implements OnInit {
   genders = ['male', 'female'];

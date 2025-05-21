@@ -3,20 +3,13 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RecipesService } from '../../services/recipes.service';
 import { Recipe } from '../recipe.model';
 
-@Component({
-  selector: 'app-recipe-detail',
-  templateUrl: './recipe-detail.component.html',
-})
+@Component({ selector: 'app-recipe-detail', templateUrl: './recipe-detail.component.html', standalone: false })
 export class RecipeDetailComponent implements OnInit {
   //@Input() recipe!: Recipe;
   recipe!: Recipe;
   id!: number;
 
-  constructor(
-    private recipesService: RecipesService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
+  constructor(private recipesService: RecipesService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.route.params?.subscribe((params: Params) => {

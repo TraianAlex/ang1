@@ -2,10 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
 
-@Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-})
+@Component({ selector: 'app-user', templateUrl: './user.component.html', standalone: false })
 export class UserComponent implements OnInit, OnDestroy {
   user!: { id: number; name: string };
   paramsSubscription!: Subscription;

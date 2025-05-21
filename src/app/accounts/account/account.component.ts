@@ -5,6 +5,7 @@ import { AccountsService } from '../services/accounts.service';
   selector: 'app-account',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss'],
+  standalone: false,
 })
 export class AccountComponent implements OnInit {
   @Input() account!: { name: string; status: string };

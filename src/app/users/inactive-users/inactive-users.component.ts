@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
 
-@Component({
-  selector: 'app-inactive-users',
-  templateUrl: './inactive-users.component.html',
-})
+@Component({ selector: 'app-inactive-users', templateUrl: './inactive-users.component.html', standalone: false })
 export class InactiveUsersComponent implements OnInit {
   users!: string[];
 

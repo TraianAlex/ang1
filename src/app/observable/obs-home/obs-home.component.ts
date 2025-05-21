@@ -13,6 +13,7 @@ type Observer = {
   selector: 'app-obs-home',
   templateUrl: './obs-home.component.html',
   styleUrls: ['./obs-home.component.scss'],
+  standalone: false,
 })
 //@autoUnsubscribe
 export class ObsHomeComponent implements OnInit {

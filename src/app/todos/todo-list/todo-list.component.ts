@@ -7,6 +7,7 @@ import { Todo, TodosService } from '../services/todos.service';
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss'],
+  standalone: false,
 })
 export class TodoListComponent implements OnInit, OnDestroy {
   private todoService = inject(TodosService);

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-users2',
   templateUrl: './users2.component.html',
   styleUrls: ['./users2.component.scss'],
+  standalone: false,
 })
 export class UsersComponent2 implements OnInit {
   users = [

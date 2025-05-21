@@ -6,6 +6,7 @@ import { ServersService } from '../services/servers.service';
   selector: 'app-servers2',
   templateUrl: './servers2.component.html',
   styleUrls: ['./servers2.component.scss'],
+  standalone: false,
 })
 export class ServersComponent2 implements OnInit {
   public servers: { id: number; name: string; status: string }[] = [];

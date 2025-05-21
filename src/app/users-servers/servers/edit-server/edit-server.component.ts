@@ -4,10 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { CanDeactivateGuardService } from '../../services/can-deactivate-guard.service';
 import { ServersService } from '../../services/servers.service';
 
-@Component({
-  selector: 'app-edit-server',
-  templateUrl: './edit-server.component.html',
-})
+@Component({ selector: 'app-edit-server', templateUrl: './edit-server.component.html', standalone: false })
 export class EditServerComponent implements OnInit, CanDeactivateGuardService {
   server: { id: number; name: string; status: string } | undefined;
   serverId: number | any = 0;

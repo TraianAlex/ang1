@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-pipes',
   templateUrl: './pipes.component.html',
   styleUrls: ['./pipes.component.scss'],
+  standalone: false,
 })
 export class PipesComponent implements OnInit {
   appStatus = new Promise((resolve, reject) => {

@@ -8,6 +8,7 @@ import { CommentService } from './comment.service';
   selector: 'app-comment',
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.scss'],
+  standalone: false,
 })
 export class CommentComponent implements OnInit {
   //comments$ = this.commentService.getComments();
@@ -17,7 +18,7 @@ export class CommentComponent implements OnInit {
   constructor(private commentService: CommentService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.activatedRoute.data?.subscribe((data) => this.comments2 = data['comments']); // prefaching data
+    this.activatedRoute.data?.subscribe((data) => (this.comments2 = data['comments'])); // prefaching data
     console.log('comments2', this.comments2);
   }
 }

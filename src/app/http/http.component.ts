@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
   selector: 'app-http',
   templateUrl: './http.component.html',
   styleUrls: ['./http.component.scss'],
+  standalone: false,
 })
 export class HttpComponent implements OnInit, OnDestroy {
   @ViewChild('postForm', { static: false }) postForm!: NgForm;

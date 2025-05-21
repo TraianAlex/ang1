@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, Router } from '@angular/router';
 // import { ServersService } from '../../services/servers.service';
 
-@Component({
-  selector: 'app-server',
-  templateUrl: './server.component.html',
-})
+@Component({ selector: 'app-server', templateUrl: './server.component.html', standalone: false })
 export class ServerComponent implements OnInit {
   server!: { id: number; name: string; status: string };
 

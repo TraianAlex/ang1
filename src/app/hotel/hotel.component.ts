@@ -7,6 +7,7 @@ import { InitService } from './rooms/init.service';
   selector: 'app-hotel',
   templateUrl: './hotel.component.html',
   styleUrls: ['./hotel.component.scss'],
+  standalone: false,
 })
 export class HotelComponent implements OnInit {
   role = 'user';
@@ -18,16 +19,12 @@ export class HotelComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationStart))
-      .subscribe((event) => {
-        console.log(' Nav started');
-      });
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe((event) => {
-        console.log(' Nav completed');
-      });
+    this.router.events.pipe(filter((event) => event instanceof NavigationStart)).subscribe((event) => {
+      console.log(' Nav started');
+    });
+    this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe((event) => {
+      console.log(' Nav completed');
+    });
     this.name.nativeElement.innerText = 'Hilton hotel';
   }
 }

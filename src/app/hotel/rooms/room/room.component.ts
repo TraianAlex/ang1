@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable } from 'rxjs';
 
-@Component({
-  selector: 'app-room',
-  templateUrl: './room.component.html',
-})
+@Component({ selector: 'app-room', templateUrl: './room.component.html', standalone: false })
 export class RoomComponent implements OnInit {
   roomId!: string | null;
   roomId$!: Observable<string | null>;

@@ -6,6 +6,7 @@ import { CustomValidators } from './custom-validators';
   selector: 'app-forms-reactive2',
   templateUrl: './forms-reactive2.component.html',
   styleUrls: ['./forms-reactive2.component.scss'],
+  standalone: false,
 })
 export class FormsReactive2Component implements OnInit {
   projectForm!: FormGroup;

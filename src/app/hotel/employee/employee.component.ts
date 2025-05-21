@@ -5,6 +5,7 @@ import { RoomsService } from '../rooms/services/rooms.service';
   selector: 'app-employee',
   templateUrl: './employee.component.html',
   providers: [RoomsService],
+  standalone: false,
 })
 export class EmployeeComponent implements OnInit {
   empName: string = 'John';

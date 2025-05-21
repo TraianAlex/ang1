@@ -7,6 +7,7 @@ import { Ingredient } from '../shared/ingredient.model';
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.scss'],
+  standalone: false,
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
   // ingredients: Ingredient[] = [new Ingredient('Apples', 5), new Ingredient('Tomatoes', 10)];

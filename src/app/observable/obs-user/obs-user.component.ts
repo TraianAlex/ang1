@@ -4,10 +4,7 @@ import { Observable } from 'rxjs';
 
 import { ObsUserService } from '../obs-user.service';
 
-@Component({
-  selector: 'app-obs-user',
-  templateUrl: './obs-user.component.html',
-})
+@Component({ selector: 'app-obs-user', templateUrl: './obs-user.component.html', standalone: false })
 export class ObsUserComponent implements OnInit {
   id!: number;
 

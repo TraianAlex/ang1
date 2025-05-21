@@ -4,6 +4,7 @@ import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '
   selector: 'app-cockpit',
   templateUrl: './cockpit.component.html',
   styleUrls: ['./cockpit.component.scss'],
+  standalone: false,
 })
 export class CockpitComponent implements OnInit {
   @Output() serverCreated = new EventEmitter<{ serverName: string; serverContent: string }>();

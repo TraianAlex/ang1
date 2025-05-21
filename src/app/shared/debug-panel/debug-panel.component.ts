@@ -4,6 +4,7 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
   selector: 'app-debug-panel',
   templateUrl: './debug-panel.component.html',
   styleUrls: ['./debug-panel.component.scss'],
+  standalone: false,
 })
 export class DebugPanelComponent implements OnInit {
   @Input() data: any;

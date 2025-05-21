@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from './recipes/auth/auth.service';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-})
+@Component({ selector: 'app-root', templateUrl: './app.component.html', standalone: false })
 export class AppComponent implements OnInit {
   constructor(private authService: AuthService) {}
 

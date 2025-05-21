@@ -8,6 +8,7 @@ import { Ingredient } from '../../shared/ingredient.model';
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
   styleUrls: ['./shopping-edit.component.scss'],
+  standalone: false,
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
   // @ViewChild('nameInput', { static: false }) nameInputRef!: ElementRef;

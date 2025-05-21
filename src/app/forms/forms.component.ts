@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
   selector: 'app-forms',
   templateUrl: './forms.component.html',
   styleUrls: ['./forms.component.scss'],
+  standalone: false,
 })
 export class FormsComponent implements OnInit {
   @ViewChild('f', { static: false }) signupForm!: NgForm;

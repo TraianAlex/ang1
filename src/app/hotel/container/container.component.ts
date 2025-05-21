@@ -6,6 +6,7 @@ import { RoomsService } from '../rooms/services/rooms.service';
   selector: 'app-container',
   templateUrl: './container.component.html',
   providers: [RoomsService],
+  standalone: false,
 })
 export class ContainerComponent implements OnInit, AfterContentInit {
   @ContentChild(EmployeeComponent) employee!: EmployeeComponent;

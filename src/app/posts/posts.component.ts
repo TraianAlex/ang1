@@ -8,10 +8,7 @@ export interface Post {
   userId: number;
 }
 
-@Component({
-  selector: 'app-posts',
-  templateUrl: './posts.component.html',
-})
+@Component({ selector: 'app-posts', templateUrl: './posts.component.html', standalone: false })
 export class PostsComponent implements OnInit {
   posts: Post[] = [];
 

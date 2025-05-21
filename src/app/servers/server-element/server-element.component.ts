@@ -21,6 +21,7 @@ import {
   templateUrl: './server-element.component.html',
   styleUrls: ['./server-element.component.scss'],
   encapsulation: ViewEncapsulation.Emulated, //None
+  standalone: false,
 })
 export class ServerElementComponent
   implements

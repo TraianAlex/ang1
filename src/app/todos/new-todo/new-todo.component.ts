@@ -8,6 +8,7 @@ import { UiService } from '../services/ui-service.service';
   selector: 'app-new-todo',
   templateUrl: './new-todo.component.html',
   styleUrls: ['./new-todo.component.scss'],
+  standalone: false,
 })
 export class NewTodoComponent implements OnInit, OnDestroy {
   private todoService = inject(TodosService);
