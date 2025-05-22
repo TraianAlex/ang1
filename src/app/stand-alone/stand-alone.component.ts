@@ -4,10 +4,9 @@ import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 @Component({
-  standalone: true,
-  imports: [RouterModule],
-  selector: 'app-stand-alone',
-  templateUrl: './stand-alone.component.html',
+    imports: [RouterModule],
+    selector: 'app-stand-alone',
+    templateUrl: './stand-alone.component.html'
 })
 export class StandAloneComponent implements OnInit {
   constructor() {}

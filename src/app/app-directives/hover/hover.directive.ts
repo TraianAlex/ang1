@@ -1,7 +1,8 @@
 import { Directive, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: '[appHover]',
+    selector: '[appHover]',
+    standalone: false
 })
 export class HoverDirective implements OnInit {
   @Input() appHover: string = 'red';

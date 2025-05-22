@@ -1,8 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'sort',
-  pure: false,
+    name: 'sort',
+    pure: false,
+    standalone: false
 })
 export class SortPipe implements PipeTransform {
   transform(value: any, propName: string): any {

@@ -5,11 +5,10 @@ import { AnalyticsService } from '../../shared/analytics.service';
 import { HighlightDirective } from '../../shared/highlight.directive';
 
 @Component({
-  standalone: true,
-  imports: [CommonModule, HighlightDirective], // SharedModule
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss'],
+    imports: [CommonModule, HighlightDirective], // SharedModule
+    selector: 'app-details',
+    templateUrl: './details.component.html',
+    styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
   serviceTriggered: boolean = false;

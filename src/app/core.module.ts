@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, inject, provideAppInitializer } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service';
@@ -40,12 +40,10 @@ function initFactory(initService: InitService) {
       useClass: LoggingInterceptorService,
       multi: true,
     },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initFactory,
-      deps: [InitService],
-      multi: true,
-    },
+    provideAppInitializer(() => {
+        const initializerFn = (initFactory)(inject(InitService));
+        return initializerFn();
+      }),
     { provide: ErrorHandler, useClass: ErrorHandlerService },
   ],
 })
