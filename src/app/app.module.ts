@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core.module';
@@ -30,40 +30,33 @@ import { PipesComponent } from './pipes/pipes.component';
 import { HttpComponent } from './http/http.component';
 import { SharedModule } from './shared/shared.module';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    PageNotFoundComponent,
-    ErrorPageComponent,
-    ObservableComponent,
-    ObsHomeComponent,
-    ObsUserComponent,
-    FormsComponent,
-    FormsReactiveComponent,
-    FormsReactive2Component,
-    PipesComponent,
-    ShortenPipe,
-    FilterPipe,
-    ReversePipe,
-    SortPipe,
-    HttpComponent,
-  ],
-  imports: [
-    BrowserModule,
-    RecipesModule,
-    DataBindingModule,
-    ServersModule,
-    UsersModule,
-    UsersServersModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    HeaderAppModule,
-    CoreModule,
-    SharedModule
-  ],
-  bootstrap: [AppComponent],
-  // entryComponents: [AlertComponent], // for angular < 9
-})
+@NgModule({ declarations: [
+        AppComponent,
+        PageNotFoundComponent,
+        ErrorPageComponent,
+        ObservableComponent,
+        ObsHomeComponent,
+        ObsUserComponent,
+        FormsComponent,
+        FormsReactiveComponent,
+        FormsReactive2Component,
+        PipesComponent,
+        ShortenPipe,
+        FilterPipe,
+        ReversePipe,
+        SortPipe,
+        HttpComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        RecipesModule,
+        DataBindingModule,
+        ServersModule,
+        UsersModule,
+        UsersServersModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HeaderAppModule,
+        CoreModule,
+        SharedModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}

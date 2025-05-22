@@ -1,10 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 
 import { APP_SERVICE_CONFIG } from '../app-config/app-config.service';
 import { PostsService } from './posts.service';
 import { AppConfig } from '../app-config/app-config.interface';
 import { Post } from './post.model';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('PostsService', () => {
   let service: PostsService;
@@ -13,12 +14,14 @@ describe('PostsService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [
+    imports: [],
+    providers: [
         PostsService,
         { provide: APP_SERVICE_CONFIG, useValue: { apiEndpoint: 'https://jsonplaceholder.typicode.com' } },
-      ],
-    });
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+    ]
+});
     service = TestBed.inject(PostsService);
     httpMock = TestBed.inject(HttpTestingController);
     config = TestBed.inject(APP_SERVICE_CONFIG);
