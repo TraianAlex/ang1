@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Comments } from '../comment';
 import { CommentService } from '../comment.service';
@@ -7,7 +7,7 @@ import { CommentService } from '../comment.service';
 @Injectable({
   providedIn: 'root',
 })
-export class CommentGuard implements Resolve<Comments[]> {
+export class CommentGuard  {
   constructor(private commentService: CommentService) {}
 
   resolve(

@@ -1,17 +1,12 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanDeactivate,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { BookingComponent } from 'src/app/booking/booking.component';
 
 @Injectable({
   providedIn: 'root',
 })
-export class BookingGuard implements CanDeactivate<BookingComponent> {
+export class BookingGuard  {
   canDeactivate(
     component: BookingComponent,
     currentRoute: ActivatedRouteSnapshot,

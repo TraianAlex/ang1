@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 // import { Observable } from 'rxjs/internal/Observable';
 import { ServersService } from './servers.service';
 
@@ -12,7 +12,7 @@ interface Server {
 @Injectable({
   providedIn: 'root',
 })
-export class ServerResolverService implements Resolve<Server> {
+export class ServerResolverService  {
   constructor(private serversService: ServersService) {}
 
   // Observable<Server> | Promise<Server> | Server
