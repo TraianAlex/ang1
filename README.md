@@ -28,5 +28,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 json-server --watch src/assets/db.json --port 8080
 
-node v = 20.11.1
-Angular 19.2
+node v = 22.12.0
+Angular 20.0.6
